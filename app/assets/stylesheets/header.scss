@@ -1,0 +1,70 @@
+#nav {
+  width: 100%;
+  padding: 20px;
+  background: $black;
+  text-align: center;
+}
+
+#nav ul {
+  text-align: center;
+  margin: 20px;
+}
+
+#nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.title {
+  display: inline-block;
+  position: relative;
+  color: $white;
+  font-size: 3em;
+}
+
+.header-title {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.bulb {
+  position: absolute;
+  top: -1%;
+  left: 2.2%;
+  width: 44px;
+  height: 44px;
+  z-index: 1;
+  border-radius: 45px;
+  box-shadow: 0 0 70px $gold;
+  background: $gold;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background: -webkit-gradient(radial, center center, 0, center center, 460, from($white), to($gold));
+  background: -webkit-radial-gradient(circle, $white, $gold);
+  background: -moz-radial-gradient(circle, $white, $gold);
+  background: -ms-radial-gradient(circle, $white, $gold);
+}
+
+.logo {
+  /*box-shadow: 0 0 40px $gold;*/
+  padding: 5px;
+  /*background: $white;*/
+  border-radius: 45px;
+  width: 1.2em;
+  float: left;
+  position: relative;
+  top: -9px;
+  z-index: 2;
+}
+
+
+.nav-link {
+  text-decoration: none;
+  color: $gold;
+  transition: all 0.5s ease;
+}
+
+.nav-link:hover, .nav-link:focus {
+  color: $white;
+  text-shadow: 0 0 2px $white;
+}

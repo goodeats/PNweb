@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PNweb</title>
+  <title>Pat Needham</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <div class="page-wrapper">
+    <%= render partial: 'layouts/header' %>
+    <div class="page-content-wrapper">
+
+    </div>
+  </div>
 
 <%= yield %>
 
