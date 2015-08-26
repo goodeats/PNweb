@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'header';
+@import 'contact';
 
 a,
 a:focus,
@@ -9,16 +10,19 @@ a:after {
  text-decoration: none;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
   position: relative;
   box-sizing: border-box;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 100%;
 }
 
 body {
   background: $gold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 62.5%;
+  // font-size: 100%;
 }
 

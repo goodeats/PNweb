@@ -19,7 +19,7 @@
   display: inline-block;
   position: relative;
   color: $white;
-  font-size: 3em;
+  font-size: 4.8em;
 }
 
 .header-title {
@@ -46,9 +46,7 @@
 }
 
 .logo {
-  /*box-shadow: 0 0 40px $gold;*/
   padding: 5px;
-  /*background: $white;*/
   border-radius: 45px;
   width: 1.2em;
   float: left;
@@ -57,14 +55,14 @@
   z-index: 2;
 }
 
-
 .nav-link {
   text-decoration: none;
   color: $gold;
   transition: all 0.5s ease;
+  font-size: 1.6em;
 }
 
-.nav-link:hover, .nav-link:focus {
+.nav-link:hover,
+.nav-link:focus {
   color: $white;
-  text-shadow: 0 0 2px $white;
 }
