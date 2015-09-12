@@ -1,5 +1,6 @@
 .content-wrapper {
   width: $col-eight;
+  max-width: 600px;
   display: block;
   margin: 20px auto;
 }
@@ -18,7 +19,7 @@
 
 .content p {
   font-size: 1.6em;
-  margin: 10px 0;
+  margin: 5px 0 10px;
   padding-left: 10px;
 }
 
@@ -37,39 +38,69 @@
 
 .main-projects {
   width: $full;
-  height: 100px;
-  margin: 30px 0;
+  display: inline-block;
+  margin: 10px 0;
 }
 
 .main-project {
+  width: $full;
+  height: 100px;
+  display: block;
+  margin: 10px 0;
+}
+
+.main-project-link-container, {
   width: $col-four;
   height: 100px;
   display: inline-block;
-  float: left;
-  background: $dark-black;
   border: 5px solid $white;
   text-align: center;
+  overflow: hidden;
   -webkit-transition: all .3s ease;
   -moz-transition: all .3s ease;
   -o-transition: all .3s ease;
   transition: all .3s ease;
 }
 
-.main-project:focus,
-.main-project:hover {
+.main-project-link-container:focus,
+.main-project-link-container:hover {
   background: $white;
+  .main-project-title {
+    font-weight: bold;
+  }
+}
+
+.main-project-description-container {
+  width: $col-eight;
+  height: 100px;
+  float: right;
+  display: inline-block;
+  overflow-y: auto;
 }
 
 .main-project-title {
-  display: inline;
+  height: 100px;
+  display: block;
   margin: 0 auto;
   vertical-align: middle;
   font-size: 2em;
 }
 
-.main-project-title:before {
+.main-project-title:before,
+.main-project-description:before {
   content: '';
   display: inline-block;
   vertical-align: middle;
   height: 100%;
+}
+
+.main-project-description {
+  display: block;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 400px){
+  .content-wrapper {
+    width: $col-ten;
+  }
 }

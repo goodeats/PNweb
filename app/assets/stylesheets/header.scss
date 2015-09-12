@@ -12,7 +12,11 @@
 
 #nav ul li {
   display: inline;
-  margin-right: 10px;
+  margin-right: $col-one-half;
+}
+
+#nav ul li:last-child {
+  margin-right: 0;
 }
 
 .title {
