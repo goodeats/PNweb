@@ -2,6 +2,7 @@
 @import 'header';
 @import 'contact';
 @import 'page-content';
+@import 'footer';
 
 a,
 a:focus,
@@ -27,3 +28,6 @@ body {
   // font-size: 100%;
 }
 
+.page-wrapper {
+  text-align: center;
+}

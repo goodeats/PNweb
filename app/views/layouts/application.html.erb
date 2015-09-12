@@ -14,27 +14,44 @@
     <%= render partial: 'layouts/header' %>
     <div class="page-content-wrapper">
       <div class="content-wrapper">
+        <a name="about"></a>
         <div class="content">
-          <a name="about"></a>
           <h1>about</h1>
           <p>I am a web developer. I will try things here.</p>
           <p>I am happily working at <a href="http://www.ditto.us.com" class="page-link">Ditto Labs</a> where I work mainly on front-end development.</p>
         </div>
       </div>
       <div class="content-wrapper">
+        <a name="work"></a>
         <div class="content">
-          <a name="work"></a>
           <h1>work</h1>
+          <p>Most of my work is done at <a href="http://www.ditto.us.com" class="page-link">Ditto Labs</a>. Please feel free to check out some of the products there :)</p>
+          <p>Some examples of personal projects can be found here:</p>
+          <div class="main-projects">
+            <div class="main-project">
+              <a href="http://www.devourr.com" class="page-link main-project-title" target="_blank">Devourr</a>
+            </div>
+            <div class="main-project">
+              <a href="http://goodeats.github.io/twizzer_frontend/" class="page-link main-project-title" target="_blank">Twitter API</a>
+            </div>
+            <!-- <div class="main-project">
+              <a href="#" class="page-link main-project-title" target="_blank">devourr</a>
+            </div> -->
+          </div>
+          <p>I will be looking to roll out a gallery of web tricks soon!</p>
         </div>
       </div>
       <div class="content-wrapper">
+        <a name="blog"></a>
         <div class="content">
-          <a name="blog"></a>
           <h1>blog</h1>
         </div>
       </div>
-    	<%= render partial: 'layouts/contact' %>
+      <div class="content-wrapper">
+      	<%= render partial: 'layouts/contact' %>
+      </div>
     </div>
+    <%= render partial: 'layouts/footer' %>
   </div>
 
 <%= yield %>

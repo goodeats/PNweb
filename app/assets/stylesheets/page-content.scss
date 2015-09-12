@@ -9,8 +9,67 @@
   background: $dark-black;
   border-radius: 8px;
   color: $white;
+  text-align: left;
+}
+
+.content h1 {
+  font-size: 2.4em;
+}
+
+.content p {
+  font-size: 1.6em;
+  margin: 10px 0;
+  padding-left: 10px;
 }
 
 .page-link {
   color: $link-color;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+.page-link:focus,
+.page-link:hover {
+  color: $link-color-hover;
+}
+
+.main-projects {
+  width: $full;
+  height: 100px;
+  margin: 30px 0;
+}
+
+.main-project {
+  width: $col-four;
+  height: 100px;
+  display: inline-block;
+  float: left;
+  background: $dark-black;
+  border: 5px solid $white;
+  text-align: center;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.main-project:focus,
+.main-project:hover {
+  background: $white;
+}
+
+.main-project-title {
+  display: inline;
+  margin: 0 auto;
+  vertical-align: middle;
+  font-size: 2em;
+}
+
+.main-project-title:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
 }
