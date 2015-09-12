@@ -1,7 +1,7 @@
 #nav {
   width: 100%;
   padding: 20px;
-  background: $black;
+  background: $dark-black;
   text-align: center;
 }
 
@@ -35,14 +35,14 @@
   height: 44px;
   z-index: 1;
   border-radius: 45px;
-  box-shadow: 0 0 70px $gold;
-  background: $gold;
+  box-shadow: 0 0 70px $main;
+  background: $main;
   background-position: center center;
   background-repeat: no-repeat;
-  background: -webkit-gradient(radial, center center, 0, center center, 460, from($white), to($gold));
-  background: -webkit-radial-gradient(circle, $white, $gold);
-  background: -moz-radial-gradient(circle, $white, $gold);
-  background: -ms-radial-gradient(circle, $white, $gold);
+  background: -webkit-gradient(radial, center center, 0, center center, 460, from($white), to($main));
+  background: -webkit-radial-gradient(circle, $white, $main);
+  background: -moz-radial-gradient(circle, $white, $main);
+  background: -ms-radial-gradient(circle, $white, $main);
 }
 
 .logo {
@@ -57,7 +57,7 @@
 
 .nav-link {
   text-decoration: none;
-  color: $gold;
+  color: $main;
   transition: all 0.5s ease;
   font-size: 1.6em;
 }

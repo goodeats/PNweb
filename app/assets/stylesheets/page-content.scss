@@ -1,0 +1,16 @@
+.content-wrapper {
+  width: $col-eight;
+  display: block;
+  margin: 20px auto;
+}
+
+.content {
+  padding: 20px;
+  background: $dark-black;
+  border-radius: 8px;
+  color: $white;
+}
+
+.page-link {
+  color: $link-color;
+}

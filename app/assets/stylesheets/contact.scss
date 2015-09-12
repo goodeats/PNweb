@@ -1,5 +1,6 @@
 .contact-wrapper {
-	width: 300px;
+	width: $col-eight;
+	max-width: 300px;
 	margin: 20px auto;
 	text-align: center;
 }
@@ -10,7 +11,7 @@
 }
 
 .contact-link {
-	color: #000;
+	color: $dark-black;
 	font-size: 3em;
 }
 
