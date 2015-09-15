@@ -36,6 +36,19 @@
   color: $link-color-hover;
 }
 
+.back-to-top {
+  position: relative;
+  right: 55%;
+  top: 20px;
+  color: #000;
+  font-size: 2em;
+}
+
+.back-to-top[name="contact"] {
+  font-size: 5em;
+  color: red;
+}
+
 .main-projects {
   width: $full;
   display: inline-block;
