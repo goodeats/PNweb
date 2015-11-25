@@ -5,7 +5,7 @@
 // @import 'v1/page-content';
 // @import 'v1/footer';
 // @import 'v1/ouipig';
-@import 'v2/variables';
+@import 'v2/*';
 
 a,
 a:focus,
@@ -26,7 +26,7 @@ a:after {
 
 body {
   background: $main;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $main-font;
   font-size: 62.5%;
   // font-size: 100%;
 }

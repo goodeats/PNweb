@@ -38,3 +38,7 @@ $col-nine: $full * (9 / $columns);
 $col-ten: $full * (10 / $columns);
 $col-eleven: $full * (11 / $columns);
 $col-twelve: $full * (12 / $columns);
+
+// fonts
+$main-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$header-font: $main-font;
