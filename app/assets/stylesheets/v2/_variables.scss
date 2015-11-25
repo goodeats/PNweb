@@ -1,0 +1,40 @@
+// colors
+$white: #fff;
+$white-grey: #E5E5E5;
+$black: #000;
+$dark-black: #292929;
+$gold: #ffb500;
+$yellow: #caff00;
+$light-blue: #00caff;
+$dark-blue: #00b6e6;
+
+$pink: #FFC0CB;
+$dark-pink: #CC99A2;
+$light-pink: #FFD9DF;
+
+$pig-face: $pink;
+$pig-ears: $dark-pink;
+$pig-nose: $light-pink;
+
+$main: $white-grey;
+$link-color: $light-blue;
+$link-color-hover: $dark-blue;
+
+// width
+$full: 100%;
+$columns: 12;
+
+$col-one-half: $full * (.5 / $columns);
+$col-one: $full * (1 / $columns);
+$col-one-and-half: $full * (1.5 / $columns);
+$col-two: $full * (2 / $columns);
+$col-three: $full * (3 / $columns);
+$col-four: $full * (4 / $columns);
+$col-five: $full * (5 / $columns);
+$col-six: $full * (6 / $columns);
+$col-seven: $full * (7 / $columns);
+$col-eight: $full * (8 / $columns);
+$col-nine: $full * (9 / $columns);
+$col-ten: $full * (10 / $columns);
+$col-eleven: $full * (11 / $columns);
+$col-twelve: $full * (12 / $columns);

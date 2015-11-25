@@ -1,9 +1,11 @@
-@import 'variables';
-@import 'header';
-@import 'contact';
-@import 'page-content';
-@import 'footer';
-@import 'ouipig';
+// TODO: separate these stylesheets for old style only
+// @import 'v1/variables';
+// @import 'v1/header';
+// @import 'v1/contact';
+// @import 'v1/page-content';
+// @import 'v1/footer';
+// @import 'v1/ouipig';
+@import 'v2/variables';
 
 a,
 a:focus,
