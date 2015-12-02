@@ -1,27 +1,30 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,900);
+.nav-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-.header-title {
-  position: relative;
-  top: 0;
-  font: $header-font;
+.nav-content {
+  flex: 1;
+  background: url(image_path('bg_01.jpg'));
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-animation: fade-in 2s ease-out;
+  -moz-animation: fade-in 2s ease-out;
+  -o-animation: fade-in 2s ease-out;
+  animation: fade-in 2s ease-out;
 }
 
 .nav-title {
-  position: relative;
-  top: 50px;
-  z-index: 2;
-  margin-bottom: -50px;
-  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  font-family: $main-font;
+  font-weight: 100;
+  font-size: 4.6em;
+  letter-spacing: -5px;
   color: #262626;
 }
-
-.header-bg-image {
-  width: 100%;
-  max-width: 1400px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-
