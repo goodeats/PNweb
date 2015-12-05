@@ -24,8 +24,8 @@ $(document).ready(function(){
   //   'color': '#fff'
   // });
   if(navigator.userAgent.match('CriOS')){
-    alert('urine chrome ios!');
-    $('.nav-title-name').text('Pat \"too cool for school\" Needham');
+    // alert('urine chrome ios!');
+    // $('.nav-title-name').text('Pat \"too cool for school\" Needham');
     var s = skrollr.init({
       smoothScrolling: false,
       mobileDeceleration: 0.004
