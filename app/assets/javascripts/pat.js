@@ -1,7 +1,12 @@
 console.log('if you can read this, you are probably a web developer :D');
 
 $(document).ready(function(){
+  if(navigator.userAgent.match('CriOS')){
+    var s = skrollr.init();
+  }
+
   $(window).on('scroll', function(){
+    console.log('ahhh! I\'m falling!')
     var from_top = $(window).scrollTop();
     var above_one = 1 + from_top / 2000;
     var below_one = 1 - from_top / 2000;
@@ -24,7 +29,8 @@ $(document).ready(function(){
       '-moz-transform': 'scale(' + below_one + ',' + below_one + ') rotate(' + rotate_left + 'deg)',
       '-o-transform': 'scale(' + below_one + ',' + below_one + ') rotate(' + rotate_left + 'deg)',
       'transform': 'scale(' + below_one + ',' + below_one + ') rotate(' + rotate_left + 'deg)',
-      'right': 10 + from_top / 100 + '%'
+      'right': 10 + from_top / 100 + '%',
+      'letter-spacing': -5 + -rotate_left + 'px'
     });
 
   });
