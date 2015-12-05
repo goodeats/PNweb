@@ -3,11 +3,12 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .nav-content {
   flex: 1;
-  background: url(image_path('bg_01-min.jpg'));
+  background: url(image_path('bg_01-min-2k.jpg'));
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

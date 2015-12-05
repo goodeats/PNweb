@@ -1,27 +1,31 @@
 console.log('if you can read this, you are probably a web developer :D');
 
 $(document).ready(function(){
-  var div = '<h3 id="scroll">1</h3>';
-  $('.nav-content').append(div);
-  $('#scroll').css({
-    'position': 'absolute',
-    'top': '50%',
-    'left': '25%',
-    'color': '#fff'
-  });
-
   $(window).on('scroll', function(){
-    var scroll_spot = $(window).scrollTop();
-    $('#scroll').text(scroll_spot);
-    var zoom = 1 + scroll_spot / 1000;
+    var from_top = $(window).scrollTop();
+    var above_one = 1 + from_top / 2000;
+    var below_one = 1 - from_top / 2000;
+    var rotate_left = -from_top / 50;
+    var from_middle = 50 - rotate_left;
+    $('#scroll').text(above_one);
 
     $('.nav-content').css({
-      '-moz-transform': 'scale(' + zoom + ',' + zoom + ')',
-      '-webkit-transform': 'scale(' + zoom + ',' + zoom + ')',
-      'transform': 'scale(' + zoom + ',' + zoom + ')'
+      '-webkit-transform': 'scale(' + above_one + ',' + above_one + ') rotate(' + rotate_left + 'deg)',
+      '-moz-transform': 'scale(' + above_one + ',' + above_one + ') rotate(' + rotate_left + 'deg)',
+      '-o-transform': 'scale(' + above_one + ',' + above_one + ') rotate(' + rotate_left + 'deg)',
+      'transform': 'scale(' + above_one + ',' + above_one + ') rotate(' + rotate_left + 'deg)',
+      'background-position': from_middle + '% 50%',
+      'margin-left': -from_top / 20 + 'px',
+      'margin-bottom': -from_top / 10 + 'px',
     });
     
-
+    $('.nav-title-name').css({
+      '-webkit-transform': 'scale(' + below_one + ',' + below_one + ') rotate(' + rotate_left + 'deg)',
+      '-moz-transform': 'scale(' + below_one + ',' + below_one + ') rotate(' + rotate_left + 'deg)',
+      '-o-transform': 'scale(' + below_one + ',' + below_one + ') rotate(' + rotate_left + 'deg)',
+      'transform': 'scale(' + below_one + ',' + below_one + ') rotate(' + rotate_left + 'deg)',
+      'right': 10 + from_top / 100 + '%'
+    });
 
   });
 });
