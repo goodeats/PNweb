@@ -2,7 +2,10 @@ console.log('if you can read this, you are probably a web developer :D');
 
 $(document).ready(function(){
   if(navigator.userAgent.match('CriOS')){
-    var s = skrollr.init();
+    var s = skrollr.init({
+      smoothScrolling: false,
+      mobileDeceleration: 0.004
+    });
   }
 
   $(window).on('scroll', function(){
