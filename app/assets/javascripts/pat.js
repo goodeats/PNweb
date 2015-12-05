@@ -1,6 +1,14 @@
 console.log('if you can read this, you are probably a web developer :D');
 
 $(document).ready(function(){
+  var div = "<h4 id='scroll'></h4>";
+  $('.nav-content').append(div);
+  $('#scroll').css({
+    'position': 'absolute',
+    'top': '50%',
+    'right': '20%',
+    'color': '#fff'
+  });
   if(navigator.userAgent.match('CriOS')){
     var s = skrollr.init({
       smoothScrolling: false,
