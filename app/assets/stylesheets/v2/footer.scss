@@ -1,13 +1,11 @@
 .footer-wrapper {
-  width: $full;
-  display: inline-block;
-  background: none;
-  text-align: center;
+  // width: $full;
+  // display: inline-block;
 }
 
 .footer-content {
   height: $full;
-  font-size: 1.8em;
+  font-size: $font-size-bold;
 }
 
 .footer-tagline {
@@ -18,14 +16,14 @@
 
 .footer-trademark {
   display: block;
-  font-size: 0.65em;
+  font-size: $font-size-bold-sub;
   margin-top: 5px;
   font-family: $bold-font;
   font-weight: 100;
 }
 
 .contact-wrapper {
-  max-width: 300px;
+  max-width: $contact-width;
   display: inline-block;
   margin: 20px auto;
 }
@@ -33,575 +31,249 @@
 .contact-list-item {
   display: inline-block;
   width: $col-three;
-  height: 75px;
+  height: $contact-height;
   float: left;
 }
 
 .fade-in {
-  -webkit-animation: fade-in 2s ease-out;
-  -moz-animation: fade-in 2s ease-out;
-  -o-animation: fade-in 2s ease-out;
-  animation: fade-in 2s ease-out;
+  @include fade-in(fade-in);
 }
 
-@-webkit-keyframes fade-in {
+@include keyframes(fade-in){
   from {opacity: 0;}
   to {opacity: 1;}
 }
 
-@-moz-keyframes fade-in {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-@-o-keyframes fade-in {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-@keyframes fade-in {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-.contact-link { //http://stackoverflow.com/questions/31212569/visited-links-lose-css-color-animation-in-chrome
+.contact-link {
   font-size: 3em;
   color: $dark-black;
 }
 
 // gmail
 #gmail-footer-link.contact-link {
-  -webkit-animation: in-gmail .3s ease-out;
-  -moz-animation: in-gmail .3s ease-out;
-  -o-animation: in-gmail .3s ease-out;
-  animation: in-gmail .3s ease-out;
+  @include contact-hover(hover-out-gmail);
+  &:active,
+  &:visited:active {
+    color: $gmail-color;
+  }
 }
 
 #gmail-footer-link.contact-link:focus,
-#gmail-footer-link.contact-link:focus,
-#gmail-footer-link.contact-link:hover,
 #gmail-footer-link.contact-link:hover {
   color: $white;
-  -webkit-animation: out-gmail .3s ease-out;
-  -moz-animation: out-gmail .3s ease-out;
-  -o-animation: out-gmail .3s ease-out;
-  animation: out-gmail .3s ease-out;
+  @include contact-hover(hover-gmail)
 }
 
-@-webkit-keyframes in-gmail {
+@include keyframes(hover-gmail) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $gmail-color;
+  }
+  100% {
+    color: $white;
+  }
+}
+
+@include keyframes(hover-out-gmail) {
   0% {color: $white;}
   75% {color: $gmail-color;}
   100% {color: $dark-black;}
-}
-
-@-webkit-keyframes out-gmail {
-  0% {color: $dark-black;}
-  75% {color: $gmail-color;}
-  100% {color: $white;}
-}
-
-@-moz-keyframes in-gmail {
-  0% {color: $white;}
-  75% {color: $gmail-color;}
-  100% {color: $dark-black;}
-}
-
-@-moz-keyframes out-gmail {
-  0% {color: $dark-black;}
-  75% {color: $gmail-color;}
-  100% {color: $white;}
-}
-
-@-o-keyframes in-gmail {
-  0% {color: $white;}
-  75% {color: $gmail-color;}
-  100% {color: $dark-black;}
-}
-
-@-o-keyframes out-gmail {
-  0% {color: $dark-black;}
-  75% {color: $gmail-color;}
-  100% {color: $white;}
-}
-
-@keyframes in-gmail {
-  0% {color: $white;}
-  75% {color: $gmail-color;}
-  100% {color: $dark-black;}
-}
-
-@keyframes out-gmail {
-  0% {color: $dark-black;}
-  75% {color: $gmail-color;}
-  100% {color: $white;}
 }
 
 // twitter
 #twitter-footer-link.contact-link {
-  -webkit-animation: in-twitter .3s ease-out;
-  -moz-animation: in-twitter .3s ease-out;
-  -o-animation: in-twitter .3s ease-out;
-  animation: in-twitter .3s ease-out;
+  @include contact-hover(hover-out-twitter);
+  &:active,
+  &:visited:active {
+    color: $twitter-color;
+  }
 }
 
 #twitter-footer-link.contact-link:focus,
-#twitter-footer-link.contact-link:focus,
-#twitter-footer-link.contact-link:hover,
 #twitter-footer-link.contact-link:hover {
   color: $white;
-  -webkit-animation: out-twitter .3s ease-out;
-  -moz-animation: out-twitter .3s ease-out;
-  -o-animation: out-twitter .3s ease-out;
-  animation: out-twitter .3s ease-out;
+  @include contact-hover(hover-twitter)
 }
 
-@-webkit-keyframes in-twitter {
+@include keyframes(hover-twitter) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $twitter-color;
+  }
+  100% {
+    color: $white;
+  }
+}
+
+@include keyframes(hover-out-twitter) {
   0% {color: $white;}
   75% {color: $twitter-color;}
   100% {color: $dark-black;}
-}
-
-@-webkit-keyframes out-twitter {
-  0% {color: $dark-black;}
-  75% {color: $twitter-color;}
-  100% {color: $white;}
-}
-
-@-moz-keyframes in-twitter {
-  0% {color: $white;}
-  75% {color: $twitter-color;}
-  100% {color: $dark-black;}
-}
-
-@-moz-keyframes out-twitter {
-  0% {color: $dark-black;}
-  75% {color: $twitter-color;}
-  100% {color: $white;}
-}
-
-@-o-keyframes in-twitter {
-  0% {color: $white;}
-  75% {color: $twitter-color;}
-  100% {color: $dark-black;}
-}
-
-@-o-keyframes out-twitter {
-  0% {color: $dark-black;}
-  75% {color: $twitter-color;}
-  100% {color: $white;}
-}
-
-@keyframes in-twitter {
-  0% {color: $white;}
-  75% {color: $twitter-color;}
-  100% {color: $dark-black;}
-}
-
-@keyframes out-twitter {
-  0% {color: $dark-black;}
-  75% {color: $twitter-color;}
-  100% {color: $white;}
 }
 
 // linkedin
 #linkedin-footer-link.contact-link {
-  -webkit-animation: in-linkedin .3s ease-out;
-  -moz-animation: in-linkedin .3s ease-out;
-  -o-animation: in-linkedin .3s ease-out;
-  animation: in-linkedin .3s ease-out;
+  @include contact-hover(hover-out-linkedin);
+  &:active,
+  &:visited:active {
+    color: $linkedin-color;
+  }
 }
 
 #linkedin-footer-link.contact-link:focus,
-#linkedin-footer-link.contact-link:focus,
-#linkedin-footer-link.contact-link:hover,
 #linkedin-footer-link.contact-link:hover {
   color: $white;
-  -webkit-animation: out-linkedin .3s ease-out;
-  -moz-animation: out-linkedin .3s ease-out;
-  -o-animation: out-linkedin .3s ease-out;
-  animation: out-linkedin .3s ease-out;
+  @include contact-hover(hover-linkedin)
 }
 
-@-webkit-keyframes in-linkedin {
-  0% {color: $white;}
-  75% {color: $linkedin-color;}
-  100% {color: $dark-black;}
-}
-
-@-webkit-keyframes out-linkedin {
-  0% {color: $dark-black;}
-  75% {color: $linkedin-color;}
-  100% {color: $white;}
-}
-
-@-moz-keyframes in-linkedin {
-  0% {color: $white;}
-  75% {color: $linkedin-color;}
-  100% {color: $dark-black;}
-}
-
-@-moz-keyframes out-linkedin {
-  0% {color: $dark-black;}
-  75% {color: $linkedin-color;}
-  100% {color: $white;}
-}
-
-@-o-keyframes in-linkedin {
-  0% {color: $white;}
-  75% {color: $linkedin-color;}
-  100% {color: $dark-black;}
-}
-
-@-o-keyframes out-linkedin {
-  0% {color: $dark-black;}
-  75% {color: $linkedin-color;}
-  100% {color: $white;}
-}
-
-@keyframes in-linkedin {
-  0% {color: $white;}
-  75% {color: $linkedin-color;}
-  100% {color: $dark-black;}
-}
-
-@keyframes out-linkedin {
-  0% {color: $dark-black;}
-  75% {color: $linkedin-color;}
-  100% {color: $white;}
+@include keyframes(hover-linkedin) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $linkedin-color;
+  }
+  100% {
+    color: $white;
+  }
 }
 
 // facebook
 #facebook-footer-link.contact-link {
-  -webkit-animation: in-facebook .3s ease-out;
-  -moz-animation: in-facebook .3s ease-out;
-  -o-animation: in-facebook .3s ease-out;
-  animation: in-facebook .3s ease-out;
+  @include contact-hover(hover-out-facebook);
+  &:active,
+  &:visited:active {
+    color: $facebook-color;
+  }
 }
 
 #facebook-footer-link.contact-link:focus,
-#facebook-footer-link.contact-link:focus,
-#facebook-footer-link.contact-link:hover,
 #facebook-footer-link.contact-link:hover {
   color: $white;
-  -webkit-animation: out-facebook .3s ease-out;
-  -moz-animation: out-facebook .3s ease-out;
-  -o-animation: out-facebook .3s ease-out;
-  animation: out-facebook .3s ease-out;
+  @include contact-hover(hover-facebook)
 }
 
-@-webkit-keyframes in-facebook {
-  0% {color: $white;}
-  75% {color: $facebook-color;}
-  100% {color: $dark-black;}
-}
-
-@-webkit-keyframes out-facebook {
-  0% {color: $dark-black;}
-  75% {color: $facebook-color;}
-  100% {color: $white;}
-}
-
-@-moz-keyframes in-facebook {
-  0% {color: $white;}
-  75% {color: $facebook-color;}
-  100% {color: $dark-black;}
-}
-
-@-moz-keyframes out-facebook {
-  0% {color: $dark-black;}
-  75% {color: $facebook-color;}
-  100% {color: $white;}
-}
-
-@-o-keyframes in-facebook {
-  0% {color: $white;}
-  75% {color: $facebook-color;}
-  100% {color: $dark-black;}
-}
-
-@-o-keyframes out-facebook {
-  0% {color: $dark-black;}
-  75% {color: $facebook-color;}
-  100% {color: $white;}
-}
-
-@keyframes in-facebook {
-  0% {color: $white;}
-  75% {color: $facebook-color;}
-  100% {color: $dark-black;}
-}
-
-@keyframes out-facebook {
-  0% {color: $dark-black;}
-  75% {color: $facebook-color;}
-  100% {color: $white;}
+@include keyframes(hover-facebook) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $facebook-color;
+  }
+  100% {
+    color: $white;
+  }
 }
 
 // github
 #github-footer-link.contact-link {
-  -webkit-animation: in-github .3s ease-out;
-  -moz-animation: in-github .3s ease-out;
-  -o-animation: in-github .3s ease-out;
-  animation: in-github .3s ease-out;
+  @include contact-hover(hover-out-github);
+  &:active,
+  &:visited:active {
+    color: $github-color;
+  }
 }
 
 #github-footer-link.contact-link:focus,
-#github-footer-link.contact-link:focus,
-#github-footer-link.contact-link:hover,
 #github-footer-link.contact-link:hover {
   color: $white;
-  -webkit-animation: out-github .3s ease-out;
-  -moz-animation: out-github .3s ease-out;
-  -o-animation: out-github .3s ease-out;
-  animation: out-github .3s ease-out;
+  @include contact-hover(hover-github)
 }
 
-@-webkit-keyframes in-github {
-  0% {color: $white;}
-  75% {color: $github-color;}
-  100% {color: $dark-black;}
-}
-
-@-webkit-keyframes out-github {
-  0% {color: $dark-black;}
-  75% {color: $github-color;}
-  100% {color: $white;}
-}
-
-@-moz-keyframes in-github {
-  0% {color: $white;}
-  75% {color: $github-color;}
-  100% {color: $dark-black;}
-}
-
-@-moz-keyframes out-github {
-  0% {color: $dark-black;}
-  75% {color: $github-color;}
-  100% {color: $white;}
-}
-
-@-o-keyframes in-github {
-  0% {color: $white;}
-  75% {color: $github-color;}
-  100% {color: $dark-black;}
-}
-
-@-o-keyframes out-github {
-  0% {color: $dark-black;}
-  75% {color: $github-color;}
-  100% {color: $white;}
-}
-
-@keyframes in-github {
-  0% {color: $white;}
-  75% {color: $github-color;}
-  100% {color: $dark-black;}
-}
-
-@keyframes out-github {
-  0% {color: $dark-black;}
-  75% {color: $github-color;}
-  100% {color: $white;}
+@include keyframes(hover-github) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $github-color;
+  }
+  100% {
+    color: $white;
+  }
 }
 
 // instagram
 #instagram-footer-link.contact-link {
-  -webkit-animation: in-instagram .3s ease-out;
-  -moz-animation: in-instagram .3s ease-out;
-  -o-animation: in-instagram .3s ease-out;
-  animation: in-instagram .3s ease-out;
+  @include contact-hover(hover-out-instagram);
+  &:active,
+  &:visited:active {
+    color: $instagram-color;
+  }
 }
 
 #instagram-footer-link.contact-link:focus,
-#instagram-footer-link.contact-link:focus,
-#instagram-footer-link.contact-link:hover,
 #instagram-footer-link.contact-link:hover {
   color: $white;
-  -webkit-animation: out-instagram .3s ease-out;
-  -moz-animation: out-instagram .3s ease-out;
-  -o-animation: out-instagram .3s ease-out;
-  animation: out-instagram .3s ease-out;
+  @include contact-hover(hover-instagram)
 }
 
-@-webkit-keyframes in-instagram {
-  0% {color: $white;}
-  75% {color: $instagram-color;}
-  100% {color: $dark-black;}
-}
-
-@-webkit-keyframes out-instagram {
-  0% {color: $dark-black;}
-  75% {color: $instagram-color;}
-  100% {color: $white;}
-}
-
-@-moz-keyframes in-instagram {
-  0% {color: $white;}
-  75% {color: $instagram-color;}
-  100% {color: $dark-black;}
-}
-
-@-moz-keyframes out-instagram {
-  0% {color: $dark-black;}
-  75% {color: $instagram-color;}
-  100% {color: $white;}
-}
-
-@-o-keyframes in-instagram {
-  0% {color: $white;}
-  75% {color: $instagram-color;}
-  100% {color: $dark-black;}
-}
-
-@-o-keyframes out-instagram {
-  0% {color: $dark-black;}
-  75% {color: $instagram-color;}
-  100% {color: $white;}
-}
-
-@keyframes in-instagram {
-  0% {color: $white;}
-  75% {color: $instagram-color;}
-  100% {color: $dark-black;}
-}
-
-@keyframes out-instagram {
-  0% {color: $dark-black;}
-  75% {color: $instagram-color;}
-  100% {color: $white;}
+@include keyframes(hover-instagram) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $instagram-color;
+  }
+  100% {
+    color: $white;
+  }
 }
 
 // google-plus
 #google-plus-footer-link.contact-link {
-  -webkit-animation: in-google-plus .3s ease-out;
-  -moz-animation: in-google-plus .3s ease-out;
-  -o-animation: in-google-plus .3s ease-out;
-  animation: in-google-plus .3s ease-out;
+  @include contact-hover(hover-out-google-plus);
+  &:active,
+  &:visited:active {
+    color: $google-plus-color;
+  }
 }
 
 #google-plus-footer-link.contact-link:focus,
-#google-plus-footer-link.contact-link:focus,
-#google-plus-footer-link.contact-link:hover,
 #google-plus-footer-link.contact-link:hover {
   color: $white;
-  -webkit-animation: out-google-plus .3s ease-out;
-  -moz-animation: out-google-plus .3s ease-out;
-  -o-animation: out-google-plus .3s ease-out;
-  animation: out-google-plus .3s ease-out;
+  @include contact-hover(hover-google-plus)
 }
 
-@-webkit-keyframes in-google-plus {
-  0% {color: $white;}
-  75% {color: $google-plus-color;}
-  100% {color: $dark-black;}
-}
-
-@-webkit-keyframes out-google-plus {
-  0% {color: $dark-black;}
-  75% {color: $google-plus-color;}
-  100% {color: $white;}
-}
-
-@-moz-keyframes in-google-plus {
-  0% {color: $white;}
-  75% {color: $google-plus-color;}
-  100% {color: $dark-black;}
-}
-
-@-moz-keyframes out-google-plus {
-  0% {color: $dark-black;}
-  75% {color: $google-plus-color;}
-  100% {color: $white;}
-}
-
-@-o-keyframes in-google-plus {
-  0% {color: $white;}
-  75% {color: $google-plus-color;}
-  100% {color: $dark-black;}
-}
-
-@-o-keyframes out-google-plus {
-  0% {color: $dark-black;}
-  75% {color: $google-plus-color;}
-  100% {color: $white;}
-}
-
-@keyframes in-google-plus {
-  0% {color: $white;}
-  75% {color: $google-plus-color;}
-  100% {color: $dark-black;}
-}
-
-@keyframes out-google-plus {
-  0% {color: $dark-black;}
-  75% {color: $google-plus-color;}
-  100% {color: $white;}
+@include keyframes(hover-google-plus) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $google-plus-color;
+  }
+  100% {
+    color: $white;
+  }
 }
 
 // pinterest
 #pinterest-footer-link.contact-link {
-  -webkit-animation: in-pinterest .3s ease-out;
-  -moz-animation: in-pinterest .3s ease-out;
-  -o-animation: in-pinterest .3s ease-out;
-  animation: in-pinterest .3s ease-out;
+  @include contact-hover(hover-out-pinterest);
+  &:active,
+  &:visited:active {
+    color: $pinterest-color;
+  }
 }
 
 #pinterest-footer-link.contact-link:focus,
-#pinterest-footer-link.contact-link:focus,
-#pinterest-footer-link.contact-link:hover,
 #pinterest-footer-link.contact-link:hover {
   color: $white;
-  -webkit-animation: out-pinterest .3s ease-out;
-  -moz-animation: out-pinterest .3s ease-out;
-  -o-animation: out-pinterest .3s ease-out;
-  animation: out-pinterest .3s ease-out;
+  @include contact-hover(hover-pinterest)
 }
 
-@-webkit-keyframes in-pinterest {
-  0% {color: $white;}
-  75% {color: $pinterest-color;}
-  100% {color: $dark-black;}
-}
-
-@-webkit-keyframes out-pinterest {
-  0% {color: $dark-black;}
-  75% {color: $pinterest-color;}
-  100% {color: $white;}
-}
-
-@-moz-keyframes in-pinterest {
-  0% {color: $white;}
-  75% {color: $pinterest-color;}
-  100% {color: $dark-black;}
-}
-
-@-moz-keyframes out-pinterest {
-  0% {color: $dark-black;}
-  75% {color: $pinterest-color;}
-  100% {color: $white;}
-}
-
-@-o-keyframes in-pinterest {
-  0% {color: $white;}
-  75% {color: $pinterest-color;}
-  100% {color: $dark-black;}
-}
-
-@-o-keyframes out-pinterest {
-  0% {color: $dark-black;}
-  75% {color: $pinterest-color;}
-  100% {color: $white;}
-}
-
-@keyframes in-pinterest {
-  0% {color: $white;}
-  75% {color: $pinterest-color;}
-  100% {color: $dark-black;}
-}
-
-@keyframes out-pinterest {
-  0% {color: $dark-black;}
-  75% {color: $pinterest-color;}
-  100% {color: $white;}
+@include keyframes(hover-pinterest) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $pinterest-color;
+  }
+  100% {
+    color: $white;
+  }
 }
 

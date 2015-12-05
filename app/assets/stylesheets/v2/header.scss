@@ -1,5 +1,5 @@
 .nav-wrapper {
-  width: 100%;
+  width: $full;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
 
 .nav-content {
   flex: 1;
-  background: url(image_path('bg_01.jpg'));
+  background: url(image_path('bg_01-min.jpg'));
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -18,13 +18,13 @@
 }
 
 .nav-title {
-  width: 100%;
+  width: $full;
   position: absolute;
   top: 20%;
   right: 10%;
   font-family: $main-font;
   font-weight: 100;
-  font-size: 4.6em;
+  font-size: $font-size-header;
   letter-spacing: -5px;
-  color: #262626;
+  color: $dark-black;
 }
