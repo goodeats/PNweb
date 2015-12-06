@@ -34,13 +34,6 @@ function deviceOrientationHandler(tiltLR, tiltFB, dir) {
 //var rotation = "rotate("+ tiltLR +"deg) rotate3d(0,1,0, "+ (tiltLR*-1)+"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
 
 $(document).ready(function(){
-  if (window.DeviceOrientationEvent) {
-   alert("DeviceOrientation is supported");
-  }
-  window.onerror=function(msg, url, linenumber){
-   alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
-   return true;
-  }
   // var sec = 0;
   // function pad(val) {
   //   return val > 9 ? val : "0" + val;

@@ -34,6 +34,14 @@
   letter-spacing: -1px;
 }
 
+#pat-logo {
+  height: 213px;
+  width: 150px;
+  margin: 0 auto;
+  background: url(image_path('pat_logo.png'));
+  background-repeat: no-repeat;
+}
+
 @media screen and (max-width: 400px){
   .page-content {
     width: $col-ten;
