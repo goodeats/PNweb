@@ -17,10 +17,14 @@
   background: $white;
   border-radius: 8px;
   color: $dark-black;
-  text-align: left;
+  text-align: center;
   font-family: $main-font;
   font-weight: 100;
   font-size: $font-size-main;
+}
+
+.page-section p:first-child {
+  margin-bottom: 10px;
 }
 
 .page-section,
