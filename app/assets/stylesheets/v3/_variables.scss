@@ -46,8 +46,8 @@ $contact-height: $contact-width / 4;
 
 // fonts
 @font-face {
-  font-family: 'Montserrat';
-  src: url('Montserrat-Regular.ttf')
+  font-family: 'Work';
+  src: url('Work-Light.ttf')
 }
 $font-main: 'Work', sans-serif;
 
@@ -55,7 +55,7 @@ $font-main: 'Work', sans-serif;
   font-family: 'Montserrat';
   src: url('Montserrat-Regular.ttf')
 }
-$font-bold: "Montserrat", Helvetica, sans-serif;
+$font-bold: 'Montserrat', Helvetica, sans-serif;
 
 // font-size
 $font-size-header: 4.6em; // 46px
