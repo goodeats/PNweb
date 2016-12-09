@@ -1,0 +1,76 @@
+// colors
+$white: #fff;
+$white-grey: #E5E5E5;
+$dark-black: #292929;
+$greenery: #88B04B;
+$dark-greenery: #445825;
+
+$font-color: $dark-black;
+$link-color: $greenery;
+$link-color-hover: $dark-greenery;
+
+// social colors
+$google-red: #F90101;
+$gmail-color: $google-red;
+$twitter-color: #00aced;
+$linkedin-color: #007bb5;
+$facebook-color: #3b5998;
+$github-color: #4183c4;
+$instagram-color: #125688;
+$google-plus-color: #db4437;
+$skype-color: #dd4b39;
+$pinterest-color: #cb2027;
+
+// width
+$full: 100%;
+$columns: 12;
+$col-one-half: $full * (.5 / $columns);
+$col-one: $full * (1 / $columns);
+$col-one-and-half: $full * (1.5 / $columns);
+$col-two: $full * (2 / $columns);
+$col-three: $full * (3 / $columns);
+$col-four: $full * (4 / $columns);
+$col-five: $full * (5 / $columns);
+$col-six: $full * (6 / $columns);
+$col-seven: $full * (7 / $columns);
+$col-eight: $full * (8 / $columns);
+$col-nine: $full * (9 / $columns);
+$col-ten: $full * (10 / $columns);
+$col-eleven: $full * (11 / $columns);
+$col-twelve: $full * (12 / $columns);
+
+$contact-width: 300px;
+
+// height / length
+$contact-height: $contact-width / 4;
+
+// fonts
+@font-face {
+  font-family: 'Montserrat';
+  src: url('Montserrat-Regular.ttf')
+}
+$font-main: 'Work', sans-serif;
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('Montserrat-Regular.ttf')
+}
+$font-bold: "Montserrat", Helvetica, sans-serif;
+
+// font-size
+$font-size-header: 4.6em; // 46px
+$font-size-bold: 1.8em; // 18px
+$font-size-normal: 1.6em; // 18px
+$font-size-bold-sub: 0.6666666667em; // 18px * 2/3 = 12px
+$font-size-main: 2em; // 20px
+
+// spacing
+$margin-small: 10px;
+$padding-content: 40px;
+
+// time
+$sec-2: 2s;
+$sec-point-3: .3s;
+$fade-in: $sec-2;
+$contact-anim: $sec-point-3;
+

@@ -1,0 +1,36 @@
+// TODO: separate these stylesheets for old style only
+// @import 'v1/variables';
+// @import 'v1/header';
+// @import 'v1/contact';
+// @import 'v1/page-content';
+// @import 'v1/footer';
+// @import 'v1/ouipig';
+@import 'v2/*';
+
+a,
+a:focus,
+a:hover,
+a:before,
+a:after {
+ text-decoration: none;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+body {
+  background: $main;
+  font-family: $main-font;
+  font-size: 62.5%;
+  // font-size: 100%;
+}
+
+.page-wrapper {
+  text-align: center;
+}

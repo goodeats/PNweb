@@ -1,0 +1,212 @@
+.contact-wrapper {
+  max-width: $contact-width;
+  display: inline-block;
+  // margin: 20px auto;
+}
+
+.contact-list-item {
+  display: inline-block;
+  width: $col-four;
+  height: $contact-height;
+  float: left;
+}
+
+.fade-in {
+  @include fade-in(fade-in);
+}
+
+@include keyframes(fade-in){
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.contact-link {
+  font-size: 3em;
+  color: $dark-black;
+}
+
+// gmail
+#gmail-footer-link.contact-link {
+  @include contact-hover(hover-out-gmail);
+  &:active,
+  &:visited:active {
+    color: $gmail-color;
+  }
+}
+
+#gmail-footer-link.contact-link:focus,
+#gmail-footer-link.contact-link:hover {
+  color: $gmail-color;
+  @include contact-hover(hover-gmail)
+}
+
+@include keyframes(hover-gmail) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $white;
+  }
+  100% {
+    color: $gmail-color;
+  }
+}
+
+@include keyframes(hover-out-gmail) {
+  0% {
+    color: $gmail-color;
+  }
+  75% {
+    color: $white;
+  }
+  100% {
+    color: $dark-black;
+  }
+}
+
+// twitter
+#twitter-footer-link.contact-link {
+  @include contact-hover(hover-out-twitter);
+  &:active,
+  &:visited:active {
+    color: $twitter-color;
+  }
+}
+
+#twitter-footer-link.contact-link:focus,
+#twitter-footer-link.contact-link:hover {
+  color: $twitter-color;
+  @include contact-hover(hover-twitter)
+}
+
+@include keyframes(hover-twitter) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $white;
+  }
+  100% {
+    color: $twitter-color;
+  }
+}
+
+@include keyframes(hover-out-twitter) {
+  0% {
+    color: $twitter-color;
+  }
+  75% {
+    color: $white;
+  }
+  100% {
+    color: $dark-black;
+  }
+}
+
+// linkedin
+#linkedin-footer-link.contact-link {
+  @include contact-hover(hover-out-linkedin);
+  &:active,
+  &:visited:active {
+    color: $linkedin-color;
+  }
+}
+
+#linkedin-footer-link.contact-link:focus,
+#linkedin-footer-link.contact-link:hover {
+  color: $linkedin-color;
+  @include contact-hover(hover-linkedin)
+}
+
+@include keyframes(hover-linkedin) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $white;
+  }
+  100% {
+    color: $linkedin-color;
+  }
+}
+
+// facebook
+#facebook-footer-link.contact-link {
+  @include contact-hover(hover-out-facebook);
+  &:active,
+  &:visited:active {
+    color: $facebook-color;
+  }
+}
+
+#facebook-footer-link.contact-link:focus,
+#facebook-footer-link.contact-link:hover {
+  color: $facebook-color;
+  @include contact-hover(hover-facebook)
+}
+
+@include keyframes(hover-facebook) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $white;
+  }
+  100% {
+    color: $facebook-color;
+  }
+}
+
+// github
+#github-footer-link.contact-link {
+  @include contact-hover(hover-out-github);
+  &:active,
+  &:visited:active {
+    color: $github-color;
+  }
+}
+
+#github-footer-link.contact-link:focus,
+#github-footer-link.contact-link:hover {
+  color: $github-color;
+  @include contact-hover(hover-github)
+}
+
+@include keyframes(hover-github) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $white;
+  }
+  100% {
+    color: $github-color;
+  }
+}
+
+// instagram
+#instagram-footer-link.contact-link {
+  @include contact-hover(hover-out-instagram);
+  &:active,
+  &:visited:active {
+    color: $instagram-color;
+  }
+}
+
+#instagram-footer-link.contact-link:focus,
+#instagram-footer-link.contact-link:hover {
+  color: $instagram-color;
+  @include contact-hover(hover-instagram)
+}
+
+@include keyframes(hover-instagram) {
+  0% {
+    color: $dark-black;
+  }
+  75% {
+    color: $white;
+  }
+  100% {
+    color: $instagram-color;
+  }
+}

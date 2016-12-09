@@ -6,21 +6,17 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
-<body id="skrollr-body" data-smooth-scrolling"on">
-
+<body>
   <div class="page-wrapper">
     <%= render partial: 'layouts/header' %>
     <div class="page-content-wrapper">
-      <%= yield %>
+      <div class="page-content">
+        <%= yield %>
+      </div>
     </div>
     <%= render partial: 'layouts/footer' %>
   </div>
-  <script src="https://googledrive.com/host/0Bykq3PxA9qKYcnlWVGRFblhfZms" type="text/javascript" charset="utf-8" async defer></script>
-  <!-- opencity -->
-  <!-- <script src="https://googledrive.com/host/0Bykq3PxA9qKYdGxFSmZnQnY4T2c" id="opencity-js" merchant-id="nz8Hu5ODWq" type="text/javascript" charset="utf-8" async defer></script> -->
-  <script src="http://www.askopencity.com/assets/js/opencity.js" id="opencity-js" merchant-id="nz8Hu5ODWq" type="text/javascript" charset="utf-8" async defer></script>
-
 </body>
 </html>

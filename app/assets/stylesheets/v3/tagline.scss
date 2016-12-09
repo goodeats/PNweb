@@ -1,0 +1,20 @@
+.page-tagline {
+  margin: 0 auto $padding-content;
+  font-size: $font-size-bold;
+  font-family: $font-bold;
+  letter-spacing: -1px;
+}
+
+.tagline-section {
+  display: block;
+}
+
+@media screen and (max-width: 400px){
+  .page-tagline {
+    width: $full;
+  }
+
+  .tagline-section {
+    display: inline-block;
+  }
+}

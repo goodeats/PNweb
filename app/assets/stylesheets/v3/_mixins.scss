@@ -1,0 +1,43 @@
+// standard keyframe mixin
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin contact-hover($keyframe-id) {
+  -webkit-animation: $keyframe-id $contact-anim ease-out;
+  -moz-animation: $keyframe-id $contact-anim ease-out;
+  -o-animation: $keyframe-id $contact-anim ease-out;
+  animation: $keyframe-id $contact-anim ease-out;
+}
+
+@mixin fade-in($keyframe-id){
+  -webkit-animation: $keyframe-id $fade-in ease-out;
+  -moz-animation: $keyframe-id $fade-in ease-out;
+  -o-animation: $keyframe-id $fade-in ease-out;
+  animation: $keyframe-id $fade-in ease-out;
+}
+
+@mixin spec-contact-hover($color){
+  @include keyframes(hover-gmail) {
+    0% {
+      color: $dark-black;
+    }
+    75% {
+      color: $color;
+    }
+    100% {
+      color: $white;
+    }
+  }
+}

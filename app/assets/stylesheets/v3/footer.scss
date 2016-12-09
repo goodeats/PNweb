@@ -1,0 +1,23 @@
+.footer-wrapper {
+  text-align: center;
+}
+
+.footer-content {
+  height: $full;
+  padding-bottom: $padding-content;
+  font-size: $font-size-bold;
+}
+
+.footer-tagline {
+  margin: 10px auto $padding-content;
+  color: $dark-black;
+  font-family: $font-bold;
+}
+
+.footer-trademark {
+  display: block;
+  font-size: $font-size-bold-sub;
+  margin-top: 5px;
+  font-family: $font-bold;
+  font-weight: 100;
+}

@@ -1,0 +1,80 @@
+.page-wrapper {
+  width: $full;
+  display: inline-block;
+  text-align: center;
+  background: $white;
+  font-family: $font-main;
+  color: $dark-black;
+  // for smooth scrolling
+  overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
+}
+
+.page-content {
+  width: $col-six;
+  max-width: 600px;
+  display: block;
+  margin: 20px auto;
+}
+
+.page-section {
+  height: 100vh;
+  width: $full;
+  padding: 20px;
+  color: $dark-black;
+  text-align: center;
+  font-family: $font-main;
+  font-weight: 100;
+}
+
+.section-content {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.section-title,
+.section-sub-title {
+  margin-bottom: $margin-small;
+  font-family: $font-bold;
+  font-size: $font-size-main;
+}
+
+.section-sub-title {
+  font-size: $font-size-bold;
+}
+
+.section-p {
+  margin-bottom: $margin-small;
+  font-size: $font-size-normal;
+  line-height: 1.3em;
+}
+
+#pat-logo {
+  height: 213px;
+  width: 150px;
+  margin: 0 auto;
+  background: url(image_path('pat_logo.png'));
+  background-repeat: no-repeat;
+  opacity: 0.84; // #292929 == (41,41,41) => 1 - 41 / 255 = 0.839215686
+}
+
+.link {
+  text-decoration: none;
+  color: $link-color;
+}
+
+.link:focus,
+.link:hover {
+  color: $dark-greenery;
+  -webkit-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+@media screen and (max-width: 400px){
+  .page-content {
+    width: $col-ten;
+  }
+}
