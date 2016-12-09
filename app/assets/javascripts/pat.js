@@ -1,8 +1,6 @@
 console.log('if you can read this, you are probably a web developer :D');
-// var Shake = require('shake.js');
 
 init();
-var count = 0;
 
 function init() {
   if (window.DeviceOrientationEvent) { // http://www.html5rocks.com/en/tutorials/device/orientation/
@@ -16,9 +14,7 @@ function init() {
       var dir = eventData.alpha;
       // call our orientation event handler
       deviceOrientationHandler(tiltLR, tiltFB, dir);
-      }, false);
-  } else {
-    // document.getElementById("doEvent").innerHTML = "Not supported on your device or browser.  Sorry."
+    }, false);
   }
 }
 
@@ -29,40 +25,8 @@ function deviceOrientationHandler(tiltLR, tiltFB, dir) {
   logo.style.transform = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
 }
 
-// Some other fun rotations to try...
-//var rotation = "rotate3d(0,1,0, "+ (tiltLR*-1)+"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
-//var rotation = "rotate("+ tiltLR +"deg) rotate3d(0,1,0, "+ (tiltLR*-1)+"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
-
 $(document).ready(function(){
-  // var sec = 0;
-  // function pad(val) {
-  //   return val > 9 ? val : "0" + val;
-  // }
-  // var timer = setInterval(function () {
-  //   document.getElementById("seconds").innerHTML = pad(++sec % 60);
-  //   document.getElementById("minutes").innerHTML = pad(parseInt(sec / 60, 10));
-  // }, 1000);
-  // setTimeout(function () {
-  //   clearInterval(timer);
-  // }, 11000);
-
-  // for testing only the scrolltop
-  // var div = "<h4 id='scroll'></h4>";
-  // $('.nav-content').append(div);
-  // $('#scroll').css({
-  //   'position': 'absolute',
-  //   'top': '50%',
-  //   'right': '20%',
-  //   'color': '#fff'
-  // });
-  if(navigator.userAgent.match('CriOS')){
-    // alert('urine chrome ios!');
-    // $('.nav-title-name').text('Pat \"too cool for school\" Needham');
-    var s = skrollr.init({
-      smoothScrolling: false,
-      mobileDeceleration: 0.004
-    });
-  } else {
+  if (!navigator.userAgent.match('CriOS')){
     $(window).on('scroll', function(){
       // console.log('ahhh! I\'m falling!');
       var from_top = $(window).scrollTop();
@@ -72,16 +36,19 @@ $(document).ready(function(){
       var from_middle = 50 - rotate_left;
       $('#scroll').text(above_one);
 
+      // rotate header and zoom
+      // commented out, since it's confusing and jaggedy for mobile
       // $('.nav-content').css({
-      //   '-webkit-transform': 'scale(' + above_one + ',' + above_one + ') rotate(' + rotate_left + 'deg)',
-      //   '-moz-transform': 'scale(' + above_one + ',' + above_one + ') rotate(' + rotate_left + 'deg)',
-      //   '-o-transform': 'scale(' + above_one + ',' + above_one + ') rotate(' + rotate_left + 'deg)',
-      //   'transform': 'scale(' + above_one + ',' + above_one + ') rotate(' + rotate_left + 'deg)',
+      //   '-webkit-transform': 'scale(' + above_one + ',' + above_one + ') rotate(' + (rotate_left / 100) + 'deg)',
+      //   '-moz-transform': 'scale(' + above_one + ',' + above_one + ') rotate(' + (rotate_left / 100) + 'deg)',
+      //   '-o-transform': 'scale(' + above_one + ',' + above_one + ') rotate(' + (rotate_left / 100) + 'deg)',
+      //   'transform': 'scale(' + above_one + ',' + above_one + ') rotate(' + (rotate_left / 100) + 'deg)',
       //   'background-position': from_middle + '% 50%',
       //   'margin-left': -from_top / 20 + 'px',
       //   'margin-bottom': -from_top / 10 + 'px',
       // });
 
+      // rotate title, space letters
       $('.nav-title-name').css({
         '-webkit-transform': 'scale(' + below_one + ',' + below_one + ') rotate(' + rotate_left + 'deg)',
         '-moz-transform': 'scale(' + below_one + ',' + below_one + ') rotate(' + rotate_left + 'deg)',

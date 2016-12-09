@@ -1,3 +1,5 @@
+@import 'variables';
+
 .nav-wrapper {
   width: $full;
   height: 100vh;
@@ -7,7 +9,7 @@
 }
 
 .nav-content {
-  flex: 1;
+  height: 100%;
   background: url(image_path('bg_01-min-2k.jpg'));
   background-position: center center;
   background-repeat: no-repeat;
@@ -23,7 +25,7 @@
   position: absolute;
   top: 20%;
   right: 10%;
-  font-family: $main-font;
+  font-family: $font-main;
   font-weight: 100;
   font-size: $font-size-header;
   letter-spacing: -5px;

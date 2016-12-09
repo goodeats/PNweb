@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'mixins';
+
 .contact-wrapper {
   max-width: $contact-width;
   display: inline-block;

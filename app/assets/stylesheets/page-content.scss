@@ -1,3 +1,15 @@
+@import 'variables';
+
+@font-face {
+  font-family: 'Work';
+  src: url('WorkSans-Light.ttf')
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('Montserrat-Regular.ttf')
+}
+
 .page-wrapper {
   width: $full;
   display: inline-block;
