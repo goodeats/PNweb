@@ -29,21 +29,21 @@
 }
 
 // gmail
-#gmail-footer-link.contact-link {
-  @include contact-hover(hover-out-gmail);
+#mail-footer-link.contact-link {
+  @include contact-hover(hover-out-mail);
   &:active,
   &:visited:active {
     color: $gmail-color;
   }
 }
 
-#gmail-footer-link.contact-link:focus,
-#gmail-footer-link.contact-link:hover {
+#mail-footer-link.contact-link:focus,
+#mail-footer-link.contact-link:hover {
   color: $gmail-color;
-  @include contact-hover(hover-gmail)
+  @include contact-hover(hover-mail)
 }
 
-@include keyframes(hover-gmail) {
+@include keyframes(hover-mail) {
   0% {
     color: $dark-black;
   }
@@ -55,7 +55,7 @@
   }
 }
 
-@include keyframes(hover-out-gmail) {
+@include keyframes(hover-out-mail) {
   0% {
     color: $gmail-color;
   }
@@ -161,21 +161,21 @@
 }
 
 // github
-#github-footer-link.contact-link {
-  @include contact-hover(hover-out-github);
+#github-circled-footer-link.contact-link {
+  @include contact-hover(hover-out-github-circled);
   &:active,
   &:visited:active {
     color: $github-color;
   }
 }
 
-#github-footer-link.contact-link:focus,
-#github-footer-link.contact-link:hover {
+#github-circled-footer-link.contact-link:focus,
+#github-circled-footer-link.contact-link:hover {
   color: $github-color;
-  @include contact-hover(hover-github)
+  @include contact-hover(hover-github-circled)
 }
 
-@include keyframes(hover-github) {
+@include keyframes(hover-github-circled) {
   0% {
     color: $dark-black;
   }
