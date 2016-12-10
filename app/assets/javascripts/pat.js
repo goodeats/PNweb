@@ -1,34 +1,33 @@
-console.log('if you can read this, you are probably a web developer :D');
+(function(){
+  console.log('if you can read this, you are probably a web developer :D');
 
-init();
+  init();
 
-function init() {
-  if (window.DeviceOrientationEvent) { // http://www.html5rocks.com/en/tutorials/device/orientation/
-    // Listen for the deviceorientation event and handle the raw data
-    window.addEventListener('deviceorientation', function(eventData) {
-      // gamma is the left-to-right tilt in degrees, where right is positive
-      var tiltLR = eventData.gamma;
-      // beta is the front-to-back tilt in degrees, where front is positive
-      var tiltFB = eventData.beta;
-      // alpha is the compass direction the device is facing in degrees
-      var dir = eventData.alpha;
-      // call our orientation event handler
-      deviceOrientationHandler(tiltLR, tiltFB, dir);
-    }, false);
+  function init() {
+    if (window.DeviceOrientationEvent) { // http://www.html5rocks.com/en/tutorials/device/orientation/
+      // Listen for the deviceorientation event and handle the raw data
+      window.addEventListener('deviceorientation', function(eventData) {
+        // gamma is the left-to-right tilt in degrees, where right is positive
+        var tiltLR = eventData.gamma;
+        // beta is the front-to-back tilt in degrees, where front is positive
+        var tiltFB = eventData.beta;
+        // alpha is the compass direction the device is facing in degrees
+        var dir = eventData.alpha;
+        // call our orientation event handler
+        deviceOrientationHandler(tiltLR, tiltFB, dir);
+      }, false);
+    }
   }
-}
 
-function deviceOrientationHandler(tiltLR, tiltFB, dir) {
-  var logo = document.getElementById("pat-logo");
-  logo.style.webkitTransform = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
-  logo.style.MozTransform = "rotate("+ tiltLR +"deg)";
-  logo.style.transform = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
-}
+  function deviceOrientationHandler(tiltLR, tiltFB, dir) {
+    var logo = document.getElementById("pat-logo");
+    logo.style.webkitTransform = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
+    logo.style.MozTransform = "rotate("+ tiltLR +"deg)";
+    logo.style.transform = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
+  }
 
-$(document).ready(function(){
   if (!navigator.userAgent.match('CriOS')){
     $(window).on('scroll', function(){
-      // console.log('ahhh! I\'m falling!');
       var from_top = $(window).scrollTop();
       var above_one = 1 + from_top / 2000;
       var below_one = 1 - from_top / 2000;
@@ -60,5 +59,5 @@ $(document).ready(function(){
 
     });
   }
-});
 
+})();
