@@ -9,7 +9,7 @@
   }
 
   function externalLinksListener(){
-    var pageLink = $('.pat-link');
+    var patLink = $('.pat-link');
     patLink.on('click', function(e){
       e.preventDefault();
       externalLinkClicked(this);
@@ -56,8 +56,8 @@
   function deviceOrientationHandler(tiltLR, tiltFB, dir){
     var logo = document.getElementById("pat-logo");
     logo.style.webkitTransform = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
-    logo.style.MozTransform = "rotate("+ tiltLR +"deg)";
-    logo.style.transform = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
+       logo.style.MozTransform = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
+          logo.style.transform = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
   }
 
   function headerScrollListener(){
