@@ -3,24 +3,32 @@
   console.log('if you can read this, you are probably a web developer :D');
 
   function init(){
-    contactLinksListener();
+    externalLinksListener();
     deviceOrientationListener();
     headerScrollListener();
   }
 
-  function contactLinksListener(){
-    var contactLink = $('.contact-link');
-    contactLink.on('click', function(e){
+  function externalLinksListener(){
+    var pageLink = $('.pat-link');
+    patLink.on('click', function(e){
       e.preventDefault();
-      contactLinkClicked(this);
+      externalLinkClicked(this);
     });
   }
 
-  function contactLinkClicked(link){
-    var icon = link.id.split('-')[0];
-    // google analytics: which icon is clicked
-    ga('send', 'event', 'external link', 'contact', icon);
+  function externalLinkClicked(link){
+    var action = 'page';
+    if (link.classList.contains('contact-link')){
+      action = 'contact';
+    }
+    sendGA(link, 'external link', action);
     openInNewTab(link.href);
+  }
+
+  function sendGA(link, category, action){
+    // google analytics: which link is clicked
+    var label = link.id.split('-')[0];
+    ga('send', 'event', category, action, label);
   }
 
   function openInNewTab(url) {
