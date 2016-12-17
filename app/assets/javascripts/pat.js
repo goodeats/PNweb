@@ -10,13 +10,16 @@
 
   function externalLinksListener(){
     var patLink = $('.pat-link');
-    patLink.on('click', function(e){
-      e.preventDefault();
-      externalLinkClicked(this);
-    }).on('hover', function(e){
-      e.preventImmediatePropagation();
-      if (this.classList.contains('contact-link')){
-        contactLinkHovered(this);
+    patLink.on({
+      click: function(e){
+        e.preventDefault();
+        externalLinkClicked(this);
+      },
+      mouseenter: function(e){
+        e.stopImmediatePropagation();
+        if (this.classList.contains('contact-link')){
+          contactLinkHovered(this);
+        }
       }
     });
   }
@@ -28,7 +31,7 @@
       action = 'contact';
     }
 
-    sendGA(link, 'external link', action, label);
+    sendGAEvent(link, 'external link', action, label);
     openInNewTab(link.href);
   }
 
@@ -36,10 +39,10 @@
   function contactLinkHovered(link){
     var label = link.id.split('-')[0];
     contactHoverCount++;
-    sendGA(link, 'hover contact', 'count: ' + contactHoverCount, label);
+    sendGAEvent(link, 'hover contact', 'count: ' + contactHoverCount, label);
   }
 
-  function sendGA(link, category, action, label){
+  function sendGAEvent(link, category, action, label){
     // google analytics: which link is clicked
     ga('send', 'event', category, action, label);
   }
