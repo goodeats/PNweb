@@ -20,7 +20,12 @@
     var icon = link.id.split('-')[0];
     // google analytics: which icon is clicked
     ga('send', 'event', 'external link', 'contact', icon);
-    window.location.href = link.href;
+    openInNewTab(link.href);
+  }
+
+  function openInNewTab(url) {
+    var win = window.open(url, '_blank');
+    win.focus();
   }
 
   function deviceOrientationListener(){
