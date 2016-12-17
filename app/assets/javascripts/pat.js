@@ -13,21 +13,34 @@
     patLink.on('click', function(e){
       e.preventDefault();
       externalLinkClicked(this);
+    }).on('hover', function(e){
+      e.preventImmediatePropagation();
+      if (this.classList.contains('contact-link')){
+        contactLinkHovered(this);
+      }
     });
   }
 
   function externalLinkClicked(link){
-    var action = 'page';
+    var action = 'page',
+        label = link.id.split('-')[0];
     if (link.classList.contains('contact-link')){
       action = 'contact';
     }
-    sendGA(link, 'external link', action);
+
+    sendGA(link, 'external link', action, label);
     openInNewTab(link.href);
   }
 
-  function sendGA(link, category, action){
-    // google analytics: which link is clicked
+  var contactHoverCount = 0;
+  function contactLinkHovered(link){
     var label = link.id.split('-')[0];
+    contactHoverCount++;
+    sendGA(link, 'hover contact', 'count: ' + contactHoverCount, label);
+  }
+
+  function sendGA(link, category, action, label){
+    // google analytics: which link is clicked
     ga('send', 'event', category, action, label);
   }
 
