@@ -86,8 +86,8 @@
   color: $link-color;
 }
 
-.link:focus,
-.link:hover {
+.page-link:focus,
+.page-link:hover {
   color: $dark-greenery;
   -webkit-transition: color 0.3s ease;
   -moz-transition: color 0.3s ease;
