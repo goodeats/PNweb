@@ -11,13 +11,3 @@
 .tagline-section {
   display: block;
 }
-
-@media screen and (max-width: 400px){
-  .page-tagline {
-    width: $full;
-  }
-
-  .tagline-section {
-    display: inline-block;
-  }
-}
