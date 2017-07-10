@@ -1,6 +1,7 @@
 @import 'variables';
 
 .page-tagline {
+  width: $full;
   margin: 0 auto $padding-content;
   font-size: $font-size-bold;
   font-family: $font-bold;
