@@ -53,6 +53,8 @@
 }
 
 .section-sub-title {
+  display: inline-block;
+  position: relative;
   font-size: $font-size-bold;
 }
 
@@ -82,6 +84,27 @@
 .page-link {
   text-decoration: none;
   color: $link-color;
+
+  // https://medium.com/@dave_lunny/stylish-a-styling-e80c80cbc30e
+  &:before {
+    content: '';
+    width: 0;
+    height: 1px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease-in-out;
+    background-color: $link-color;
+  }
+  &:hover {
+    &:before {
+      width: 100%;
+      height: 2px;
+      bottom: -1px;
+      background-color: $link-color-hover;
+    }
+  }
 }
 
 .page-link:focus,
