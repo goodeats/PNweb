@@ -2,12 +2,12 @@
 
 @font-face {
   font-family: 'Work';
-  src: url('WorkSans-Light.ttf')
+  src: asset-url('WorkSans-Light.ttf')
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('Montserrat-Regular.ttf')
+  src: asset-url('Montserrat-Regular.ttf')
 }
 
 .page-wrapper {
