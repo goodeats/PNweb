@@ -1,0 +1,19 @@
+<nav id="nav" class="nav" role="navigation">
+  <div class="nav-toggle-container">
+    <%= link_to 'menu', '#', id: 'nav-toggle', class: 'nav-toggle' %>
+  </div>
+  <ul id="menu" class="nav-ul">
+    <li class="nav-li">
+      <%= link_to 'Home', root_path, title: 'Home', class: 'nav-li-link' %>
+    </li>
+    <li class="nav-li">
+      <%= link_to 'About', about_index_path, title: 'About Me', class: 'nav-li-link' %>
+    </li>
+    <li class="nav-li">
+      <%= link_to 'Projects', projects_path, title: 'My Projects', class: 'nav-li-link' %>
+    </li>
+    <li class="nav-li">
+      <%= link_to 'Blog', articles_path, title: 'Blog', class: 'nav-li-link' %>
+    </li>
+  </ul>
+</nav>

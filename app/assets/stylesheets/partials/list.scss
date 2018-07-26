@@ -1,9 +1,9 @@
-@import 'variables';
+@import 'modules';
 
 .page-ul {
   width: $full;
-  margin: 0 auto $padding-content;
-  font-size: $font-size-bold;
+  margin: 0 auto $spacing-double;
+  font-size: $font-size-page-ul;
   font-family: $font-bold;
   letter-spacing: -1px;
 }

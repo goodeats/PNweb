@@ -1,0 +1,17 @@
+@import 'modules';
+
+.footer-wrapper {
+  text-align: center;
+}
+
+.footer-content {
+  height: $full;
+  padding-bottom: $spacing-double;
+  font-size: $font-size-footer;
+}
+
+.footer-trademark {
+  font-size: $font-size-small;
+  margin: $spacing-main 0;
+  font-family: $font-bold;
+}

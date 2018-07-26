@@ -1,0 +1,32 @@
+@import 'modules';
+
+.header {
+  width: $full;
+  background-image: $gradient-header;
+  overflow: hidden;
+  box-shadow: $box-shadow-nav;
+  border-bottom: $border-header;
+
+  // retired "hero image"
+  // background: url(image_path('bg_01-min-2k.jpg'));
+  // background-position: center center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // -webkit-animation: fade-in 2s ease-out;
+  // -moz-animation: fade-in 2s ease-out;
+  // -o-animation: fade-in 2s ease-out;
+  // animation: fade-in 2s ease-out;
+}
+
+.header-main {
+  padding-bottom: $spacing-large;
+}
+
+.header-title {
+  width: $full;
+  margin: $spacing-large 0;
+  font-family: $font-main;
+  font-size: $font-size-header-title;
+  letter-spacing: -5px;
+  color: $dark-black;
+}

@@ -1,0 +1,46 @@
+@import 'modules';
+
+.page-section {
+  margin: $spacing-large 0;
+  width: $full;
+  padding: $spacing-main;
+  color: $dark-black;
+  text-align: center;
+  font-family: $font-main;
+  font-weight: 100;
+}
+
+.section-content {
+  position: relative;
+}
+
+.section-content-left {
+  text-align: left;
+}
+
+.section-title,
+.section-sub-title {
+  margin-bottom: $spacing-small;
+  font-family: $font-bold;
+  font-size: $font-size-bold;
+}
+
+.section-sub-title {
+  display: inline-block;
+  position: relative;
+  font-size: $font-size-main;
+}
+
+.section-p {
+  margin-bottom: $spacing-small;
+  font-size: $font-size-main;
+  line-height: 1.3em;
+}
+
+.section-em {
+  font-style: italic;
+}
+
+.section-desc {
+  display: block;
+}
