@@ -6,7 +6,7 @@
   padding-bottom: $spacing-main;
 
   &:after {
-    content: 'Pat Needham ✍️';
+    content: '';
     width: $half;
     height: $thin;
     position: absolute;
@@ -18,6 +18,10 @@
     text-align: center;
     line-height: 3;
   }
+}
+
+.article.article-blog:after {
+  content: 'Pat Needham ✍️';
 }
 
 .article-title {
