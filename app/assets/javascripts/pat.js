@@ -71,7 +71,7 @@
         // gamma is the left-to-right tilt in degrees, where right is positive
         var tiltLR = eventData.gamma;
         // beta is the front-to-back tilt in degrees, where front is positive
-        var tiltFB = eventData.beta;
+        var tiltFB = eventData.beta - 45;
         // alpha is the compass direction the device is facing in degrees
         var dir = eventData.alpha;
         // call our orientation event handler
