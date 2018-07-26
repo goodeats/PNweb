@@ -18,37 +18,12 @@
   text-align: left;
 }
 
-.page-title,
-.section-sub-title {
-  font-family: $font-bold;
-}
-
 .page-title {
   padding-bottom: $spacing-smaller;
   padding-left: $spacing-small;
   margin-bottom: $spacing-main;
   border-bottom: $spacing-smaller solid $color-secondary-1-0;
   border-bottom-left-radius: $spacing-small;
+  font-family: $font-bold;
   font-size: $font-size-page-title;
-}
-
-.section-sub-title {
-  display: inline-block;
-  margin-bottom: $spacing-small;
-  position: relative;
-  font-size: $font-size-main;
-}
-
-.section-p {
-  margin-bottom: $spacing-small;
-  font-size: $font-size-main;
-  line-height: 1.3em;
-}
-
-.section-em {
-  font-style: italic;
-}
-
-.section-desc {
-  display: block;
 }

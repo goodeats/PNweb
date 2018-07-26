@@ -1,0 +1,15 @@
+@import 'modules';
+
+.article-title {
+  display: inline-block;
+  margin-bottom: $spacing-small;
+  position: relative;
+  font-family: $font-bold;
+  font-size: $font-size-main;
+}
+
+.article-p {
+  margin-bottom: $spacing-small;
+  font-size: $font-size-main;
+  line-height: 1.3em;
+}
