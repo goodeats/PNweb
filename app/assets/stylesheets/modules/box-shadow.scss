@@ -1,1 +1,4 @@
-$box-shadow-nav: 5px 10px 20px -20px rgba(85,172,238 ,1);
+@import 'colors';
+@import 'length';
+
+$box-shadow-nav: $spacing-smaller $spacing-small $spacing-main (-1 * $spacing-main) $dark-black;

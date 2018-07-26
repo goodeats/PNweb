@@ -4,6 +4,8 @@
   width: $full;
   background-image: $gradient-header;
   overflow: hidden;
+  box-shadow: $box-shadow-nav;
+  border-bottom: $border-header;
 
   // retired "hero image"
   // background: url(image_path('bg_01-min-2k.jpg'));
