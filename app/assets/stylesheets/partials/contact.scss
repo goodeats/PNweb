@@ -24,7 +24,7 @@
 
 .contact-link {
   font-size: 3em;
-  color: $dark-black;
+  color: $color-link-contact;
 }
 
 // gmail
@@ -44,7 +44,7 @@
 
 @include keyframes(hover-mail) {
   0% {
-    color: $dark-black;
+    color: $color-link-contact;
   }
   75% {
     color: $white;
@@ -62,7 +62,7 @@
     color: $white;
   }
   100% {
-    color: $dark-black;
+    color: $color-link-contact;
   }
 }
 
@@ -83,7 +83,7 @@
 
 @include keyframes(hover-twitter) {
   0% {
-    color: $dark-black;
+    color: $color-link-contact;
   }
   75% {
     color: $white;
@@ -101,7 +101,7 @@
     color: $white;
   }
   100% {
-    color: $dark-black;
+    color: $color-link-contact;
   }
 }
 
@@ -122,7 +122,7 @@
 
 @include keyframes(hover-linkedin) {
   0% {
-    color: $dark-black;
+    color: $color-link-contact;
   }
   75% {
     color: $white;
@@ -149,7 +149,7 @@
 
 @include keyframes(hover-facebook) {
   0% {
-    color: $dark-black;
+    color: $color-link-contact;
   }
   75% {
     color: $white;
@@ -176,7 +176,7 @@
 
 @include keyframes(hover-github-circled) {
   0% {
-    color: $dark-black;
+    color: $color-link-contact;
   }
   75% {
     color: $white;
@@ -203,7 +203,7 @@
 
 @include keyframes(hover-instagram) {
   0% {
-    color: $dark-black;
+    color: $color-link-contact;
   }
   75% {
     color: $white;

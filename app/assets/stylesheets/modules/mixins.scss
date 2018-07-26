@@ -31,7 +31,7 @@
 @mixin spec-contact-hover($color){
   @include keyframes(hover-gmail) {
     0% {
-      color: $dark-black;
+      color: $color-link-contact;
     }
     75% {
       color: $color;
