@@ -6,12 +6,12 @@
 
 .footer-content {
   height: $full;
-  padding-bottom: $padding-content;
+  padding-bottom: $spacing-double;
   font-size: $font-size-bold;
 }
 
 .footer-tagline {
-  margin: 10px auto $padding-content;
+  margin: 10px auto $spacing-double;
   color: $dark-black;
   font-family: $font-bold;
 }

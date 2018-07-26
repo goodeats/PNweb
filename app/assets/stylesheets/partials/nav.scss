@@ -2,16 +2,20 @@
 
 .nav {
   width: $full;
-  height: $height-nav;
+  margin-bottom: $spacing-large;
   background: $white;
+  box-shadow: $box-shadow-nav;
 }
 
 .nav-ul {
-
+  display: flex;
+  border-bottom: $border-nav-ul;
 }
 
 .nav-li {
-  display: inline-block;
+  flex: 1;
+  padding: $spacing-main;
+  cursor: pointer;
 }
 
 .nav-li-link {

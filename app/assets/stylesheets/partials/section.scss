@@ -20,7 +20,7 @@
 
 .section-title,
 .section-sub-title {
-  margin-bottom: $margin-small;
+  margin-bottom: $spacing-small;
   font-family: $font-bold;
   font-size: $font-size-main;
 }
@@ -32,7 +32,7 @@
 }
 
 .section-p {
-  margin-bottom: $margin-small;
+  margin-bottom: $spacing-small;
   font-size: $font-size-normal;
   line-height: 1.3em;
 }
