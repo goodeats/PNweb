@@ -9,15 +9,18 @@
 }
 
 .nav-content {
-  height: 100%;
-  background: url(image_path('bg_01-min-2k.jpg'));
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  -webkit-animation: fade-in 2s ease-out;
-  -moz-animation: fade-in 2s ease-out;
-  -o-animation: fade-in 2s ease-out;
-  animation: fade-in 2s ease-out;
+  height: $full;
+  background-image: $gradient-header;
+
+  // retired "hero image"
+  // background: url(image_path('bg_01-min-2k.jpg'));
+  // background-position: center center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // -webkit-animation: fade-in 2s ease-out;
+  // -moz-animation: fade-in 2s ease-out;
+  // -o-animation: fade-in 2s ease-out;
+  // animation: fade-in 2s ease-out;
 }
 
 .nav-title {

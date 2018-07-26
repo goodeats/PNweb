@@ -1,0 +1,8 @@
+// gradients
+
+// https://cssgradient.io/gradient-backgrounds/
+$gradient-sunny-morning: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+$gradient-cloudy-knoxville: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+
+$gradient-header: $gradient-sunny-morning;
+$gradient-header-alt: $gradient-cloudy-knoxville;

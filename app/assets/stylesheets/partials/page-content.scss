@@ -14,7 +14,8 @@
   width: $full;
   display: inline-block;
   text-align: center;
-  background: $white;
+  background-image: $gradient-header-alt;
+
   font-family: $font-main;
   color: $dark-black;
   // for smooth scrolling
