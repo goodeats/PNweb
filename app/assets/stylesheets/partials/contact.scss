@@ -32,13 +32,13 @@
   @include contact-hover(hover-out-mail);
   &:active,
   &:visited:active {
-    color: $gmail-color;
+    color: $color-gmail;
   }
 }
 
 #mail-footer-link.contact-link:focus,
 #mail-footer-link.contact-link:hover {
-  color: $gmail-color;
+  color: $color-gmail;
   @include contact-hover(hover-mail)
 }
 
@@ -50,13 +50,13 @@
     color: $white;
   }
   100% {
-    color: $gmail-color;
+    color: $color-gmail;
   }
 }
 
 @include keyframes(hover-out-mail) {
   0% {
-    color: $gmail-color;
+    color: $color-gmail;
   }
   75% {
     color: $white;
@@ -71,13 +71,13 @@
   @include contact-hover(hover-out-twitter);
   &:active,
   &:visited:active {
-    color: $twitter-color;
+    color: $color-twitter;
   }
 }
 
 #twitter-footer-link.contact-link:focus,
 #twitter-footer-link.contact-link:hover {
-  color: $twitter-color;
+  color: $color-twitter;
   @include contact-hover(hover-twitter)
 }
 
@@ -89,13 +89,13 @@
     color: $white;
   }
   100% {
-    color: $twitter-color;
+    color: $color-twitter;
   }
 }
 
 @include keyframes(hover-out-twitter) {
   0% {
-    color: $twitter-color;
+    color: $color-twitter;
   }
   75% {
     color: $white;
@@ -110,13 +110,13 @@
   @include contact-hover(hover-out-linkedin);
   &:active,
   &:visited:active {
-    color: $linkedin-color;
+    color: $color-linkedin;
   }
 }
 
 #linkedin-footer-link.contact-link:focus,
 #linkedin-footer-link.contact-link:hover {
-  color: $linkedin-color;
+  color: $color-linkedin;
   @include contact-hover(hover-linkedin)
 }
 
@@ -128,7 +128,7 @@
     color: $white;
   }
   100% {
-    color: $linkedin-color;
+    color: $color-linkedin;
   }
 }
 
@@ -137,13 +137,13 @@
   @include contact-hover(hover-out-facebook);
   &:active,
   &:visited:active {
-    color: $facebook-color;
+    color: $color-facebook;
   }
 }
 
 #facebook-footer-link.contact-link:focus,
 #facebook-footer-link.contact-link:hover {
-  color: $facebook-color;
+  color: $color-facebook;
   @include contact-hover(hover-facebook)
 }
 
@@ -155,7 +155,7 @@
     color: $white;
   }
   100% {
-    color: $facebook-color;
+    color: $color-facebook;
   }
 }
 
@@ -164,13 +164,13 @@
   @include contact-hover(hover-out-github-circled);
   &:active,
   &:visited:active {
-    color: $github-color;
+    color: $color-github;
   }
 }
 
 #github-circled-footer-link.contact-link:focus,
 #github-circled-footer-link.contact-link:hover {
-  color: $github-color;
+  color: $color-github;
   @include contact-hover(hover-github-circled)
 }
 
@@ -182,7 +182,7 @@
     color: $white;
   }
   100% {
-    color: $github-color;
+    color: $color-github;
   }
 }
 
@@ -191,13 +191,13 @@
   @include contact-hover(hover-out-instagram);
   &:active,
   &:visited:active {
-    color: $instagram-color;
+    color: $color-instagram;
   }
 }
 
 #instagram-footer-link.contact-link:focus,
 #instagram-footer-link.contact-link:hover {
-  color: $instagram-color;
+  color: $color-instagram;
   @include contact-hover(hover-instagram)
 }
 
@@ -209,6 +209,6 @@
     color: $white;
   }
   100% {
-    color: $instagram-color;
+    color: $color-instagram;
   }
 }
