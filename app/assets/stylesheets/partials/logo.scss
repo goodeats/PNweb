@@ -1,0 +1,10 @@
+@import 'modules';
+
+#pat-logo {
+  height: 213px;
+  width: 150px;
+  margin: 0 auto;
+  background: url(image_path('pat_logo.png'));
+  background-repeat: no-repeat;
+  opacity: 0.84; // #292929 == (41,41,41) => 1 - 41 / 255 = 0.839215686
+}

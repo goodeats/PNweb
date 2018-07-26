@@ -1,0 +1,21 @@
+@import 'modules';
+
+.nav {
+  width: $full;
+  height: $height-nav;
+  background: $white;
+}
+
+.nav-ul {
+
+}
+
+.nav-li {
+  display: inline-block;
+}
+
+.nav-li-link {
+  font-family: $font-main;
+  font-size: $font-size-nav;
+  text-decoration: none;
+}

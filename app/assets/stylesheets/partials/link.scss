@@ -1,0 +1,40 @@
+@import 'modules';
+
+.link-page {
+  position: relative;
+  text-decoration: none;
+  color: $color-link;
+  font-style: italic;
+  font-weight: 800;
+
+  // https://medium.com/@dave_lunny/stylish-a-styling-e80c80cbc30e
+  &:before {
+    content: '';
+    width: 0;
+    height: 1px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease-in-out;
+    background-color: $color-link;
+  }
+  &:hover {
+    &:before {
+      width: 100%;
+      height: 2px;
+      bottom: -1px;
+      background-color: $color-link-hover;
+    }
+  }
+}
+
+.link-page:focus,
+.link-page:hover {
+  color: $color-link-hover;
+  -webkit-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+

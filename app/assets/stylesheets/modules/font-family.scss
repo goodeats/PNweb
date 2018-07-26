@@ -1,12 +1,12 @@
-// fonts
-// @font-face {
-//   font-family: 'Work';
-//   src: url('WorkSans-Light.ttf')
-// }
-$font-main: 'Work', sans-serif;
+@font-face {
+  font-family: 'Work';
+  src: asset-url('WorkSans-Light.ttf')
+}
 
-// @font-face {
-//   font-family: 'Montserrat';
-//   src: url('Montserrat-Regular.ttf')
-// }
+@font-face {
+  font-family: 'Montserrat';
+  src: asset-url('Montserrat-Regular.ttf')
+}
+
+$font-main: 'Work', sans-serif;
 $font-bold: 'Montserrat', Helvetica, sans-serif;
