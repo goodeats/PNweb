@@ -15,6 +15,13 @@
   max-width: $width-max;
   margin: 0 auto;
   border-bottom: $border-nav-ul;
+  border-bottom-width: 0;
+  transition: border-bottom-width 0.3s ease;
+}
+
+.nav-active .nav-ul {
+  border-bottom-width: 1px;
+  transition: border-bottom-width 0.3s ease;
 }
 
 .nav-li {
@@ -33,17 +40,26 @@
   font-family: $font-main;
   font-size: $font-size-nav;
   text-decoration: none;
+  color: $dark-black;
 
   transition: $transition-main;
 }
 
 .nav-li-link {
   display: block;
+  position: relative;
+
   &:focus,
   &:hover {
-    background: $white;
     color: $color-link-hover;
     transition: $transition-main;
+    background-color: $color-grey;
+
+    &:before {
+      width: $full;
+      height: $height-nav-li-link-hover;
+      background-color: $dark-black;
+    }
   }
 }
 
@@ -63,6 +79,7 @@
 
   .nav-ul {
     display: flex !important;
+    border-bottom: $border-nav-ul;
   }
 
   .nav-li {
@@ -75,5 +92,33 @@
 
   .nav-toggle {
     display: none;
+  }
+
+  .nav-li-link {
+    // https://medium.com/@dave_lunny/stylish-a-styling-e80c80cbc30e
+    &:before {
+      content: '';
+      width: 0;
+      height: 0;
+      position: absolute;
+      bottom: 0;
+      left: $half;
+      transform: translateX(-$half);
+      transition: $transition-main;
+      background-color: $color-primary-0;
+    }
+
+    &:focus,
+    &:hover {
+      background-color: initial;
+      color: $color-link-hover;
+      transition: $transition-main;
+
+      &:before {
+        width: $full;
+        height: $height-nav-li-link-hover;
+        background-color: $dark-black;
+      }
+    }
   }
 }

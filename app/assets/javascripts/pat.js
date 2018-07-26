@@ -8,11 +8,13 @@
     deviceOrientationListener();
   }
 
+  var transitionMainDuration = 300;
+
   function responsiveNavMenu(){
     // https://codepen.io/javiier507/pen/eJNjWq
     $('#nav-toggle').on('click', function(e){
       e.preventDefault();
-      $('#menu').slideToggle();
+      $('#menu').slideToggle(transitionMainDuration);
       $('#nav').toggleClass('nav-active');
     });
   }

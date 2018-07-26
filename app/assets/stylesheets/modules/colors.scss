@@ -1,5 +1,8 @@
+@import 'colors-paletton';
+
 $white: #fff;
 $dark-black: #292929;
+$color-grey: #CECECE;
 
 // color of the year 2017
 $greenery: #88B04B;
@@ -13,8 +16,8 @@ $ultra-violet-dark: #322751;
 $color-font: $dark-black;
 
 // link color
-$color-link: $ultra-violet;
-$color-link-hover: $ultra-violet-dark;
+$color-link: $color-complement-0;
+$color-link-hover: $color-complement-3;
 
 $color-link-contact: $dark-black;
 

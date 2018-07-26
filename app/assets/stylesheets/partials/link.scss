@@ -13,15 +13,15 @@
     width: 0;
     height: 1px;
     position: absolute;
-    bottom: 0px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;
+    left: $half;
+    transform: translateX(-$half);
     transition: $transition-main;
     background-color: $color-link;
   }
   &:hover {
     &:before {
-      width: 100%;
+      width: $full;
       height: 2px;
       bottom: -1px;
       background-color: $color-link-hover;
