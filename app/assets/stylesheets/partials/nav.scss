@@ -111,7 +111,7 @@
     &:focus,
     &:hover {
       background-color: initial;
-      color: $color-link-hover;
+      color: $color-nav-li-link-hover;
       transition: $transition-main;
 
       &:before {

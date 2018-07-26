@@ -6,12 +6,12 @@ body {
   align-items: center;
   min-height:100vh;
   font-size: 62.5%;
+  background-image: $gradient-header-alt;
 }
 
 .page-wrapper {
   width: $full;
   min-height:100vh;
-  background-image: $gradient-header-alt;
 
   font-family: $font-main;
   color: $dark-black;
