@@ -12,6 +12,8 @@
 
 .nav-ul {
   display: none;
+  max-width: $width-max;
+  margin: 0 auto;
   border-bottom: $border-nav-ul;
 }
 

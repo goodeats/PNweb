@@ -24,7 +24,7 @@ body {
 
 .page-content {
   width: $col-six;
-  max-width: 600px;
+  max-width: $width-max;
   margin: 0 auto;
 }
 

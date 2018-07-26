@@ -1,9 +1,9 @@
 @import 'modules';
 
 .page-section {
-  margin: 50vh 0;
+  margin: $spacing-large 0;
   width: $full;
-  padding: 20px;
+  padding: $spacing-main;
   color: $dark-black;
   text-align: center;
   font-family: $font-main;
