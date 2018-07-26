@@ -30,15 +30,17 @@
     ga('send', 'pageview');
 
   </script>
-  <!-- development -->
-  <!-- <script src="https://e632032b.ngrok.io/js/v1/opencity.js" id="opencity-js" merchant-id="257e428f-e95d-44c0-b759-602e8ae0ae95" type="text/javascript" charset="utf-8" async defer></script> -->
-  <!-- <script src="http://localhost:3000/js/v1/opencity.js" id="opencity-js" merchant-id="257e428f-e95d-44c0-b759-602e8ae0ae95" type="text/javascript" charset="utf-8" async defer></script> -->
-  <!-- staging -->
-  <!-- <script src="https://staging.opencity.co/js/v1/opencity.js" id="opencity-js" merchant-id="257e428f-e95d-44c0-b759-602e8ae0ae95" type="text/javascript" charset="utf-8" async defer></script> -->
-  <!-- production -->
-  <script src="https://askopencity.com/js/v1/opencity.js" id="opencity-js" merchant-id="257e428f-e95d-44c0-b759-602e8ae0ae95" type="text/javascript" charset="utf-8" async defer></script>
-  <!-- opencity -->
-  <!-- <script src="https://www.askopencity.com/js/v1/opencity.js" id="opencity-js" merchant-id="8762689c-7802-4418-84f4-924a56f049e1" type="text/javascript" charset="utf-8" async defer></script> -->
 
+  <% if Rails.env == 'production' %>
+    <!-- development -->
+    <!-- <script src="https://e632032b.ngrok.io/js/v1/opencity.js" id="opencity-js" merchant-id="257e428f-e95d-44c0-b759-602e8ae0ae95" type="text/javascript" charset="utf-8" async defer></script> -->
+    <!-- <script src="http://localhost:3000/js/v1/opencity.js" id="opencity-js" merchant-id="257e428f-e95d-44c0-b759-602e8ae0ae95" type="text/javascript" charset="utf-8" async defer></script> -->
+    <!-- staging -->
+    <!-- <script src="https://staging.opencity.co/js/v1/opencity.js" id="opencity-js" merchant-id="257e428f-e95d-44c0-b759-602e8ae0ae95" type="text/javascript" charset="utf-8" async defer></script> -->
+    <!-- production -->
+    <script src="https://askopencity.com/js/v1/opencity.js" id="opencity-js" merchant-id="257e428f-e95d-44c0-b759-602e8ae0ae95" type="text/javascript" charset="utf-8" async defer></script>
+    <!-- opencity -->
+    <!-- <script src="https://www.askopencity.com/js/v1/opencity.js" id="opencity-js" merchant-id="8762689c-7802-4418-84f4-924a56f049e1" type="text/javascript" charset="utf-8" async defer></script> -->
+  <% end %>
 </body>
 </html>
