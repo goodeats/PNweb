@@ -4,8 +4,12 @@ $font-size-bold: 1.8em; // 18px
 $font-size-double: $font-size-main * 2;
 $font-size-large: 4.6em; // 46px
 
+// header
 $font-size-header-title: $font-size-large;
 $font-size-nav: $font-size-bold;
 $font-size-nav-toggle: $font-size-small;
 $font-size-footer: $font-size-bold;
 $font-size-page-ul: $font-size-bold;
+
+// page
+$font-size-page-title: $font-size-double;

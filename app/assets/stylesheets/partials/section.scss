@@ -22,7 +22,15 @@
 .section-sub-title {
   margin-bottom: $spacing-small;
   font-family: $font-bold;
-  font-size: $font-size-bold;
+}
+
+.section-title {
+  padding-bottom: $spacing-smaller;
+  padding-left: $spacing-small;
+  margin-bottom: $spacing-main;
+  border-bottom: $spacing-smaller solid $color-secondary-1-0;
+  border-bottom-left-radius: $spacing-small;
+  font-size: $font-size-page-title;
 }
 
 .section-sub-title {
