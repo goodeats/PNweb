@@ -12,6 +12,7 @@
     $('#nav-toggle').on('click', function(e){
       e.preventDefault();
       $('#menu').slideToggle();
+      $('#nav').toggleClass('nav-active');
     });
   }
 

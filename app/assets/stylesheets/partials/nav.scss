@@ -2,6 +2,12 @@
 
 .nav {
   // box-shadow: $box-shadow-nav;
+  transition: $transition-main;
+}
+
+.nav.nav-active {
+  background: $white;
+  transition: $transition-main;
 }
 
 .nav-ul {
@@ -26,8 +32,10 @@
 }
 
 .nav-li-link {
+  display: block;
   &:focus,
   &:hover {
+    background: $white;
     color: $color-link-hover;
     transition: $transition-main;
   }
@@ -36,13 +44,13 @@
 .nav-toggle-container {
   display: block;
   text-align: right;
-  padding: 0 $spacing-main;
 }
 
 .nav-toggle {
+  margin-right: $spacing-main;
+  padding: $spacing-small;
   line-height: 3;
   color: $color-font;
-  // font-size: $font-size-nav-toggle;
 }
 
 @media screen and (min-width: $width-mobile){
