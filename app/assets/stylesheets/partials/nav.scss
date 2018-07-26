@@ -20,7 +20,7 @@
 }
 
 .nav-active .nav-ul {
-  border-bottom-width: 1px;
+  border-bottom-width: $thin;
   transition: border-bottom-width 0.3s ease;
 }
 

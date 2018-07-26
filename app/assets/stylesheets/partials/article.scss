@@ -1,5 +1,25 @@
 @import 'modules';
 
+.article {
+  position: relative;
+  margin-bottom: $spacing-main;
+  padding-bottom: $spacing-main;
+
+  &:after {
+    content: 'Pat Needham ✍️';
+    width: $half;
+    height: $thin;
+    position: absolute;
+    bottom: 0;
+    left: $half;
+    transform: translateX(-$half);
+    transition: $transition-main;
+    background-color: $dark-black;
+    text-align: center;
+    line-height: 3;
+  }
+}
+
 .article-title {
   display: inline-block;
   margin-bottom: $spacing-small;
@@ -8,8 +28,30 @@
   font-size: $font-size-main;
 }
 
+.article-timestamp {
+  margin-bottom: $spacing-small;
+  font-size: $font-size-article-timestamp;
+}
+
 .article-p {
   margin-bottom: $spacing-small;
   font-size: $font-size-main;
   line-height: 1.3em;
+}
+
+.article-ul {
+  padding: $spacing-main $spacing-double;
+  font-size: $font-size-main;
+}
+
+.article-li {
+  display: block;
+  margin-bottom: $spacing-small;
+  line-height: 1.3em;
+
+  &:before {
+    content: '👉';
+    position: absolute;
+    left: $spacing-smaller;
+  }
 }

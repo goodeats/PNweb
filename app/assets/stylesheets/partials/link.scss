@@ -11,7 +11,7 @@
   &:before {
     content: '';
     width: 0;
-    height: 1px;
+    height: $thin;
     position: absolute;
     bottom: 0;
     left: $half;
@@ -22,8 +22,8 @@
   &:hover {
     &:before {
       width: $full;
-      height: 2px;
-      bottom: -1px;
+      height: $thin * 2;
+      bottom: -$thin;
       background-color: $color-link-hover;
     }
   }
