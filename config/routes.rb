@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :about, only: [:index]
   resources :projects, only: [:index]
-  resources :articles, only: [:index]
+  resources :articles, path: 'blog', only: [:index]
 end
