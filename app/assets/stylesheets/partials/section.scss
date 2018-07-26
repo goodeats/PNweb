@@ -18,13 +18,12 @@
   text-align: left;
 }
 
-.section-title,
+.page-title,
 .section-sub-title {
-  margin-bottom: $spacing-small;
   font-family: $font-bold;
 }
 
-.section-title {
+.page-title {
   padding-bottom: $spacing-smaller;
   padding-left: $spacing-small;
   margin-bottom: $spacing-main;
@@ -35,6 +34,7 @@
 
 .section-sub-title {
   display: inline-block;
+  margin-bottom: $spacing-small;
   position: relative;
   font-size: $font-size-main;
 }
