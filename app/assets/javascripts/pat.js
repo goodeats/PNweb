@@ -14,6 +14,7 @@
     // https://codepen.io/javiier507/pen/eJNjWq
     $('#nav-toggle').on('click', function(e){
       e.preventDefault();
+      $(this).toggleClass('is-active');
       $('#menu').slideToggle(transitionMainDuration);
       $('#nav').toggleClass('nav-active');
     });

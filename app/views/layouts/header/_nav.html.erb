@@ -1,6 +1,11 @@
 <nav id="nav" class="nav" role="navigation">
   <div class="nav-toggle-container">
-    <%= link_to 'menu', '#', id: 'nav-toggle', class: 'nav-toggle' %>
+    <%#= link_to 'menu', '#', id: 'nav-toggle', class: 'nav-toggle' %>
+    <button id="nav-toggle" class="hamburger hamburger--spring" type="button">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
   </div>
   <ul id="menu" class="nav-ul">
     <li class="nav-li">
