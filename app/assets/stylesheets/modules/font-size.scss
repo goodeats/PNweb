@@ -1,7 +1,11 @@
-$font-size-header: 4.6em; // 46px
+$font-size-main: 1.6em; // 16px
+$font-size-small: 0.6666666667em; // 18px * 2/3 = 12px
 $font-size-bold: 1.8em; // 18px
-$font-size-normal: 1.6em; // 18px
-$font-size-bold-sub: 0.6666666667em; // 18px * 2/3 = 12px
-$font-size-main: 2em; // 20px
+$font-size-double: $font-size-main * 2;
+$font-size-large: 4.6em; // 46px
 
+$font-size-header-title: $font-size-large;
 $font-size-nav: $font-size-bold;
+$font-size-nav-toggle: $font-size-small;
+$font-size-footer: $font-size-bold;
+$font-size-page-ul: $font-size-bold;

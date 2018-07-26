@@ -22,18 +22,18 @@
 .section-sub-title {
   margin-bottom: $spacing-small;
   font-family: $font-bold;
-  font-size: $font-size-main;
+  font-size: $font-size-bold;
 }
 
 .section-sub-title {
   display: inline-block;
   position: relative;
-  font-size: $font-size-bold;
+  font-size: $font-size-main;
 }
 
 .section-p {
   margin-bottom: $spacing-small;
-  font-size: $font-size-normal;
+  font-size: $font-size-main;
   line-height: 1.3em;
 }
 

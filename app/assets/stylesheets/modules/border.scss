@@ -1,1 +1,3 @@
-$border-nav-ul: 1px solid black;
+@import 'colors';
+
+$border-nav-ul: 1px solid $dark-black;

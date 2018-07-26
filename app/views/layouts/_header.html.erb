@@ -1,4 +1,12 @@
-<header class="header<%= ' header-main' if current_page?('/') %>">
+<header class="header<%= ' header-main' if current_page_root? %>">
   <%= render 'layouts/header/nav' %>
   <h1 class="header-title">Pat Needham</h1>
+  <% if current_page_root? %>
+    <ul class="page-ul">
+      <li class="page-li">mainer</li>
+      <li class="page-li">web developer</li>
+      <li class="page-li">startup co-founder</li>
+    </ul>
+    <div id="pat-logo"></div>
+  <% end %>
 </header>

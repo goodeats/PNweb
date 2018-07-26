@@ -7,19 +7,11 @@
 .footer-content {
   height: $full;
   padding-bottom: $spacing-double;
-  font-size: $font-size-bold;
-}
-
-.footer-tagline {
-  margin: 10px auto $spacing-double;
-  color: $dark-black;
-  font-family: $font-bold;
+  font-size: $font-size-footer;
 }
 
 .footer-trademark {
-  display: block;
-  font-size: $font-size-bold-sub;
-  margin-top: 5px;
+  font-size: $font-size-small;
+  margin: $spacing-main 0;
   font-family: $font-bold;
-  font-weight: 100;
 }

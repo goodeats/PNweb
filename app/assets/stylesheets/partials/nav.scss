@@ -1,25 +1,61 @@
 @import 'modules';
 
 .nav {
-  width: $full;
-  margin-bottom: $spacing-large;
-  background: $white;
-  box-shadow: $box-shadow-nav;
+  // box-shadow: $box-shadow-nav;
 }
 
 .nav-ul {
-  display: flex;
+  display: none;
   border-bottom: $border-nav-ul;
 }
 
 .nav-li {
   flex: 1;
-  padding: $spacing-main;
-  cursor: pointer;
+  text-align: center;
 }
 
-.nav-li-link {
+.nav-li-link,
+.nav-toggle {
+  line-height: 3;
+
   font-family: $font-main;
   font-size: $font-size-nav;
   text-decoration: none;
+
+  transition: $transition-main;
+}
+
+.nav-li-link {
+  &:focus,
+  &:hover {
+    color: $color-link-hover;
+    transition: $transition-main;
+  }
+}
+
+.nav-toggle-container {
+  display: block;
+  text-align: right;
+  padding: 0 $spacing-main;
+}
+
+.nav-toggle {
+  line-height: 3;
+  color: $color-font;
+  // font-size: $font-size-nav-toggle;
+}
+
+@media screen and (min-width: $width-mobile){
+
+  .nav-ul {
+    display: flex !important;
+  }
+
+  .nav-li {
+    padding: 0 $spacing-main;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
 }

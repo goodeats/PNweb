@@ -1,5 +1,8 @@
-<nav class="nav">
-  <ul class="nav-ul">
+<nav class="nav" role="navigation">
+  <div class="nav-toggle-container">
+    <%= link_to 'menu', '#', id: 'nav-toggle', class: 'nav-toggle' %>
+  </div>
+  <ul id="menu" class="nav-ul">
     <li class="nav-li">
       <%= link_to 'Home', root_path, title: 'Home', class: 'nav-li-link' %>
     </li>

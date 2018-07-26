@@ -3,8 +3,16 @@
   console.log('if you can read this, you are probably a web developer :D');
 
   function init(){
+    responsiveNavMenu();
     externalLinksListener();
     deviceOrientationListener();
+  }
+
+  function responsiveNavMenu(){
+    $('#nav-toggle').on('click', function(e){
+      e.preventDefault();
+      $('#menu').slideToggle();
+    });
   }
 
   function externalLinksListener(){

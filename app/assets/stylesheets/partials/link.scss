@@ -16,7 +16,7 @@
     bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
-    transition: all 0.3s ease-in-out;
+    transition: $transition-main;
     background-color: $color-link;
   }
   &:hover {
@@ -32,9 +32,9 @@
 .link-page:focus,
 .link-page:hover {
   color: $color-link-hover;
-  -webkit-transition: color 0.3s ease;
-  -moz-transition: color 0.3s ease;
-  -o-transition: color 0.3s ease;
-  transition: color 0.3s ease;
+  -webkit-transition: $transition-main-color;
+  -moz-transition: $transition-main-color;
+  -o-transition: $transition-main-color;
+  transition: $transition-main-color;
 }
 
