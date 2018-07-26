@@ -1,5 +1,7 @@
 // width
 $full: 100%;
+
+// columns
 $columns: 12;
 $col-one-half: $full * (.5 / $columns);
 $col-one: $full * (1 / $columns);
@@ -16,9 +18,11 @@ $col-ten: $full * (10 / $columns);
 $col-eleven: $full * (11 / $columns);
 $col-twelve: $full * (12 / $columns);
 
-$contact-width: 300px;
+// height
+$height-nav: 100px;
 
-// height / length
+// contact link
+$contact-width: 300px;
 $contact-height: $contact-width / 4;
 
 
