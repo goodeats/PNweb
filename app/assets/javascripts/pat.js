@@ -1,6 +1,14 @@
 'use strict';
 (function(){
-  console.log('if you can read this, you are probably a web developer :D');
+
+  // https://twitter.com/ChromeDevTools/status/1023975167062499333
+  // Tip: Format your console.log statements by prepending your text with "%c" and passing a second argument that contains the CSS styles.
+  const consoleTextCss = [
+    "color:#FDA085;",
+    "font-family:'Montserrat', Helvetica, sans-serif;",
+    "font-size:16px;"
+  ]
+  console.log('%cif you can read this, you are probably a web developer 🤓', consoleTextCss.join(''));
 
   function init(){
     responsiveNavMenu();
