@@ -50,12 +50,15 @@
 
 .article-li {
   display: block;
+  position: relative;
   margin-bottom: $spacing-small;
   line-height: 1.3em;
 
   &:before {
     content: '👉';
     position: absolute;
-    left: $spacing-smaller;
+    left: 0;
+    margin-left: -$spacing-main - $spacing-small;
+    line-height: 1.5em;
   }
 }
