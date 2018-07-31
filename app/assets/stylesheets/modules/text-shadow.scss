@@ -1,3 +1,11 @@
+@import 'colors';
 @import 'length';
 
 $text-shadow-main: 0 $spacing-smaller 20px rgba(0, 0, 0, 0.15);
+
+$text-shadow-main-gmail: 0 $spacing-smaller 20px $color-gmail-shadow;
+$text-shadow-main-facebook: 0 $spacing-smaller 20px $color-facebook-shadow;
+$text-shadow-main-instagram: 0 $spacing-smaller 20px $color-instagram-shadow;
+$text-shadow-main-github: 0 $spacing-smaller 20px $color-github-shadow;
+$text-shadow-main-linkedin: 0 $spacing-smaller 20px $color-linkedin-shadow;
+$text-shadow-main-twitter: 0 $spacing-smaller 20px $color-twitter-shadow;

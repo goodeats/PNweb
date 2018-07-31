@@ -14,13 +14,21 @@ $color-nav-li-link-hover: $color-secondary-2-0;
 
 $color-link-contact: $dark-black;
 
+$color-rgba-fade: 0.15;
+
 // social
 $color-gmail: #F90101;
+$color-gmail-shadow: rgba(249, 1, 1, $color-rgba-fade);
 $color-twitter: #00aced;
+$color-twitter-shadow: rgba(0, 172, 237, $color-rgba-fade);
 $color-linkedin: #007bb5;
+$color-linkedin-shadow: rgba(0, 123, 181, $color-rgba-fade);
 $color-facebook: #3b5998;
+$color-facebook-shadow: rgba(59, 89, 152, $color-rgba-fade);
 $color-github: #4183c4;
+$color-github-shadow: rgba(65, 131, 196, $color-rgba-fade);;
 $color-instagram: #bc2a8d;
+$color-instagram-shadow: rgba(188, 42, 141, $color-rgba-fade);
 
 // color of the year 2017
 $greenery: #88B04B;

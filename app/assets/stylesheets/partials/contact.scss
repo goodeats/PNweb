@@ -51,12 +51,14 @@
   }
   100% {
     color: $color-gmail;
+    text-shadow: $text-shadow-main-gmail;
   }
 }
 
 @include keyframes(hover-out-mail) {
   0% {
     color: $color-gmail;
+    text-shadow: $text-shadow-main-gmail;
   }
   75% {
     color: $white;
@@ -90,12 +92,14 @@
   }
   100% {
     color: $color-twitter;
+    text-shadow: $text-shadow-main-twitter;
   }
 }
 
 @include keyframes(hover-out-twitter) {
   0% {
     color: $color-twitter;
+    text-shadow: $text-shadow-main-twitter;
   }
   75% {
     color: $white;
@@ -129,6 +133,20 @@
   }
   100% {
     color: $color-linkedin;
+    text-shadow: $text-shadow-main-linkedin;
+  }
+}
+
+@include keyframes(hover-out-linkedin) {
+  0% {
+    color: $color-linkedin;
+    text-shadow: $text-shadow-main-linkedin;
+  }
+  75% {
+    color: $white;
+  }
+  100% {
+    color: $color-link-contact;
   }
 }
 
@@ -156,6 +174,20 @@
   }
   100% {
     color: $color-facebook;
+    text-shadow: $text-shadow-main-facebook;
+  }
+}
+
+@include keyframes(hover-out-facebook) {
+  0% {
+    color: $color-facebook;
+    text-shadow: $text-shadow-main-facebook;
+  }
+  75% {
+    color: $white;
+  }
+  100% {
+    color: $color-link-contact;
   }
 }
 
@@ -183,6 +215,20 @@
   }
   100% {
     color: $color-github;
+    text-shadow: $text-shadow-main-github;
+  }
+}
+
+@include keyframes(hover-out-github) {
+  0% {
+    color: $color-github;
+    text-shadow: $text-shadow-main-github;
+  }
+  75% {
+    color: $white;
+  }
+  100% {
+    color: $color-link-contact;
   }
 }
 
@@ -210,5 +256,19 @@
   }
   100% {
     color: $color-instagram;
+    text-shadow: $text-shadow-main-instagram;
+  }
+}
+
+@include keyframes(hover-out-instagram) {
+  0% {
+    color: $color-instagram;
+    text-shadow: $text-shadow-main-instagram;
+  }
+  75% {
+    color: $white;
+  }
+  100% {
+    color: $color-link-contact;
   }
 }
