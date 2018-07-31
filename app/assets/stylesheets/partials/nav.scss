@@ -3,6 +3,7 @@
 .nav {
   // box-shadow: $box-shadow-nav;
   transition: $transition-main;
+  overflow: hidden;
 }
 
 .nav.nav-active {
@@ -51,7 +52,6 @@
 
   &:focus,
   &:hover {
-    color: $color-nav-li-link-hover;
     transition: $transition-main;
     background-color: $color-grey;
 
@@ -77,6 +77,10 @@
 
 @media screen and (min-width: $width-mobile){
 
+  .nav.nav-active {
+    background: initial;
+  }
+
   .nav-ul {
     display: flex !important;
     border-bottom: $border-nav-ul;
@@ -95,6 +99,10 @@
   }
 
   .nav-li-link {
+    // with nav overflow:hidden, the border will come up from bottom
+    margin-bottom: -$spacing-smaller;
+    padding-bottom: $spacing-smaller;
+
     // https://medium.com/@dave_lunny/stylish-a-styling-e80c80cbc30e
     &:before {
       content: '';
@@ -111,7 +119,9 @@
     &:focus,
     &:hover {
       background-color: initial;
-      color: $color-nav-li-link-hover;
+      font-size: 20px;
+      line-height: 2.5;
+      padding-bottom: 4px;
       transition: $transition-main;
 
       &:before {
