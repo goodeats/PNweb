@@ -1,26 +1,13 @@
 <div class="page-section">
   <div class="section-content section-content-left">
     <h2 class="page-title">blog</h2>
-
-    <article class="article article-blog">
-      <h3 class="article-title">introduction</h3>
-      <div class="article-timestamp">Jul 26, 2018, 4:18 PM ET</div>
-      <%= image_tag 'https://media.giphy.com/media/QQkyLVLAbQRKU/giphy.gif', alt: 'Austin Powers - "Allow myself to introduce... myself', class: 'img-page' %>
-      <p class="article-p">Hello!</p>
-
-      <p class="article-p">After recently leaving <%= link_to 'OpenCity', 'https://opencity.co', class: 'pat-link link-page', target: '_blank' %>, the startup I've built over the past two years, I have rebuilt my personal website for the purposes of marketing myself to future employers, other devs, or anyone who cares check me out. I expect to keep the content strictly web dev-oriented. Who knows, maybe I'll even enjoy it.</p>
-
-      <p class="article-p">There are a lot of things I'll be looking to learn during this time, but for now I'll share a few front-end tricks I've added to my site:</p>
-
-      <ul class="article-ul">
-        <li class="article-li">Gradients: per <%= link_to '2018 trends', 'https://99designs.com/blog/trends/web-design-trends-2018/#gradients', class: 'link-page', target: '_blank' %>, I found some pre-built <%= link_to 'WebGradients', 'https://cssgradient.io/gradient-backgrounds/', class: 'link-page', target: '_blank' %> I liked and even made a <%= link_to 'color palette', 'http://paletton.com/#uid=70b0u0kfbvK5FRzaqGRjEr6nZmT', class: 'link-page', target: '_blank' %> out of it</li>
-        <li class="article-li">Responsive Nav: I did a quick search of "flexbox responsive nav example" and found this <%= link_to 'codepen', 'https://codepen.io/javiier507/pen/eJNjWq', class: 'link-page', target: '_blank' %> which I combined with a <%= link_to 'hamburger', 'https://jonsuh.com/hamburgers', class: 'link-page', target: '_blank' %> menu that turns into an X for smaller screens</li>
-        <li class="article-li">Link hover transitions: on a desktop, hover your mouse over my <%= link_to 'nav, page', 'https://medium.com/@dave_lunny/stylish-a-styling-e80c80cbc30e', class: 'link-page', target: '_blank' %>, and contact links to see some cool hover effects</li>
-        <li class="article-li">Device Orientation: on mobile, on the home page I have a logo a friend made for me rotate depending on the <%= link_to 'device orientation', 'http://www.html5rocks.com/en/tutorials/device/orientation/', class: 'link-page', target: '_blank' %></li>
-      </ul>
-
-      <p class="article-p">I could go on and on with adding fun things here, but I just wanted to say welcome to my page and next up for me is working on some <%= link_to 'React', 'https://reactjs.org/', class: 'link-page', target: '_blank' %> tutorials.</p>
-    </article>
-
+    <% @articles.map do |article| %>
+      <article class="article article-blog">
+        <h3 class="article-title"><%= article.title %></h1>
+        <div class="article-timestamp"><%= article.pretty_date %></div>
+        <%= image_tag article.image_url, alt: article.image_alt, class: 'img-page' %>
+        <%= article.pretty_text %>
+      </article>
+    <% end %>
   </div>
 </div>
