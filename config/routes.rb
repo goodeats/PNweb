@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'pat#index'
 
   resources :about, only: [:index]
