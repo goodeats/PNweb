@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     unlocks: 'users/unlocks',
   }
 
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+  end
+
   resources :about, only: [:index]
   resources :projects, only: [:index]
   resources :articles, path: 'blog', only: [:index]
