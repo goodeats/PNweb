@@ -22,5 +22,5 @@ Rails.application.routes.draw do
     resources :pat
   end
 
-  get 'patadmin', to: 'admin/pat#index', as: :patadmin
+  get 'admin', to: 'admin/pat#index', as: :admin
 end

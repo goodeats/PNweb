@@ -1,5 +1,12 @@
 @import 'modules';
 
+.breadcrumbs {
+  padding: $spacing-main;
+  text-align: left;
+  font-size: $font-size-breadcrumbs;
+}
+
+.breadcrumbs a,
 .link-page {
   position: relative;
   text-decoration: none;
@@ -29,6 +36,8 @@
   }
 }
 
+.breadcrumbs a:focus,
+.breadcrumbs a:hover,
 .link-page:focus,
 .link-page:hover {
   color: $color-link-hover;
@@ -37,4 +46,3 @@
   -o-transition: $transition-main-color;
   transition: $transition-main-color;
 }
-

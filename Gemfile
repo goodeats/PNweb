@@ -20,6 +20,9 @@ gem 'jbuilder', '~> 2.0'
 ## css
 gem 'sass-rails', '~> 5.0'
 
+# views
+gem "breadcrumbs_on_rails"
+
 # documentation
 gem 'sdoc', '~> 0.4.0', group: :doc
 
