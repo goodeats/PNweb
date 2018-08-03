@@ -5,9 +5,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    if User.all.length == 0
+      super
+    else
+      redirect_to root_path
+    end
+  end
 
   # POST /resource
   # def create
