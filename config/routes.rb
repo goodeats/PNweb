@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   resources :articles, path: 'blog', only: [:index]
 
   namespace :admin do
-    resources :pat
+    resources :pat, only: [:index]
+    resources :projects
   end
 
   get 'admin', to: 'admin/pat#index', as: :admin

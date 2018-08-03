@@ -2,6 +2,11 @@
   <div class="section-content section-content-left">
     <h2 class="page-title">admin</h2>
     <article class="article">
+      <h3 class="article-title">content</h1>
+      <p class="article-p"><%= link_to 'Projects', admin_projects_path, class: 'link-page' %></p>
+    </article>
+
+    <article class="article">
       <h3 class="article-title">sign out</h1>
       <p class="article-p"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'link-page' %></p>
     </article>

@@ -11,3 +11,27 @@
 .page-li {
   display: block;
 }
+
+// used for admin links
+// possibly article tags later
+.article-content-ul {
+  margin-bottom: $spacing-main;
+  font-size: $font-size-page-ul;
+
+  .article-content-li {
+    display: inline-block;
+    position: relative;
+
+    &:after {
+      content: '|';
+      font-style: italic;
+      margin: 0 $spacing-small;
+    }
+  }
+
+  .article-content-li:last-child {
+    &:after {
+      content: '';
+    }
+  }
+}
