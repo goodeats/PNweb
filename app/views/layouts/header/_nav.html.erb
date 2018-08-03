@@ -19,5 +19,10 @@
     <li class="nav-li">
       <%= link_to 'Blog', articles_path, title: 'Blog', class: 'nav-li-link' %>
     </li>
+    <% if user_signed_in? %>
+      <li class="nav-li">
+        <%= link_to 'Admin', patadmin_path, title: 'Hi Pat', class: 'nav-li-link' %>
+      </li>
+    <% end %>
   </ul>
 </nav>

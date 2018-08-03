@@ -17,4 +17,10 @@ Rails.application.routes.draw do
   resources :about, only: [:index]
   resources :projects, only: [:index]
   resources :articles, path: 'blog', only: [:index]
+
+  namespace :admin do
+    resources :pat
+  end
+
+  get 'patadmin', to: 'admin/pat#index', as: :patadmin
 end
