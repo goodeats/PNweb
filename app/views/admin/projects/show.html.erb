@@ -6,6 +6,7 @@
         <li class="article-content-li"><%= link_to 'Edit', edit_admin_project_path(@project), class: 'link-page article-content-li-link' %></li>
         <li class="article-content-li"><%= link_to 'Delete', admin_project_path(@project), data: {confirm: 'Are you sure, Pat?'}, method: :delete, class: 'link-page article-content-li-link' %></li>
       </ul>
+      <p class="article-p"><%= @project.published ? '🙋🏻‍♂️ published' : '🙅🏻‍♂️ not published' %></p>
       <% @project.description.split(/\n/).map do |description_line| %>
         <p class="article-p"><%= description_line %></p>
       <% end %>
