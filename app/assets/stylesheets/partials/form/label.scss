@@ -1,0 +1,11 @@
+@import '../modules';
+
+.form-label {
+  display: block;
+  padding: $spacing-smaller 0;
+  padding-left: $spacing-smaller;
+  margin-bottom: $spacing-small;
+  border-left: $border-label;
+  border-top-left-radius: $spacing-smaller;
+  font-size: $font-size-label;
+}

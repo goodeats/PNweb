@@ -1,0 +1,26 @@
+<%= form_for [:admin, @project], url: {action: @action}, html: {class: 'form'} do |f| %>
+  <p class="article-p">
+    <%= f.label :name, class: 'form-label' %>
+    <%= f.text_field :name, class: 'form-input-text' %>
+  </p>
+
+  <p class="article-p">
+    <%= f.label :published, class: 'form-label' %>
+    <%= f.check_box :published, {checked: @project.published} %>
+  </p>
+
+  <p class="article-p">
+    <%= f.label :external, 'Standalone Project', class: 'form-label' %>
+    <%= f.check_box :external, {checked: @project.external} %>
+  </p>
+
+  <p class="article-p">
+    <%= f.label :url, class: 'form-label' %>
+    <%= f.text_field :url, class: 'form-input-text' %>
+  </p>
+
+  <p class="article-p">
+    <%= f.label :description, class: 'form-label' %>
+    <%= f.text_area :description, class: 'form-input-text form-input-textarea' %>
+  </p>
+<% end %>

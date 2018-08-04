@@ -1,3 +1,4 @@
+$font-size-baseline: 1em;
 $font-size-main: 1.6em; // 16px
 $font-size-small: 0.6666666667em; // 18px * 2/3 = 12px
 $font-size-bold: 1.8em; // 18px
@@ -17,3 +18,7 @@ $font-size-page-title: $font-size-double;
 
 // article
 $font-size-article-timestamp: 1.3em;
+
+// form
+$font-size-label: $font-size-main;
+$font-size-input: $font-size-baseline;

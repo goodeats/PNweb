@@ -22,8 +22,8 @@
   padding-bottom: $spacing-smaller;
   padding-left: $spacing-small;
   margin-bottom: $spacing-main;
-  border-bottom: $spacing-smaller solid $color-secondary-1-0;
-  border-bottom-left-radius: $spacing-small;
+  border-bottom: $border-page-title;
+  border-bottom-right-radius: $spacing-smaller;
   font-family: $font-bold;
   font-size: $font-size-page-title;
 }

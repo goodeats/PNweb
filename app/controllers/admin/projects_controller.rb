@@ -14,6 +14,7 @@ class Admin::ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    @action = 'edit'
     add_breadcrumb @project.name, admin_project_path(@project)
     add_breadcrumb 'edit', edit_admin_project_path(@project)
   end

@@ -1,0 +1,14 @@
+@import '../modules';
+
+.form-input-text {
+  display: block;
+  width: $full;
+  padding: $spacing-input;
+  border: $border-input;
+  border-radius: $border-radius-input;
+  font-size: $font-size-input;
+}
+
+.form-input-textarea {
+  height: 10em;
+}
