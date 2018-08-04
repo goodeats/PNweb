@@ -12,4 +12,10 @@ class Admin::ProjectsController < ApplicationController
     add_breadcrumb @project.name, admin_project_path(@project)
   end
 
+  def edit
+    @project = Project.find(params[:id])
+    add_breadcrumb @project.name, admin_project_path(@project)
+    add_breadcrumb 'edit', edit_admin_project_path(@project)
+  end
+
 end
