@@ -1,6 +1,5 @@
 class Admin::ProjectsController < ApplicationController
 
-  # add_breadcrumb 'admin', :admin_path, title: 'Back to Admin'
   add_breadcrumb 'admin', :admin_path
   add_breadcrumb 'projects', :admin_projects_path
 
@@ -10,6 +9,7 @@ class Admin::ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    add_breadcrumb @project.name, admin_project_path(@project)
   end
 
 end
