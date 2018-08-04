@@ -6,6 +6,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
+    # simple auth powered by devise
+    # this site only belongs to me so I only want to limit one user
+    # devise might seem like overkill, but I might want to play with other configurations later
     if User.all.length == 0
       super
     else
@@ -14,9 +17,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    # see new
+    if User.all.length == 0
+      super
+    else
+      redirect_to root_path
+    end
+  end
 
   # GET /resource/edit
   # def edit
