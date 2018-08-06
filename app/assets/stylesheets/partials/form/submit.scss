@@ -1,15 +1,15 @@
 @import '../modules';
 
-.form-input-text {
+.form-submit {
   display: block;
   width: $full;
+  margin-top: $spacing-main;
   padding: $spacing-input;
-  border: $border-input;
+  background: $background-submit;
+  border: $border-submit;
   border-radius: $border-radius-input;
   font-size: $font-size-input;
   font-family: $font-main;
-}
-
-.form-input-textarea {
-  height: 10em;
+  color: $white;
+  cursor: pointer;
 }

@@ -4,6 +4,7 @@
 $border-main: 1px solid $dark-black;
 $border-color: 1px solid $color-primary-2;
 $border-color-thick: 5px solid $color-primary-2;
+$border-color-complement: 1px solid $color-complement-2;
 
 $border-nav-ul: $border-main;
 $border-header: $border-color;
@@ -12,3 +13,4 @@ $border-page-title: $border-color-thick;
 
 $border-label: $border-color-thick;
 $border-input: $border-main;
+$border-submit: $border-color-complement;

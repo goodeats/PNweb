@@ -41,7 +41,7 @@ $spacing-double: $spacing-main * 2;
 $spacing-large: $spacing-main * 2.5;
 
 // // input padding
-$spacing-input: 5px 8px;
+$spacing-input: $spacing-smaller $spacing-small;
 
 // device
 $width-mobile: 768px;
