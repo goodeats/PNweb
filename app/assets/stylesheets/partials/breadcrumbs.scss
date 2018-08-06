@@ -1,0 +1,57 @@
+@import 'modules';
+
+.breadcrumbs {
+  padding: $spacing-main;
+  font-size: 0;
+  font-style: italic;
+
+  // some accomodation for separator on app/views/layouts/breadcrumbs.html.erb
+  li {
+    display: block;
+    padding-bottom: $spacing-small;
+    font-size: 18px; // px, not em since using font-size:0 to collapse "|" on smaller screens
+    // last breadcrumb is text, not link, so don't make it italic
+    // keep italic above for "|" separator though
+    font-style: initial;
+
+    // arrows for stacking breadcrumbs on smaller screens
+    &:after {
+      content: '';
+      display: block;
+      width: $spacing-main;
+      margin: $spacing-small auto 0;
+      border-left: $spacing-small solid transparent;
+      border-right: $spacing-small solid transparent;
+      border-top: $spacing-smaller solid $dark-black;
+    }
+
+    &:last-child:after {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: $width-mobile){
+
+  .breadcrumbs {
+    text-align: left;
+    font-size: $font-size-breadcrumbs;
+
+    // some accomodation for separator on app/views/layouts/breadcrumbs.html.erb
+    // list is horizontal on bigger screens
+    li {
+      display: inline-block;
+      margin: 0 $spacing-main;
+      padding-bottom: 0;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+}

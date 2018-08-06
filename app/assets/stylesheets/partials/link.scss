@@ -1,22 +1,6 @@
 @import 'modules';
 
-.breadcrumbs {
-  padding: $spacing-main;
-  text-align: left;
-  font-size: $font-size-breadcrumbs;
-  font-style: italic;
-
-  // some accomodation for separator on app/views/layouts/breadcrumbs.html.erb
-  li {
-    display: inline-block;
-    margin: 0 $spacing-main;
-    font-style: initial;
-
-    &:first-child {
-      margin-left: 0;
-    }
-  }
-}
+// having trouble assigning class for breadcrumbs links from gem, but this works fine
 
 .breadcrumbs a,
 .link-page {
