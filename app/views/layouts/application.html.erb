@@ -19,28 +19,6 @@
     </div>
     <%= render 'layouts/footer' %>
   </div>
-
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88740951-1', 'auto');
-    ga('send', 'pageview');
-
-  </script>
-
-  <% if Rails.env == 'production' %>
-    <!-- development -->
-    <!-- <script src="https://e632032b.ngrok.io/js/v1/opencity.js" id="opencity-js" merchant-id="257e428f-e95d-44c0-b759-602e8ae0ae95" type="text/javascript" charset="utf-8" async defer></script> -->
-    <!-- <script src="http://localhost:3000/js/v1/opencity.js" id="opencity-js" merchant-id="257e428f-e95d-44c0-b759-602e8ae0ae95" type="text/javascript" charset="utf-8" async defer></script> -->
-    <!-- staging -->
-    <!-- <script src="https://staging.opencity.co/js/v1/opencity.js" id="opencity-js" merchant-id="257e428f-e95d-44c0-b759-602e8ae0ae95" type="text/javascript" charset="utf-8" async defer></script> -->
-    <!-- production -->
-    <script src="https://askopencity.com/js/v1/opencity.js" id="opencity-js" merchant-id="257e428f-e95d-44c0-b759-602e8ae0ae95" type="text/javascript" charset="utf-8" async defer></script>
-    <!-- opencity -->
-    <!-- <script src="https://www.askopencity.com/js/v1/opencity.js" id="opencity-js" merchant-id="8762689c-7802-4418-84f4-924a56f049e1" type="text/javascript" charset="utf-8" async defer></script> -->
-  <% end %>
+  <%= render 'layouts/scripts' %>
 </body>
 </html>

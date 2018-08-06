@@ -29,6 +29,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # heroku
 gem 'rails_12factor', group: :production
 
+# env vars
+gem 'dotenv-rails'
+
 group :development, :test do
   gem 'pry'
   gem 'web-console', '~> 2.0'
