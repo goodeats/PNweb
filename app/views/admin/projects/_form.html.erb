@@ -5,8 +5,11 @@
   </p>
 
   <p class="article-p">
-    <%= f.label :published, class: 'form-label' %>
-    <%= f.check_box :published, {checked: @project.published} %>
+    <label class="form-label" for="fake-label">Published</label>
+    <div class="onoffswitch">
+      <%= f.check_box :published, {checked: @project.published, class: 'onoffswitch-checkbox'} %>
+      <%= f.label :published, '', class: 'onoffswitch-label' %>
+    </div>
   </p>
 
   <p class="article-p">

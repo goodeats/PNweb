@@ -1,0 +1,41 @@
+@import '../modules';
+
+// https://proto.io/freebies/onoff/
+
+.onoffswitch {
+    position: relative; width: 60px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    margin-bottom: $spacing-small;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    height: 36px; padding: 0; line-height: 36px;
+    border: 2px solid $color-grey-darker; border-radius: 36px;
+    background-color: $white;
+    transition: background-color 0.3s ease-in;
+
+    // label was still showing text despite trying to set it to '' in f.label
+    // this hack works perfectly
+    color: rgba(0,0,0,0);
+}
+.onoffswitch-label:before {
+    content: "";
+    display: block; width: 36px; margin: 0px;
+    background: $white;
+    position: absolute; top: 0; bottom: 0;
+    right: 22px;
+    border: 2px solid $color-grey-darker; border-radius: 36px;
+    transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: $color-complement-0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+   border-color: $color-complement-2;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0px;
+}
