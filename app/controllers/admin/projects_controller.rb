@@ -22,6 +22,7 @@ class Admin::ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update(project_params)
+      flash[:success] = "updated #{@project.name}!"
       redirect_to admin_project_path(@project)
     else
       render :edit

@@ -11,6 +11,13 @@ $border-header: $border-color;
 
 $border-page-title: $border-color-thick;
 
+// form
 $border-label: $border-color-thick;
 $border-input: $border-main;
 $border-submit: $border-color-complement;
+
+// flash
+$border-flash: $color-secondary-2-0;
+$border-flash-success: $color-complement-0;
+$border-flash-warning: $color-secondary-1-0;
+$border-flash-danger: $color-primary-0;

@@ -10,6 +10,10 @@
   font-family: $font-main;
 }
 
+.control-group.error .form-input-text {
+  font-size: $font-size-main;
+}
+
 .form-input-textarea {
   height: 10em;
 }

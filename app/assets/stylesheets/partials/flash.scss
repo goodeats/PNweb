@@ -1,0 +1,25 @@
+@import 'modules';
+
+.flash {
+  margin-bottom: $spacing-main;
+  padding: $spacing-main;
+  background: $background-flash;
+  border: $border-flash;
+  border-radius: $border-radius-main;
+  font-size: $font-size-flash;
+}
+
+.flash-success {
+  background: $background-flash-success;
+  border: $border-flash-success;
+}
+
+.flash-warning {
+  background: $background-flash-warning;
+  border: $border-flash-warning;
+}
+
+.flash-danger {
+  background: $background-flash-danger;
+  border: $border-flash-danger;
+}

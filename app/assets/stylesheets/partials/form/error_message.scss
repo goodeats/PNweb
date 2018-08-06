@@ -1,0 +1,11 @@
+// see config/initializers/customize_error.rb
+
+@import '../modules';
+
+.form-error-message {
+  margin: $spacing-small;
+  font-size: $font-size-flash;
+  font-style: italic;
+  text-align: right;
+  color: $color-primary-4;
+}

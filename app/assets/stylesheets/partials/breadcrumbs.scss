@@ -1,7 +1,8 @@
 @import 'modules';
 
 .breadcrumbs {
-  padding: $spacing-main $spacing-main 0;
+  margin: -$spacing-main 0 $spacing-main;
+  padding: $spacing-main;
   font-size: 0;
   font-style: italic;
 
