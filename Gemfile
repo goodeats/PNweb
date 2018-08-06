@@ -31,6 +31,7 @@ gem 'rails_12factor', group: :production
 
 # env vars
 gem 'dotenv-rails'
+gem 'gon' # makes env var files available to js
 
 group :development, :test do
   gem 'pry'

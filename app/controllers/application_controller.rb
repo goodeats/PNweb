@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!
+  before_action :assign_env_variables, :authenticate_user!
 
   protected
 
@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password, :password_confirmation])
   end
+
+  def assign_env_variables
+    gon.ga_tracking_id = ENV['GA_TRACKING_ID']
+  end
+
 end
