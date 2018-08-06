@@ -13,8 +13,11 @@
   </p>
 
   <p class="article-p">
-    <%= f.label :external, 'Standalone Project', class: 'form-label' %>
-    <%= f.check_box :external, {checked: @project.external} %>
+    <label class="form-label" for="fake-label">Standalone Project</label>
+    <div class="onoffswitch">
+      <%= f.check_box :external, {checked: @project.external, class: 'onoffswitch-checkbox'} %>
+      <%= f.label :external, '', class: 'onoffswitch-label' %>
+    </div>
   </p>
 
   <p class="article-p">
