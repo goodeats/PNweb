@@ -1,4 +1,4 @@
-<%= form_for [:admin, @project], url: {action: @action}, html: {class: 'form'} do |f| %>
+<%= form_for [:admin, @project], html: {class: 'form'} do |f| %>
   <p class="article-p">
     <%= f.label :name, class: 'form-label' %>
     <%= f.text_field :name, class: 'form-input-text' %>
