@@ -15,14 +15,14 @@ class Admin::AboutController < ApplicationController
 
   def edit
     @about = About.find(params[:id])
-    add_breadcrumb @about.name, admin_about_path(@about)
+    add_breadcrumb @about.title, admin_about_path(@about)
     add_breadcrumb 'edit', edit_admin_project_path(@about)
   end
 
   def update
     @about = About.find(params[:id])
     if @about.update(project_params)
-      flash[:success] = "updated #{@about.name}!"
+      flash[:success] = "updated #{@about.title}!"
       redirect_to admin_about_path(@about)
     else
       render :edit
@@ -46,7 +46,7 @@ class Admin::AboutController < ApplicationController
   private
 
   def project_params
-    params.require(:about).permit(:name, :published, :external, :url, :description)
+    params.require(:about).permit(:title, :published, :text)
   end
 
 end
