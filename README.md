@@ -1,5 +1,3 @@
-http://github.com - automatic!
-[GitHub](http://github.com)
 [patneedham.me](https://patneedham.me)
 
 == Pat's personal website
