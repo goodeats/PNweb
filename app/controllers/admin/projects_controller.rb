@@ -10,19 +10,19 @@ class Admin::ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    add_breadcrumb @project.name, admin_project_path(@project)
+    add_breadcrumb @project.title, admin_project_path(@project)
   end
 
   def edit
     @project = Project.find(params[:id])
-    add_breadcrumb @project.name, admin_project_path(@project)
+    add_breadcrumb @project.title, admin_project_path(@project)
     add_breadcrumb 'edit', edit_admin_project_path(@project)
   end
 
   def update
     @project = Project.find(params[:id])
     if @project.update(project_params)
-      flash[:success] = "updated #{@project.name}!"
+      flash[:success] = "updated #{@project.title}!"
       redirect_to admin_project_path(@project)
     else
       render :edit
@@ -52,7 +52,7 @@ class Admin::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :published, :external, :url, :description)
+    params.require(:project).permit(:title, :published, :external, :url, :text)
   end
 
 end

@@ -13,7 +13,7 @@ class ApplicationRecord < ActiveRecord::Base
     # don't gsub "pat-link" class name for links now since that class is being used to listen for external links clicked
     # ^ the JS for this checks the id attribute and just don't want to add that complexity to many embeded links inside text at this point
       # perhaps consider ArticleLink ruby class later to set id, index of link within text, etc.
-    text.gsub(/\n/, '<p class="article-p">').gsub('<p>', '<p class="article-p">').gsub('a href', 'a class="link-page" href').gsub('<ul>', '<ul class="article-ul">').gsub('<li>', '<li class="article-li">').html_safe
+    text.gsub(/\n/, '').gsub(/\r/, '').gsub('<p>', '<p class="article-p">').gsub('a href', 'a class="link-page" href').gsub('<ul>', '<ul class="article-ul">').gsub('<li>', '<li class="article-li">').html_safe
   end
 
   def pretty_date
