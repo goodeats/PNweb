@@ -15,6 +15,9 @@ class Admin::AboutController < ApplicationController
 
   def edit
     @about = About.find(params[:id])
+    # had to set action explicitly for singular resource
+    # uncomfortable with 'show', but it sets the correct path for the form
+    @action = 'show'
     add_breadcrumb @about.title, admin_about_path(@about)
     add_breadcrumb 'edit', edit_admin_project_path(@about)
   end
@@ -31,6 +34,7 @@ class Admin::AboutController < ApplicationController
 
   def new
     @about = About.new
+    @action = 'create'
     add_breadcrumb 'create about'
   end
 
@@ -41,6 +45,12 @@ class Admin::AboutController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @about = About.find(params[:id])
+    @about.destroy
+    redirect_to admin_about_index_path
   end
 
   private
