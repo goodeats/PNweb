@@ -24,7 +24,7 @@ class Admin::AboutController < ApplicationController
 
   def update
     @about = About.find(params[:id])
-    if @about.update(project_params)
+    if @about.update(about_params)
       flash[:success] = "updated #{@about.title}!"
       redirect_to admin_about_path(@about)
     else
@@ -39,7 +39,7 @@ class Admin::AboutController < ApplicationController
   end
 
   def create
-    @about = About.new(project_params)
+    @about = About.new(about_params)
     if @about.save
       redirect_to admin_about_path(@about)
     else
@@ -55,7 +55,7 @@ class Admin::AboutController < ApplicationController
 
   private
 
-  def project_params
+  def about_params
     params.require(:about).permit(:title, :published, :text)
   end
 
