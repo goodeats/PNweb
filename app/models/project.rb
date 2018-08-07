@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
   # inherits ApplicationRecord methods
 
-  validates :name, :description, presence: true
+  validates :title, :text, presence: true
 end
