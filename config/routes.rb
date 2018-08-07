@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'pat#index'
 
+  # https://collectiveidea.com/blog/archives/2016/01/12/lets-encrypt-with-a-rails-app-on-heroku
+  get '/.well-known/acme-challenge/:id' => 'pat#letsencrypt'
+
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
     # omniauth_callbacks: 'users/omniauth_callbacks',
