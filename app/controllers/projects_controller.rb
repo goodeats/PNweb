@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   add_breadcrumb 'projects', :projects_path
 
   def index
-    @projects = Project.published
+    @projects = Project.published.desc
   end
 
 end

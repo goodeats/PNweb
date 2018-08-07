@@ -5,6 +5,6 @@ class ArticlesController < ApplicationController
   add_breadcrumb 'blog', :articles_path
 
   def index
-    @articles = Article.published
+    @articles = Article.published.desc
   end
 end

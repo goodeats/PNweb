@@ -5,6 +5,14 @@ class ApplicationRecord < ActiveRecord::Base
   # OPP part => they are still bound to the class
   # FP part => all classes inherit these methods so the methods below are agnostic to which ones it will actually work for
 
+  def self.asc
+    order(:id)
+  end
+
+  def self.desc
+    order(id: :desc)
+  end
+
   def self.published
     where(published: true)
   end

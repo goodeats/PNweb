@@ -5,6 +5,6 @@ class AboutController < ApplicationController
   add_breadcrumb 'about', :about_index_path
 
   def index
-    @abouts = About.published.order(:id)
+    @abouts = About.published.asc
   end
 end
