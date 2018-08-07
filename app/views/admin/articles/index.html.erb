@@ -1,0 +1,18 @@
+<div class="page-section">
+  <div class="section-content section-content-left">
+    <h2 class="page-title">my articles</h2>
+    <% @articles.map do |article| %>
+      <article class="article">
+        <ul class="article-content-ul">
+          <li class="article-content-li"><%= link_to 'View', admin_article_path(article), class: 'link-page article-content-li-link' %></li>
+          <li class="article-content-li"><%= link_to 'Edit', edit_admin_article_path(article), class: 'link-page article-content-li-link' %></li>
+          <li class="article-content-li"><%= link_to 'Delete', admin_article_path(article), data: {confirm: 'Are you sure, Pat?'}, method: :delete, class: 'link-page article-content-li-link' %></li>
+        </ul>
+        <h3 class="article-title"><%= article.title %></h3>
+        <div class="article-timestamp"><%= article.pretty_date %></div>
+        <%= image_tag article.image_url, alt: article.image_alt, class: 'img-page' %>
+        <%= article.pretty_text %>
+      </article>
+    <% end %>
+  </div>
+</div>
