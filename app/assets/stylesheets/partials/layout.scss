@@ -24,7 +24,7 @@ body {
 
 .page-content {
   width: $col-six;
-  padding-top: $spacing-large;
+  padding-top: $spacing-large - $spacing-main;
   max-width: $width-max;
   margin: 0 auto;
 }

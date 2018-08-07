@@ -1,4 +1,4 @@
-<% if params[:controller].include? 'admin' %>
+<% if !params[:controller].include? 'pat' %>
   <div class="breadcrumbs">
     <%= render_breadcrumbs tag: :li, separator: '|' %>
   </div>
