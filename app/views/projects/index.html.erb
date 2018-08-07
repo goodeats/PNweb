@@ -3,7 +3,7 @@
     <h2 class="page-title">my projects</h2>
     <% @projects.map do |project| %>
       <article class="article">
-        <h3 class="article-title"><%= project.title %>!</h3>
+        <h3 class="article-title"><%= project.title %></h3>
         <%= project.pretty_text %>
         <p class="article-p"><%= link_to project.url, project.url, class: 'pat-link link-page', target: '_blank' %></p>
       </article>
