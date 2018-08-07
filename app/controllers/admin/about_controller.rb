@@ -5,17 +5,17 @@ class Admin::AboutController < ApplicationController
 
   def index
     @abouts = About.all
-    add_breadcrumb 'create about', new_admin_project_path
+    add_breadcrumb 'create about', new_admin_about_path
   end
 
   def show
     @about = About.find(params[:id])
-    add_breadcrumb @about.name, admin_project_path(@about)
+    add_breadcrumb @about.title, admin_about_path(@about)
   end
 
   def edit
     @about = About.find(params[:id])
-    add_breadcrumb @about.name, admin_project_path(@about)
+    add_breadcrumb @about.name, admin_about_path(@about)
     add_breadcrumb 'edit', edit_admin_project_path(@about)
   end
 
@@ -23,7 +23,7 @@ class Admin::AboutController < ApplicationController
     @about = About.find(params[:id])
     if @about.update(project_params)
       flash[:success] = "updated #{@about.name}!"
-      redirect_to admin_project_path(@about)
+      redirect_to admin_about_path(@about)
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class Admin::AboutController < ApplicationController
   def create
     @about = About.new(project_params)
     if @about.save
-      redirect_to admin_project_path(@about)
+      redirect_to admin_about_path(@about)
     else
       render :new
     end
