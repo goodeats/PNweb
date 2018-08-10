@@ -1,0 +1,13 @@
+<div class="page-section">
+  <div class="section-content section-content-left">
+    <h2 class="page-title"><%= @demo.title %></h2>
+    <article class="article">
+      <ul class="article-content-ul">
+        <li class="article-content-li"><%= link_to 'Edit', edit_admin_demo_path(@demo), class: 'link-page article-content-li-link' %></li>
+        <li class="article-content-li"><%= link_to 'Delete', admin_demo_path(@demo), data: {confirm: 'Are you sure, Pat?'}, method: :delete, class: 'link-page article-content-li-link' %></li>
+      </ul>
+      <p class="article-p"><%= @demo.published ? '🙋🏻‍♂️ published' : '🙅🏻‍♂️ not published' %></p>
+      <%= @demo.pretty_text %>
+    </article>
+  </div>
+</div>
