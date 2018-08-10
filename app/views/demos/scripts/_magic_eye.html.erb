@@ -26,7 +26,13 @@
     }
 
     render() {
-      return (<img id="magic-eye" width="500" height="400" src />);
+      // fit magic eye in article container
+      const rootWidth = root.clientWidth;
+      return (<img
+                id="magic-eye"
+                width={rootWidth}
+                height="400" src />
+            );
     }
   }
 
