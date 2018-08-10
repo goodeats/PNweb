@@ -1,9 +1,13 @@
+<%= render 'demos/scripts/sub_scripts/magic_eye' %>
+
+<!-- react -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+
 <script type="text/babel">
   // https://medium.com/@to_pe/how-to-add-react-to-a-simple-html-file-a11511c0235f
-  console.log('hi');
+  // https://github.com/peeinears/MagicEye.js
 
   // add root div to article
   var root = document.createElement('DIV');
@@ -12,12 +16,20 @@
 
 
   // set react component
-  class Greeting extends React.Component {
+  class Magic extends React.Component {
+
+    componentDidMount(){
+      MagicEye.render({
+        el: 'magic-eye',
+        depthMapper: new MagicEye.TextDepthMapper("👍👍👍")
+      });
+    }
+
     render() {
-      return (<p>Hello Pat</p>);
+      return (<img id="magic-eye" width="500" height="400" src />);
     }
   }
 
   // append react component to root div
-  ReactDOM.render(<Greeting />, document.getElementById('root'));
+  ReactDOM.render(<Magic />, document.getElementById('root'));
 </script>
