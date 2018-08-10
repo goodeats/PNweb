@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180810155605) do
   create_table "demos", force: :cascade do |t|
     t.string "title"
     t.text "text"
+    t.boolean "published", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

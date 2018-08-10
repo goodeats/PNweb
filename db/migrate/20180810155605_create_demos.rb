@@ -4,6 +4,7 @@ class CreateDemos < ActiveRecord::Migration[5.1]
     create_table :demos do |t|
       t.string :title
       t.text :text
+      t.boolean :published, default: false
 
       t.timestamps
     end
