@@ -5,15 +5,19 @@
   // https://medium.com/@to_pe/how-to-add-react-to-a-simple-html-file-a11511c0235f
   console.log('hi');
 
+  // add root div to article
   var root = document.createElement('DIV');
   root.setAttribute('id', 'root')
   document.getElementsByTagName('article')[0].appendChild(root);
 
+
+  // set react component
   class Greeting extends React.Component {
     render() {
       return (<p>Hello Pat</p>);
     }
   }
 
+  // append react component to root div
   ReactDOM.render(<Greeting />, document.getElementById('root'));
 </script>
