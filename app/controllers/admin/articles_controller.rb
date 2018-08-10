@@ -1,4 +1,5 @@
 class Admin::ArticlesController < ApplicationController
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb 'admin', :admin_path
   add_breadcrumb 'blog', :admin_articles_path
@@ -9,18 +10,15 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
     add_breadcrumb @article.title, admin_article_path(@article)
   end
 
   def edit
-    @article = Article.find(params[:id])
     add_breadcrumb @article.title, admin_article_path(@article)
     add_breadcrumb 'edit', edit_admin_article_path(@article)
   end
 
   def update
-    @article = Article.find(params[:id])
     if @article.update(article_params)
       flash[:success] = "updated #{@article.title}!"
       redirect_to admin_article_path(@article)
@@ -44,12 +42,15 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     redirect_to admin_articles_path
   end
 
   private
+
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
   def article_params
     params.require(:article).permit(:title, :published, :image_url, :image_alt, :text)
