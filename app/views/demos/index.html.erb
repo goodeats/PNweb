@@ -1,0 +1,11 @@
+<div class="page-section">
+  <div class="section-content section-content-left">
+    <h2 class="page-title">my demos</h2>
+    <% @demos.map do |demo| %>
+      <article class="article">
+        <h3 class="article-title"><%= demo.title %></h3>
+        <%= demo.pretty_text %>
+      </article>
+    <% end %>
+  </div>
+</div>
