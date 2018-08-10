@@ -1,0 +1,19 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script type="text/babel">
+  // https://medium.com/@to_pe/how-to-add-react-to-a-simple-html-file-a11511c0235f
+  console.log('hi');
+
+  var root = document.createElement('DIV');
+  root.setAttribute('id', 'root')
+  document.getElementsByTagName('article')[0].appendChild(root);
+
+  class Greeting extends React.Component {
+    render() {
+      return (<p>Hello Pat</p>);
+    }
+  }
+
+  ReactDOM.render(<Greeting />, document.getElementById('root'));
+</script>

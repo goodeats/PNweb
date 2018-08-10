@@ -1,3 +1,6 @@
+<% content_for :javascript_includes do %>
+  <%= render "demos/scripts/#{@demo.title.gsub(/ /, '_')}" %>
+<% end %>
 <div class="page-section">
   <div class="section-content section-content-left">
     <h2 class="page-title"><%= @demo.title %></h2>
