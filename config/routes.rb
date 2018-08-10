@@ -21,10 +21,11 @@ Rails.application.routes.draw do
   resources :about, only: [:index]
   resources :projects, only: [:index]
   resources :articles, path: 'blog', only: [:index]
+  resources :demos, only: [:index, :show]
 
   namespace :admin do
     resources :pat, only: [:index]
-    resources :projects, :about
+    resources :projects, :demos, :about
     resources :articles, path: 'blog'
   end
 

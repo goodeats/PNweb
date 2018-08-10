@@ -1,0 +1,41 @@
+<%= render 'demos/scripts/sub_scripts/magic_eye' %>
+
+<!-- react -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+
+<script type="text/babel">
+  // https://medium.com/@to_pe/how-to-add-react-to-a-simple-html-file-a11511c0235f
+  // https://github.com/peeinears/MagicEye.js
+
+  // add root div to article
+  var root = document.createElement('DIV');
+  root.setAttribute('id', 'root')
+  document.getElementsByTagName('article')[0].appendChild(root);
+
+
+  // set react component
+  class Magic extends React.Component {
+
+    componentDidMount(){
+      MagicEye.render({
+        el: 'magic-eye',
+        depthMapper: new MagicEye.TextDepthMapper("👍👍👍")
+      });
+    }
+
+    render() {
+      // fit magic eye in article container
+      const rootWidth = root.clientWidth;
+      return (<img
+                id="magic-eye"
+                width={rootWidth}
+                height="400" src />
+            );
+    }
+  }
+
+  // append react component to root div
+  ReactDOM.render(<Magic />, document.getElementById('root'));
+</script>
