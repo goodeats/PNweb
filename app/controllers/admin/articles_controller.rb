@@ -4,7 +4,7 @@ class Admin::ArticlesController < ApplicationController
   add_breadcrumb 'blog', :admin_articles_path
 
   def index
-    @articles = Article.all
+    @articles = Article.desc
     add_breadcrumb 'create blog', new_admin_article_path
   end
 

@@ -4,7 +4,7 @@ class Admin::ProjectsController < ApplicationController
   add_breadcrumb 'projects', :admin_projects_path
 
   def index
-    @projects = Project.all
+    @projects = Project.desc
     add_breadcrumb 'create project', new_admin_project_path
   end
 

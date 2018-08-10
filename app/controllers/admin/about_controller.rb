@@ -4,7 +4,7 @@ class Admin::AboutController < ApplicationController
   add_breadcrumb 'about', :admin_about_index_path
 
   def index
-    @abouts = About.all
+    @abouts = About.asc
     add_breadcrumb 'create about', new_admin_about_path
   end
 
