@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= display_meta_tags site: 'Pat Needham' %>
+  <%= display_meta_tags site: @site_title || 'Pat Needham' %>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <%= favicon_link_tag 'pat_logo.png' %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
