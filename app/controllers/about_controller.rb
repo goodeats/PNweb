@@ -1,7 +1,7 @@
 class AboutController < ApplicationController
-  include SetMetaTags
   skip_before_action :authenticate_user!
   before_action :set_meta_about
+  include SetMetaTags
 
   add_breadcrumb '🏠', :root_path
   add_breadcrumb 'about', :about_index_path

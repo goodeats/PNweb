@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <% # sets meta tags for seo, initiated in application_controller.rb, then controller, then controllers/concerns/set_meta_tags %>
-  <%= display_meta_tags site: @site_title || 'Pat Needham' %>
+  <%= render 'layouts/meta' %>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <% # makes ENV variables accessible via js if allowed %>

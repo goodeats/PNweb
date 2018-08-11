@@ -1,8 +1,8 @@
 class DemosController < ApplicationController
-  include SetMetaTags
   skip_before_action :authenticate_user!
   before_action :set_meta_demos, only: [:index]
   before_action :set_demo, :set_meta_demo, only: [:show]
+  include SetMetaTags
 
   add_breadcrumb '🏠', :root_path
   add_breadcrumb 'demos', :demos_path

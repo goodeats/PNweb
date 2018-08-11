@@ -1,5 +1,6 @@
 class PatController < ApplicationController
   skip_before_action :authenticate_user!
+  include SetMetaTags
 
   def index
     @page_keywords = @page_keywords << 'home'

@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
-  include SetMetaTags
   skip_before_action :authenticate_user!
   before_action :set_meta_projects
+  include SetMetaTags
 
   add_breadcrumb '🏠', :root_path
   add_breadcrumb 'projects', :projects_path
