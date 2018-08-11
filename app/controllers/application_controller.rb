@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   def set_meta
     @page_title = '✌️'
     @page_description = 'Full Stack Web Developer'
-    @image_src = 'https://patneedham.me' + ActionController::Base.helpers.asset_path('pat_katahdin.JPG')
+    @image_src = 'http://patneedham.me' + ActionController::Base.helpers.asset_path('pat_katahdin.JPG')
     @icon = ActionController::Base.helpers.asset_path('pat_logo.png')
     @page_keywords = page_keywords
   end
