@@ -1,4 +1,4 @@
-class Admin::ProjectsController < ApplicationController
+class Admin::ProjectsController < Admin::AdminController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb 'admin', :admin_path
@@ -7,15 +7,18 @@ class Admin::ProjectsController < ApplicationController
   def index
     @projects = Project.desc
     add_breadcrumb 'create project', new_admin_project_path
+    @page_title = 'my projects'
   end
 
   def show
     add_breadcrumb @project.title, admin_project_path(@project)
+    @page_title = @project.title
   end
 
   def edit
     add_breadcrumb @project.title, admin_project_path(@project)
     add_breadcrumb 'edit', edit_admin_project_path(@project)
+    @page_title = "edit #{@project.title}"
   end
 
   def update
@@ -30,6 +33,7 @@ class Admin::ProjectsController < ApplicationController
   def new
     @project = Project.new
     add_breadcrumb 'create project'
+    @page_title = 'new project'
   end
 
   def create
