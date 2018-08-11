@@ -2,8 +2,7 @@ class PatController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @page_description = 'Full Stack Web Developer'
-    @image = 'Full Stack Web Developer'
+    @page_keywords = @page_keywords << 'home'
   end
 
   # https://collectiveidea.com/blog/archives/2016/01/12/lets-encrypt-with-a-rails-app-on-heroku

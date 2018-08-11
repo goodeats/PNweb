@@ -6,5 +6,7 @@ class AboutController < ApplicationController
 
   def index
     @abouts = About.published.asc
+    @page_title = 'about me'
+    @page_description = 'About Pat Needham'
   end
 end
