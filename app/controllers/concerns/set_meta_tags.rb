@@ -18,8 +18,13 @@ module SetMetaTags
       site_name:    'Pat Needham',
       title:        @page_title,
       description:  @page_description,
-      image:        @image_src,
-      url:          url
+      image:        [{
+        _:            @image_src,
+        width:        1200,
+        height:       630
+      }],
+      url:          url,
+      type:         'website'
     }
   end
 
