@@ -30,7 +30,7 @@ module SetMetaTags
 
   def twitter_tags
     {
-      card:         'summary',
+      card:         'summary_large_image',
       site:         '@patneedham_',
       title:        @page_title,
       description:  @page_description,
