@@ -6,6 +6,9 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.published.desc
+    @page_title = 'my projects'
+    @page_description = 'Projects by Pat Needham'
+    @page_keywords = @page_keywords + ['projects', 'opencity', 'ditto', 'professional', 'personal']
   end
 
 end

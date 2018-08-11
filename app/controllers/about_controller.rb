@@ -8,5 +8,6 @@ class AboutController < ApplicationController
     @abouts = About.published.asc
     @page_title = 'about me'
     @page_description = 'About Pat Needham'
+    @page_keywords = @page_keywords + ['about', 'me', 'bio', 'professional', 'personal', 'opencity', 'ditto', 'general', 'assembly', 'wdi']
   end
 end
