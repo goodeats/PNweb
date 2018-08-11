@@ -1,5 +1,6 @@
 class PatController < ApplicationController
   skip_before_action :authenticate_user!
+  before_action :set_meta_pat
   include SetMetaTags
 
   def index
@@ -11,6 +12,12 @@ class PatController < ApplicationController
   # not free with heroku anymore 🤷🏻‍♂️
   def letsencrypt
     render plain: ENV['LETSENCRYPT_CERT']
+  end
+
+  private
+
+  def set_meta_pat
+    @page_title = 'home'
   end
 
 end
