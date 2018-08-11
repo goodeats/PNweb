@@ -1,14 +1,10 @@
-<div class="page-section">
-  <div class="section-content section-content-left">
-    <h2 class="page-title"><%= @project.title %></h2>
-    <article class="article">
-      <ul class="article-content-ul">
-        <li class="article-content-li"><%= link_to 'Edit', edit_admin_project_path(@project), class: 'link-page article-content-li-link' %></li>
-        <li class="article-content-li"><%= link_to 'Delete', admin_project_path(@project), data: {confirm: 'Are you sure, Pat?'}, method: :delete, class: 'link-page article-content-li-link' %></li>
-      </ul>
-      <p class="article-p"><%= @project.published ? '🙋🏻‍♂️ published' : '🙅🏻‍♂️ not published' %></p>
-      <%= @project.pretty_text %>
-      <p class="article-p"><%= link_to @project.url, @project.url, class: 'pat-link link-page', target: '_blank' %></p>
-    </article>
-  </div>
-</div>
+<h2 class="page-title"><%= @project.title %></h2>
+<article class="article">
+  <ul class="article-content-ul">
+    <li class="article-content-li"><%= link_to 'Edit', edit_admin_project_path(@project), class: 'link-page article-content-li-link' %></li>
+    <li class="article-content-li"><%= link_to 'Delete', admin_project_path(@project), data: {confirm: 'Are you sure, Pat?'}, method: :delete, class: 'link-page article-content-li-link' %></li>
+  </ul>
+  <p class="article-p"><%= @project.published ? '🙋🏻‍♂️ published' : '🙅🏻‍♂️ not published' %></p>
+  <%= @project.pretty_text %>
+  <p class="article-p"><%= link_to @project.url, @project.url, class: 'pat-link link-page', target: '_blank' %></p>
+</article>

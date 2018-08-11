@@ -1,13 +1,9 @@
-<div class="page-section">
-  <div class="section-content section-content-left">
-    <h2 class="page-title">blog</h2>
-    <% @articles.map do |article| %>
-      <article class="article article-blog">
-        <h3 class="article-title"><%= article.title %></h1>
-        <div class="article-timestamp"><%= article.pretty_date %></div>
-        <%= image_tag article.image_url, alt: article.image_alt, class: 'img-page' %>
-        <%= article.pretty_text %>
-      </article>
-    <% end %>
-  </div>
-</div>
+<h2 class="page-title">blog</h2>
+<% @articles.map do |article| %>
+  <article class="article article-blog">
+    <h3 class="article-title"><%= article.title %></h1>
+    <div class="article-timestamp"><%= article.pretty_date %></div>
+    <%= image_tag article.image_url, alt: article.image_alt, class: 'img-page' %>
+    <%= article.pretty_text %>
+  </article>
+<% end %>

@@ -1,11 +1,7 @@
-<div class="page-section">
-  <div class="section-content section-content-left">
-    <h2 class="page-title">about me</h2>
-    <% @abouts.map do |about| %>
-      <article class="article">
-        <h3 class="article-title"><%= about.title %></h1>
-        <%= about.pretty_text %>
-      </article>
-    <% end %>
-  </div>
-</div>
+<h2 class="page-title">about me</h2>
+<% @abouts.map do |about| %>
+  <article class="article">
+    <h3 class="article-title"><%= about.title %></h1>
+    <%= about.pretty_text %>
+  </article>
+<% end %>

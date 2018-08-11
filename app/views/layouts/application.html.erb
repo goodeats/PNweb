@@ -16,7 +16,11 @@
     <div class="page-content">
       <%= render 'layouts/breadcrumbs' %>
       <%= render 'layouts/flash' %>
-      <%= yield %>
+      <div class="page-section">
+        <div class="section-content section-content-left">
+          <%= yield %>
+        </div>
+      </div>
     </div>
     <%= render 'layouts/footer' %>
   </div>
