@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'pat#index'
 
+  get '/header_image.jpg', to: 'pat#image_url', as: :pat
+
   # https://collectiveidea.com/blog/archives/2016/01/12/lets-encrypt-with-a-rails-app-on-heroku
   # not free with heroku anymore 🤷🏻‍♂️
   get '/.well-known/acme-challenge/:id' => 'pat#letsencrypt'
