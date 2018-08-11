@@ -1,4 +1,4 @@
-class Admin::AboutController < ApplicationController
+class Admin::AboutController < Admin::AdminController
   before_action :set_about, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb 'admin', :admin_path
@@ -7,6 +7,7 @@ class Admin::AboutController < ApplicationController
   def index
     @abouts = About.asc
     add_breadcrumb 'create about', new_admin_about_path
+    @page_title = 'my abouts'
   end
 
   def show

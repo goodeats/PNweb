@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
     @page_title = '✌️'
     @page_description = 'Full Stack Web Developer'
     @image_src = ActionController::Base.helpers.asset_path('pat_logo.png')
+    @icon = ActionController::Base.helpers.asset_path('pat_logo.png')
     @page_keywords = page_keywords
   end
 
