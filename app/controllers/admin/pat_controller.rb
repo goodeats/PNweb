@@ -1,4 +1,4 @@
-class Admin::PatController < ApplicationController
+class Admin::PatController < Admin::AdminController
 
   def index
   end

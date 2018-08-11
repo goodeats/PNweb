@@ -1,4 +1,4 @@
-class Admin::DemosController < ApplicationController
+class Admin::DemosController < Admin::AdminController
   before_action :set_demo, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb 'admin', :admin_path
@@ -7,15 +7,18 @@ class Admin::DemosController < ApplicationController
   def index
     @demos = Demo.desc
     add_breadcrumb 'create demo', new_admin_demo_path
+    @page_title = 'my demos'
   end
 
   def show
     add_breadcrumb @demo.title, admin_demo_path(@demo)
+    @page_title = @demo.title
   end
 
   def edit
     add_breadcrumb @demo.title, admin_demo_path(@demo)
     add_breadcrumb 'edit', edit_admin_demo_path(@demo)
+    @page_title = "edit #{@demo.title}"
   end
 
   def update
@@ -30,6 +33,7 @@ class Admin::DemosController < ApplicationController
   def new
     @demo = Demo.new
     add_breadcrumb 'create demo'
+    @page_title = 'new demo'
   end
 
   def create

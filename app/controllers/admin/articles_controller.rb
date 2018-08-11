@@ -1,4 +1,4 @@
-class Admin::ArticlesController < ApplicationController
+class Admin::ArticlesController < Admin::AdminController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb 'admin', :admin_path
@@ -7,15 +7,18 @@ class Admin::ArticlesController < ApplicationController
   def index
     @articles = Article.desc
     add_breadcrumb 'create blog', new_admin_article_path
+    @page_title = 'my blogs'
   end
 
   def show
     add_breadcrumb @article.title, admin_article_path(@article)
+    @page_title = @article.title
   end
 
   def edit
     add_breadcrumb @article.title, admin_article_path(@article)
     add_breadcrumb 'edit', edit_admin_article_path(@article)
+    @page_title = "edit #{@article.title}"
   end
 
   def update
@@ -30,6 +33,7 @@ class Admin::ArticlesController < ApplicationController
   def new
     @article = Article.new
     add_breadcrumb 'create article'
+    @page_title = "new blog"
   end
 
   def create

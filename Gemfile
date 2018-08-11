@@ -33,6 +33,9 @@ gem 'rails_12factor', group: :production
 gem 'dotenv-rails'
 gem 'gon' # makes env var files available to js
 
+# seo
+gem 'meta-tags'
+
 group :development, :test do
   gem 'pry'
   gem 'web-console', '~> 2.0'
