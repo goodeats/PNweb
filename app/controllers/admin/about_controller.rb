@@ -7,11 +7,12 @@ class Admin::AboutController < Admin::AdminController
   def index
     @abouts = About.asc
     add_breadcrumb 'create about', new_admin_about_path
-    @page_title = 'my abouts'
+    @page_title = 'about me'
   end
 
   def show
     add_breadcrumb @about.title, admin_about_path(@about)
+    @page_title = @about.title
   end
 
   def edit
@@ -20,6 +21,7 @@ class Admin::AboutController < Admin::AdminController
     @action = 'show'
     add_breadcrumb @about.title, admin_about_path(@about)
     add_breadcrumb 'edit', edit_admin_project_path(@about)
+    @page_title = "edit #{@about.title}"
   end
 
   def update
@@ -35,6 +37,7 @@ class Admin::AboutController < Admin::AdminController
     @about = About.new
     @action = 'create'
     add_breadcrumb 'create about'
+    @page_title = "new about"
   end
 
   def create
