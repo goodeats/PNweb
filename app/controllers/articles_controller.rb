@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = Article.find_by_param(params[:id]) || Article.find(params[:id])
   end
 
   def set_meta_articles
