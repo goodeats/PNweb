@@ -1,0 +1,5 @@
+<article class="article article-blog">
+  <div class="article-timestamp"><%= @article.pretty_date %></div>
+  <%= image_tag @article.image_url, alt: @article.image_alt, class: 'img-page' %>
+  <%= @article.pretty_text %>
+</article>

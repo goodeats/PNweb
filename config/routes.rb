@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :about, only: [:index]
   resources :projects, only: [:index]
-  resources :articles, path: 'blog', only: [:index]
+  resources :articles, path: 'blog', only: [:index, :show]
   resources :demos, only: [:index, :show]
 
   namespace :admin do
