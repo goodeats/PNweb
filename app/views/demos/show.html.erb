@@ -1,6 +1,15 @@
+<article class="article">
+  <%= @demo.pretty_text %>
+
+  <div id="app">
+    {{ message }}
+    <ul v-for="card in cards">
+      <li>{{ card.name.toString().toUpperCase() }}</li>
+    </ul>
+  </div>
+
+
+</article>
 <% content_for :javascript_includes do %>
   <%= render "demos/scripts/#{@demo.title.gsub(/ /, '_')}" %>
 <% end %>
-<article class="article">
-  <%= @demo.pretty_text %>
-</article>

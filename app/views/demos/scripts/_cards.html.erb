@@ -1,0 +1,43 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+
+function suits(){
+  return ['❤️','♠️','♦️','♣️'];
+};
+
+function cards_by_type(){
+  var deck = [
+    {name: 'a', value: 11, alt_value: 1},
+    {name: 'k', value: 10},
+    {name: 'q', value: 10},
+    {name: 'j', value: 10}
+  ];
+  for (var i = 10; i > 1; i--){
+    deck.push({name: i, value: i});
+  }
+  return deck;
+};
+
+function get_suits(cards){
+  var deck = [];
+  cards.forEach(function(card){
+    suits().forEach(function(suit){
+      card.suit = suit;
+      deck.push(card);
+    });
+  });
+  return deck;
+}
+
+function cards(){
+  return get_suits(cards_by_type());
+}
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hi Pat!',
+    cards: cards()
+  }
+});
+</script>
