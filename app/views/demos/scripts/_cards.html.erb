@@ -22,8 +22,9 @@ function get_suits(cards){
   var deck = [];
   cards.forEach(function(card){
     suits().forEach(function(suit){
-      card.suit = suit;
-      deck.push(card);
+      var card_copy = JSON.parse(JSON.stringify(card));
+      card_copy.suit = suit;
+      deck = [...deck, card_copy];
     });
   });
   return deck;
@@ -38,6 +39,11 @@ var app = new Vue({
   data: {
     message: 'Hi Pat!',
     cards: cards()
+  },
+  methods: {
+    pretty_card: function(card){
+      return card.name.toString().toUpperCase() + ' ' + card.suit
+    }
   }
 });
 </script>
