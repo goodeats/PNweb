@@ -3,6 +3,9 @@
 
   <div id="app">
     <p>{{ message }}</p>
+    <p>
+      <button @click="shuffle">Shuffle</button>
+    </p>
     <card
       v-for="card in cards"
       :card="card"
