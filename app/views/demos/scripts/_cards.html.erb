@@ -1,5 +1,58 @@
+<style>
+.card-item {
+  width: 50px;
+  height: 80px;
+  display: inline-block;
+  position: relative;
+  margin: 20px;
+  margin-right: -30px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.card-name--top,
+.card-name--bottom {
+  position: absolute;
+  padding: 5px;
+}
+
+.card-name--top {
+  top: 0;
+  left: 0;
+}
+
+.card-name--bottom {
+  bottom: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.card-suit {
+  line-height: 80px;
+}
+
+
+</style>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <script>
+
+Vue.component('card', {
+  props: ['card'],
+  template: `
+    <li class="card-item">
+      <span class="card-name--top">{{ pretty_card(card) }}</span>
+      <span class="card-suit">{{ card.suit }}</span>
+      <span class="card-name--bottom">{{ pretty_card(card) }} </span>
+    </li>
+  `,
+  methods: {
+    pretty_card: function(card){
+      return card.name.toString().toUpperCase()
+    }
+  }
+})
 
 function suits(){
   return ['❤️','♠️','♦️','♣️'];
@@ -41,9 +94,7 @@ var app = new Vue({
     cards: cards()
   },
   methods: {
-    pretty_card: function(card){
-      return card.name.toString().toUpperCase() + ' ' + card.suit
-    }
+
   }
 });
 </script>

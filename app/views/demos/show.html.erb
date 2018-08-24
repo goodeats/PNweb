@@ -2,10 +2,11 @@
   <%= @demo.pretty_text %>
 
   <div id="app">
-    {{ message }}
-    <ul v-for="card in cards">
-      <li v-html="pretty_card(card)"></li>
-    </ul>
+    <p>{{ message }}</p>
+    <card
+      v-for="card in cards"
+      :card="card"
+    ></card>
   </div>
 
 
