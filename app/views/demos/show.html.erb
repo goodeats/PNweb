@@ -6,6 +6,16 @@
     <p>
       <button @click="shuffle">Shuffle</button>
     </p>
+    <p>
+      <button @click="deal">Deal</button>
+    </p>
+    <p>Player hand:</p>
+    <div v-html="player_score(score)"></div>
+    <card
+      v-for="hand in hands"
+      :card="hand"
+    ></card>
+    <p>Deck:</p>
     <card
       v-for="card in cards"
       :card="card"

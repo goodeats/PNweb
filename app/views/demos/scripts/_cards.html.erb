@@ -37,6 +37,8 @@
 
 
 </style>
+
+
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <script>
 
@@ -51,10 +53,10 @@ Vue.component('card', {
   `,
   methods: {
     pretty_card: function(card){
-      return card.name.toString().toUpperCase()
+      return card.name.toString().toUpperCase();
     }
   }
-})
+});
 
 function suits(){
   return ['❤️','♠️','♦️','♣️'];
@@ -93,11 +95,29 @@ var app = new Vue({
   el: '#app',
   data: {
     message: 'Hi Pat!',
-    cards: cards()
+    cards: cards(),
+    hands: [], // one player
+    score: [0,0]
   },
   methods: {
     shuffle: function(){
       return this.cards.sort((a, b) => Math.random() > .5 ? -1 : 1);
+    },
+    deal: function(){
+      var card1 = this.cards.shift();
+      this.hands = [...this.hands, card1];
+      this.updateScore(card1);
+      var card2 = this.cards.shift();
+      this.hands = [...this.hands, card2];
+      this.updateScore(card1);
+    },
+    player_score: function(score){
+      // check for ace
+      return score[0] + " (or " + score[1] + ")";
+    },
+    updateScore: function(card){
+      this.score[0] += card.value;
+      this.score[1] += card.alt_value || card.value;
     }
   }
 });
