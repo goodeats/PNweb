@@ -111,7 +111,11 @@ function default_data(){
     game_status: 'Start the game!',
     game_started: false,
     game_over: false,
-    has_ace: false // should only have one ace at 11 per round
+    has_ace: false, // should only have one ace at 11 per round
+    dealer_has_ace: false, // should only have one ace at 11 per round
+    dealer_score: [0,0],
+    dealer_hands: [],
+    deal_to_player: true
   };
 }
 
@@ -124,19 +128,33 @@ var app = new Vue({
     },
     deal: function(){
       if (this.game_over) return;
-      this.game_status = 'Playing the game';
-
-      if (!this.game_started){
-        this.game_started = true;
+      if (this.game_started){
         this.deal_card();
+      } else {
+        this.start_game();
       }
-
-      this.deal_card();
+    },
+    start_game: function(){
+      this.game_started = true;
+      this.game_status = 'Playing the game';
+      var yo = this;
+      [1,2,3,4].forEach(function(i){
+        yo.deal_card();
+        yo.next_player();
+      });
+    },
+    next_player: function(){
+      this.deal_to_player = !this.deal_to_player;
     },
     deal_card: function(){
       var card = this.cards.shift();
-      this.hands = [...this.hands, card];
-      this.updateScore(card);
+      if (this.deal_to_player){
+        this.hands = [...this.hands, card];
+        this.updateScore(card);
+      } else {
+        this.dealer_hands = [...this.dealer_hands, card];
+        this.updateDealerScore(card);
+      }
     },
     player_score: function(score){
       var player_score = score[0];
@@ -166,6 +184,27 @@ var app = new Vue({
 
       // if ace puts score higher than 21 then set score to lower, alt score
       if (this.score[0] > 21) this.score[0] = this.score[1];
+    },
+    show_dealer_score: function(score){
+      return score;
+    },
+    updateDealerScore: function(card){
+      // this is doing the heavy work calculating the score
+      var card_value = card.value;
+      var card_value_alt = card.value_alt;
+      var card_is_ace = card_value == 11;
+
+      // don't have two aces at 11 since that would be over 21
+      // if this card is an ace and the round already has an ace then add to score by alt value: 1
+      // otherwise add by the score
+      this.dealer_score[0] += card_is_ace && this.dealer_has_ace ? card_value_alt : card_value;
+      this.dealer_score[1] += card_value_alt || card_value;
+
+      // set the state that the ace has been accounted for
+      if (card_is_ace && !this.dealer_has_ace) this.dealer_has_ace = true;
+
+      // if ace puts score higher than 21 then set score to lower, alt score
+      if (this.dealer_score[0] > 21) this.dealer_score[0] = this.dealer_score[1];
     },
     restart: function(){
       // https://stackoverflow.com/questions/35604987/is-there-a-proper-way-of-resetting-a-components-initial-data-in-vuejs/35605629

@@ -22,6 +22,12 @@
       v-for="hand in hands"
       :card="hand"
     ></card>
+    <p>Dealer hand:</p>
+    <div v-html="show_dealer_score(dealer_score)"></div>
+    <card
+      v-for="dealer_hand in dealer_hands"
+      :card="dealer_hand"
+    ></card>
     <p>Deck:</p>
     <card
       v-for="card in cards"
