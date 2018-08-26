@@ -3,12 +3,18 @@
 
   <div id="app">
     <p>{{ message }}</p>
-    <p>{{ game_status }}</p>
+    <p>game_status: {{ game_status }}</p>
+    <p>game_started: {{ game_started }}</p>
+    <p>game_over: {{ game_over }}</p>
+    <p>cards count: {{ cards.length }}</p>
     <p>
       <button @click="shuffle">Shuffle</button>
     </p>
     <p>
       <button @click="deal">Deal</button>
+    </p>
+    <p>
+      <button @click="restart">Restart</button>
     </p>
     <p>Player hand:</p>
     <div v-html="player_score(score)"></div>

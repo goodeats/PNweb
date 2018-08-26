@@ -88,21 +88,36 @@ function get_suits(cards){
   return deck;
 }
 
-function cards(){
+function get_cards(){
   return get_suits(cards_by_type());
 }
 
-var app = new Vue({
-  el: '#app',
-  data: {
+function score_with_ace(score){
+  var player_score = score[0];
+  var player_score_alt = score[1];
+  if (player_score !== player_score_alt){
+    return player_score + " (or " + player_score_alt + ")";
+  } else {
+    return player_score;
+  }
+}
+
+function default_data(){
+  return {
     message: 'Hi Pat!',
-    cards: cards(),
+    cards: get_cards(),
     hands: [], // one player
     score: [0,0],
     game_status: 'Start the game!',
     game_started: false,
-    game_over: false
-  },
+    game_over: false,
+    has_ace: false // should only have one ace at 11 per round
+  };
+}
+
+var app = new Vue({
+  el: '#app',
+  data: default_data(),
   methods: {
     shuffle: function(){
       return this.cards.sort((a, b) => Math.random() > .5 ? -1 : 1);
@@ -124,9 +139,7 @@ var app = new Vue({
       this.updateScore(card);
     },
     player_score: function(score){
-      // check for ace
       var player_score = score[0];
-      var player_score_alt = score[1];
       if (player_score > 21){
         this.game_status = 'You Lost :(';
         this.game_over = true;
@@ -134,11 +147,29 @@ var app = new Vue({
         this.game_status = 'You Won :D';
         this.game_over = true;
       }
-      return player_score + " (or " + player_score_alt + ")";
+      return score_with_ace(score);
     },
     updateScore: function(card){
-      this.score[0] += card.value;
-      this.score[1] += card.value_alt || card.value;
+      // this is doing the heavy work calculating the score
+      var card_value = card.value;
+      var card_value_alt = card.value_alt;
+      var card_is_ace = card_value == 11;
+
+      // don't have two aces at 11 since that would be over 21
+      // if this card is an ace and the round already has an ace then add to score by alt value: 1
+      // otherwise add by the score
+      this.score[0] += card_is_ace && this.has_ace ? card_value_alt : card_value;
+      this.score[1] += card_value_alt || card_value;
+
+      // set the state that the ace has been accounted for
+      if (card_is_ace && !this.has_ace) this.has_ace = true;
+
+      // if ace puts score higher than 21 then set score to lower, alt score
+      if (this.score[0] > 21) this.score[0] = this.score[1];
+    },
+    restart: function(){
+      // https://stackoverflow.com/questions/35604987/is-there-a-proper-way-of-resetting-a-components-initial-data-in-vuejs/35605629
+      Object.assign(this.$data, default_data());
     }
   }
 });
