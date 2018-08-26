@@ -64,7 +64,7 @@ function suits(){
 
 function cards_by_type(){
   var deck = [
-    {name: 'a', value: 11, alt_value: 1},
+    {name: 'a', value: 11, value_alt: 1},
     {name: 'k', value: 10},
     {name: 'q', value: 10},
     {name: 'j', value: 10}
@@ -72,6 +72,7 @@ function cards_by_type(){
   for (var i = 10; i > 1; i--){
     deck.push({name: i, value: i});
   }
+
   return deck;
 };
 
@@ -97,27 +98,47 @@ var app = new Vue({
     message: 'Hi Pat!',
     cards: cards(),
     hands: [], // one player
-    score: [0,0]
+    score: [0,0],
+    game_status: 'Start the game!',
+    game_started: false,
+    game_over: false
   },
   methods: {
     shuffle: function(){
       return this.cards.sort((a, b) => Math.random() > .5 ? -1 : 1);
     },
     deal: function(){
-      var card1 = this.cards.shift();
-      this.hands = [...this.hands, card1];
-      this.updateScore(card1);
-      var card2 = this.cards.shift();
-      this.hands = [...this.hands, card2];
-      this.updateScore(card1);
+      if (this.game_over) return;
+      this.game_status = 'Playing the game';
+
+      if (!this.game_started){
+        this.game_started = true;
+        this.deal_card();
+      }
+
+      this.deal_card();
+    },
+    deal_card: function(){
+      var card = this.cards.shift();
+      this.hands = [...this.hands, card];
+      this.updateScore(card);
     },
     player_score: function(score){
       // check for ace
-      return score[0] + " (or " + score[1] + ")";
+      var player_score = score[0];
+      var player_score_alt = score[1];
+      if (player_score > 21){
+        this.game_status = 'You Lost :(';
+        this.game_over = true;
+      } else if (player_score === 21){
+        this.game_status = 'You Won :D';
+        this.game_over = true;
+      }
+      return player_score + " (or " + player_score_alt + ")";
     },
     updateScore: function(card){
       this.score[0] += card.value;
-      this.score[1] += card.alt_value || card.value;
+      this.score[1] += card.value_alt || card.value;
     }
   }
 });
