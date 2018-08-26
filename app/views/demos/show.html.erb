@@ -18,6 +18,10 @@
     </p>
     <p>Player hand:</p>
     <div v-html="player_score(score)"></div>
+    <p>
+      <button @click="next_player">Stand</button>
+      <span>(next player)</span>
+    </p>
     <card
       v-for="hand in hands"
       :card="hand"
