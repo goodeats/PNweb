@@ -87,7 +87,7 @@ Vue.component('box', {
       return player.player_name.toString().toUpperCase();
     },
     player_can_hit: function(player){
-      console.log('player can hit: ' + this.player.game_started + ', ' + this.player.game_ended);
+      console.log(this.player.player_name + ' can hit: ' + this.player.game_started + ', ' + !this.player.game_ended);
       return this.player.game_started && !this.player.game_ended;
     },
     player_score: function(score){
@@ -104,6 +104,7 @@ Vue.component('box', {
     player_game_over: function(){
       this.player.game_over = true;
       this.player.game_ended = true;
+      app.next_player();
     },
     deal: function(){
       return app.deal();
@@ -160,7 +161,8 @@ function get_player(){
 
 function get_dealer(){
   return Object.assign(get_player(), {
-    player_name: 'Dealer'
+    dealer:       true,
+    player_name:  'Dealer'
   });
 }
 
@@ -225,7 +227,6 @@ var app = new Vue({
       var cards_to_deal = this.get_card_count_to_deal();
       this.current_player = this.get_first_player();
       for (var i = 0; i < cards_to_deal; i++){
-
         appThis.deal_card(this.pull_card_from_deck());
         appThis.next_player();
       }
@@ -235,11 +236,11 @@ var app = new Vue({
     next_player: function(){
       var current_player = this.current_player;
       var next_player = this.get_next_player();
-      if (next_player){
+      if (next_player && !next_player.game_ended){
         this.current_player = next_player;
         this.deal_to_player = true;
       } else {
-        this.current_player = null;
+        this.current_player = this.dealer;
         this.deal_to_player = this.game_started || false;
       }
     },
@@ -257,23 +258,12 @@ var app = new Vue({
     pull_card_from_deck: function(){
       return this.cards.shift();
     },
-    player_score: function(score){
-      var player_score = score[0];
-      if (player_score > 21){
-        this.game_status = 'You Lost :(';
-        this.game_over = true;
-      } else if (player_score === 21){
-        this.game_status = 'You Won :D';
-        this.game_over = true;
-      }
-      return score_with_ace(score);
-    },
     get_first_player: function(){
       this.current_player_index = 0;
       return this.players[0];
     },
     get_next_player: function(){
-      return this.current_player ? this.players[this.current_player_index + 1] : this.get_first_player();
+      return this.current_player.dealer ? this.get_first_player() : this.players[this.current_player_index + 1];
     },
     update_score: function(current_player, card){
       // this is doing the heavy work calculating the score
