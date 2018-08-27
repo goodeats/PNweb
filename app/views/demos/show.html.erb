@@ -42,14 +42,13 @@
     </ul>
 
 
-    <p>Deck:</p>
-    <ul class="card-items card-items-dealer">
+    <p class="article-p">Deck: {{ deck.length }} cards</p>
+    <ul class="card-items card-items-dealer card-items-deck">
       <card
         v-for="card in deck"
         :card="card"
       ></card>
     </ul>
-    <p>cards left in deck: {{ deck.length }}</p>
   </div>
 
 
