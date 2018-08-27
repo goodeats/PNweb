@@ -6,6 +6,10 @@
   font: 2rem/1.175 "BlinkMacSystemFont", -apple-system, "Roboto", sans-serif;
 }
 
+.form-button {
+  font: 1rem/1.175 "BlinkMacSystemFont", -apple-system, "Roboto", sans-serif;
+}
+
 .box-item {
   border: 1px solid black;
   margin: 20px;
@@ -259,7 +263,10 @@ function default_data(){
     dealer: get_dealer(),
     game_status: 'Start the game!',
     game_started: false,
-    game_over: false
+    game_over: false,
+    restart_button: {
+      text: 'Restart Game'
+    }
   };
 }
 
@@ -268,7 +275,6 @@ var app = new Vue({
   data: default_data(),
   methods: {
     show_game_status: function(){
-      console.log('hi');
       if (this.game_over){
         return {
           color: 'red'
@@ -366,8 +372,9 @@ var app = new Vue({
       if (current_player.score[0] > 21) current_player.score[0] = current_player.score[1];
     },
     end_game: function(){
-      app.game_over = true;
-      app.game_status = 'the whole game is OVER!';
+      this.game_over = true;
+      this.game_status = 'the whole game is OVER!';
+      this.restart_button.text = 'Play New Game!';
     },
     restart: function(){
       // https://stackoverflow.com/questions/35604987/is-there-a-proper-way-of-resetting-a-components-initial-data-in-vuejs/35605629

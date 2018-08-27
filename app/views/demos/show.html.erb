@@ -15,18 +15,16 @@
         :disabled="game_started"
       >
     </p>
-    <p>
-      <button
-        @click="deal"
-        :disabled="game_started"
-      >Start Game</button>
-    </p>
-    <p>
-      <button
-        @click="restart"
-        :disabled="!game_started"
-      >Restart</button>
-    </p>
+    <button
+      class="form-button form-submit"
+      v-if="!game_started"
+      @click="deal"
+    >Start Game</button>
+    <button
+      class="form-button"
+      v-if="game_started"
+      @click="restart"
+    >{{ restart_button.text }}</button>
 
     <box
       v-for="player in players"
