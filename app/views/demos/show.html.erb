@@ -16,6 +16,7 @@
         max="6"
         v-model="players_count"
         @change="update_players_count"
+        :disabled="game_started"
       ></p>
     <p>
       <button @click="shuffle">Shuffle</button>
