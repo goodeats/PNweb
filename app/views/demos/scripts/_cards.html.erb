@@ -70,7 +70,10 @@ Vue.component('box', {
   template: `
     <li class="box-item">
       <h3 class="box-name--top">{{ pretty_card(player) }}</h3>
-      <p class="box-score">{{ player.score }}</p>
+      <p class="box-score" v-html="player_score(player.score)"></p>
+      <p>game_status: {{ player.game_status }}</p>
+      <p>game_started: {{ player.game_started }}</p>
+      <p>game_over: {{ player.game_over }}</p>
       <card
         v-for="hand in player.hands"
         :card="hand"
@@ -84,7 +87,18 @@ Vue.component('box', {
     },
     player_can_hit: function(player){
       return player.game_started && !player.game_ended;
-    }
+    },
+    player_score: function(score){
+      var player_score = score[0];
+      if (player_score > 21){
+        this.player.game_status = 'You Lost :(';
+        this.player.game_over = true;
+      } else if (player_score === 21){
+        this.player.game_status = 'You Won :D';
+        this.player.game_over = true;
+      }
+      return this.player.name + ' score: ' + score_with_ace(score);
+    },
   }
 });
 
