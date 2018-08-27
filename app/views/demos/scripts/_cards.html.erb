@@ -79,8 +79,10 @@ Vue.component('box', {
         v-for="hand in player.hands"
         :card="hand"
       ></card>
-      <p><button v-if="player_can_hit(player)" @click="deal">Hit me!</button></p>
-      <p><button v-if="player_can_hit(player)" @click="stand(player)">Stand</button></p>
+      <div v-if="player_can_hit(player)">
+        <p><button @click="hit">Hit me!</button></p>
+        <p><button @click="stand(player)">Stand</button></p>
+      </div>
     </li>
   `,
   methods: {
@@ -92,48 +94,66 @@ Vue.component('box', {
     },
     player_score: function(player, score){
       var player_score = score[0];
+      var dealer_score = app ? app.dealer.score[0] : [0,0];
+
+      // bust if you ever go above 21
       if (player_score > 21){
         player.busted = true;
         player.game_status = 'BUSTED! 😭';
         this.player_game_over(player);
+
+      // win if you get exactly 21, but be careful if dealer gets blackjack too
       } else if (player_score === 21){
-        if (app.game_over && app.dealer.score[0] === 21){
-          player.game_status = 'Dealer Blackjack! ' + (player.dealer ? '😈' : '😧');
+        // if dealer gets 21
+        if (app.game_over && dealer_score === 21 && !player.dealer){
+          // set new status if game over and dealer got blackjack
+          player.game_status = 'Dealer Blackjack! 😧';
         } else {
-          player.game_status = 'BLACKJACK! ' + (player.dealer ? '😈' : '🤑');
+          // end the player's game if they got blackjack
+          player.game_status = 'BLACKJACK! ' + (!player.dealer ? '🤑' : '😈');
           this.player_game_over(player);
         }
+
+      // game ends with player and dealer both below 21
       } else if (app && app.game_over){
         this.player_game_over(player);
         if (app.dealer.busted){
           player.game_status = 'You Won 🤑';
-        } else if (player_score === app.dealer.score[0]){
+        } else if (player_score === dealer_score){
           if (player.dealer){
             player.game_status = 'Dealer finished';
           } else {
             player.game_status = 'You Tied 😐';
           }
         } else {
-          if (player_score > app.dealer.score[0]){
+          if (player_score > dealer_score){
             player.game_status = 'You Won 🤑';
           } else {
             player.game_status = 'You Lost 😵';
           }
         }
       }
+
+      // update the player's score after each card played
       return player.player_name + ' score: ' + this.score_with_ace(player, score);
     },
+
+    // show score options if player has an ace
     score_with_ace: function(player, score){
       var player_score = score[0];
       var player_score_alt = score[1];
+
+      // no score options necessary if player got 21
       if (player_score === 21){
         return player_score + '!';
+
+      // if player got an ace show score options unless their game is over
+      // in which case show the higher score
+      // app.update_score will do the work of setting the value to 1 if the score is over with 11
       } else if (player_score !== player_score_alt){
-        if (player.game_ended){
-          return player_score;
-        } else {
-          return player_score + " (or " + player_score_alt + ")";
-        }
+        return player.game_ended ? player_score : player_score + " (or " + player_score_alt + ")";
+
+      // player did not draw an ace, just show score
       } else {
         return player_score;
       }
@@ -141,14 +161,16 @@ Vue.component('box', {
     player_game_over: function(player){
       player.game_over = true;
       player.game_ended = true;
-      // skip to next player if player gets dealt 21 only when it's their turn
-      if (!app.game_over && app.current_player === player) this.next_player(player);
+      // skip to next player if player busts or gets blackjack,
+      // but only when it's their turn and not after the game is over
+      if (app.current_player === player) this.next_player(player);
     },
-    deal: function(){
+    hit: function(){
+
       return app.deal();
     },
     stand: function(player){
-      this.player.game_ended = true;
+      player.game_ended = true;
       this.next_player(player);
     },
     next_player: function(player){
