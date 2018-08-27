@@ -91,7 +91,6 @@ Vue.component('box', {
       return app && app.current_player === this.player && this.player.game_started && !this.player.game_ended;
     },
     player_score: function(player, score){
-
       var player_score = score[0];
       if (player_score > 21){
         player.busted = true;
@@ -282,6 +281,12 @@ var app = new Vue({
     next_player: function(){
       var next_player = this.get_next_player();
       this.current_player = next_player && !next_player.game_ended ? next_player : this.dealer;
+      if (app.game_started && this.current_player === this.dealer) this.auto_play_dealer(this.dealer);
+    },
+    auto_play_dealer: function(dealer){
+      // dealer must hit if less than 17, must stand if above
+      while (dealer.score[0] < 17) this.deal_card(this.pull_card_from_deck());
+      this.end_game();
     },
     deal_card: function(card){
       var current_player = this.current_player;
