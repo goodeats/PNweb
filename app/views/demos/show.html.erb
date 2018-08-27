@@ -23,17 +23,7 @@
       :player="player"
     ></box>
 
-
-    <p>Player hand:</p>
-    <div v-html="player_score(score)"></div>
-    <p>
-      <button @click="next_player">Stand</button>
-      <span>(next player)</span>
-    </p>
-    <card
-      v-for="hand in hands"
-      :card="hand"
-    ></card>
+    <box :player="dealer"></box>
     <p>Dealer hand:</p>
     <div v-html="show_dealer_score(dealer_score)"></div>
     <card

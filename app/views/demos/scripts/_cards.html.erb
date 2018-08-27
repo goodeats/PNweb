@@ -74,31 +74,40 @@ Vue.component('box', {
       <p>game_status: {{ player.game_status }}</p>
       <p>game_started: {{ player.game_started }}</p>
       <p>game_over: {{ player.game_over }}</p>
+
       <card
         v-for="hand in player.hands"
         :card="hand"
       ></card>
-      <button v-if="player_can_hit(player)" @click="deal">Hit me!</button>
+      <p><button v-if="player_can_hit(player)" @click="deal">Hit me!</button></p>
     </li>
   `,
   methods: {
     pretty_card: function(player){
-      return player.name.toString().toUpperCase();
+      return player.player_name.toString().toUpperCase();
     },
     player_can_hit: function(player){
-      return player.game_started && !player.game_ended;
+      console.log('player can hit: ' + this.player.game_started + ', ' + this.player.game_ended);
+      return this.player.game_started && !this.player.game_ended;
     },
     player_score: function(score){
       var player_score = score[0];
       if (player_score > 21){
         this.player.game_status = 'You Lost :(';
-        this.player.game_over = true;
+        this.player_game_over();
       } else if (player_score === 21){
         this.player.game_status = 'You Won :D';
-        this.player.game_over = true;
+        this.player_game_over();
       }
-      return this.player.name + ' score: ' + score_with_ace(score);
+      return this.player.player_name + ' score: ' + score_with_ace(score);
     },
+    player_game_over: function(){
+      this.player.game_over = true;
+      this.player.game_ended = true;
+    },
+    deal: function(){
+      return app.deal();
+    }
   }
 });
 
@@ -138,15 +147,21 @@ function get_cards(){
 
 function get_player(){
   return {
-    name: 'Player 1',
+    player_name: 'Player 1',
     score: [0,0],
     has_ace: false,
     hands: [],
     game_status: 'Start the game!',
     game_started: false,
-    game_ended: true,
+    game_ended: false,
     game_over: false,
   };
+}
+
+function get_dealer(){
+  return Object.assign(get_player(), {
+    player_name: 'Dealer'
+  });
 }
 
 function get_players(){
@@ -172,6 +187,7 @@ function default_data(){
     players: get_players(),
     current_player: '',
     current_player_index: 0,
+    dealer: get_dealer(),
     hands: [], // one player
     score: [0,0],
     game_status: 'Start the game!',
@@ -209,6 +225,7 @@ var app = new Vue({
       var cards_to_deal = this.get_card_count_to_deal();
       this.current_player = this.get_first_player();
       for (var i = 0; i < cards_to_deal; i++){
+
         appThis.deal_card(this.pull_card_from_deck());
         appThis.next_player();
       }
@@ -229,10 +246,11 @@ var app = new Vue({
     deal_card: function(card){
       var current_player = this.current_player;
       if (current_player){
+        current_player.game_started = true;
         current_player.hands = [...current_player.hands, card];
         this.update_score(current_player, card);
       } else {
-        this.dealer_hands = [...this.dealer_hands, card];
+        this.dealer.hands = [...this.dealer.hands, card];
         this.update_dealer_score(card);
       }
     },
@@ -251,6 +269,7 @@ var app = new Vue({
       return score_with_ace(score);
     },
     get_first_player: function(){
+      this.current_player_index = 0;
       return this.players[0];
     },
     get_next_player: function(){
@@ -282,18 +301,19 @@ var app = new Vue({
       var card_value = card.value;
       var card_value_alt = card.value_alt;
       var card_is_ace = card_value == 11;
+      var dealer = this.dealer;
 
       // don't have two aces at 11 since that would be over 21
       // if this card is an ace and the round already has an ace then add to score by alt value: 1
       // otherwise add by the score
-      this.dealer_score[0] += card_is_ace && this.dealer_has_ace ? card_value_alt : card_value;
-      this.dealer_score[1] += card_value_alt || card_value;
+      dealer.score[0] += card_is_ace && dealer.has_ace ? card_value_alt : card_value;
+      dealer.score[1] += card_value_alt || card_value;
 
       // set the state that the ace has been accounted for
-      if (card_is_ace && !this.dealer_has_ace) this.dealer_has_ace = true;
+      if (card_is_ace && !dealer.has_ace) dealer.has_ace = true;
 
       // if ace puts score higher than 21 then set score to lower, alt score
-      if (this.dealer_score[0] > 21) this.dealer_score[0] = this.dealer_score[1];
+      if (dealer.score[0] > 21) dealer.score[0] = dealer.score[1];
     },
     restart: function(){
       // https://stackoverflow.com/questions/35604987/is-there-a-proper-way-of-resetting-a-components-initial-data-in-vuejs/35605629
