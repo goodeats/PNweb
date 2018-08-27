@@ -8,6 +8,15 @@
     <p>game_over: {{ game_over }}</p>
     <p>cards left in deck: {{ deck.length }}</p>
     <p>current_player: {{ current_player.player_name }}</p>
+    <p>number of players: {{ players_count }}</p>
+    <p>
+      <input
+        type="number"
+        min="1"
+        max="6"
+        v-model="players_count"
+        @change="update_players_count"
+      ></p>
     <p>
       <button @click="shuffle">Shuffle</button>
     </p>

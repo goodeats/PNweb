@@ -109,7 +109,11 @@ Vue.component('box', {
         if (app.dealer.busted){
           player.game_status = 'You Won 🤑';
         } else if (player_score === app.dealer.score[0]){
-          player.game_status = 'You Tied 😐';
+          if (player.dealer){
+            player.game_status = 'Dealer finished';
+          } else {
+            player.game_status = 'You Tied 😐';
+          }
         } else {
           player.game_status = 'You Lost 😵';
         }
@@ -263,6 +267,13 @@ var app = new Vue({
       }
       this.game_started = true;
       this.game_status = 'Playing the game';
+    },
+    update_players_count: function(e){
+      var new_players_count = e.target.value;
+      // update global variable so a restarted game has the same number of players
+      players_count = new_players_count;
+      app.players_count = new_players_count;
+      app.players = get_players(new_players_count);
     },
     next_player: function(){
       var next_player = this.get_next_player();
