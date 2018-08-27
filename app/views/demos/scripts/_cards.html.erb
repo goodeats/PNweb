@@ -114,15 +114,19 @@ Vue.component('box', {
           player.game_status = 'You Lost 😵';
         }
       }
-      return player.player_name + ' score: ' + this.score_with_ace(score);
+      return player.player_name + ' score: ' + this.score_with_ace(player, score);
     },
-    score_with_ace: function(score){
+    score_with_ace: function(player, score){
       var player_score = score[0];
       var player_score_alt = score[1];
       if (player_score === 21){
         return player_score + '!';
       } else if (player_score !== player_score_alt){
-        return player_score + " (or " + player_score_alt + ")";
+        if (player.game_ended){
+          return player_score;
+        } else {
+          return player_score + " (or " + player_score_alt + ")";
+        }
       } else {
         return player_score;
       }
