@@ -238,6 +238,9 @@ Vue.component('box', {
       }
     },
     player_game_over: function(player){
+      // end the player's game once it's their turn
+      if (app.current_player !== player) return;
+
       player.game_over = true;
       player.game_ended = true;
       // skip to next player if player busts or gets blackjack,
@@ -400,8 +403,7 @@ var app = new Vue({
       app.players = get_players(new_players_count);
     },
     next_player: function(){
-      var next_player = this.get_next_player();
-      this.current_player = next_player && !next_player.game_ended ? next_player : this.dealer;
+      this.current_player = this.get_next_player() || this.dealer;
       if (app.game_started && this.current_player === this.dealer) this.auto_play_dealer(this.dealer);
     },
     auto_play_dealer: function(dealer){
