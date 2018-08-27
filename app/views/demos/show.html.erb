@@ -19,13 +19,22 @@
         :disabled="game_started"
       ></p>
     <p>
-      <button @click="shuffle">Shuffle</button>
+      <button
+        @click="shuffle"
+        :disabled="game_started"
+      >Shuffle</button>
     </p>
     <p>
-      <button @click="deal">Deal</button>
+      <button
+        @click="deal"
+        :disabled="game_started"
+      >Start Game</button>
     </p>
     <p>
-      <button @click="restart">Restart</button>
+      <button
+        @click="restart"
+        :disabled="!game_started"
+      >Restart</button>
     </p>
 
     <box
