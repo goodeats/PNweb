@@ -295,6 +295,9 @@ var app = new Vue({
       return 2 + (this.players.length * 2);
     },
     start_game: function(){
+      // shuffle deck so aces aren't first
+      this.shuffle();
+
       // set var for this to be used inside for loop
       var appThis = this;
 
