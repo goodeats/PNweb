@@ -115,7 +115,11 @@ Vue.component('box', {
             player.game_status = 'You Tied 😐';
           }
         } else {
-          player.game_status = 'You Lost 😵';
+          if (player_score > app.dealer.score[0]){
+            player.game_status = 'You Won 🤑';
+          } else {
+            player.game_status = 'You Lost 😵';
+          }
         }
       }
       return player.player_name + ' score: ' + this.score_with_ace(player, score);
