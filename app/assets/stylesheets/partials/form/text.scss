@@ -10,6 +10,11 @@
   font-family: $font-main;
 }
 
+.form-input-text-inline {
+  width: initial;
+  display: inline-block;
+}
+
 .control-group.error .form-input-text {
   font-size: $font-size-main;
 }
