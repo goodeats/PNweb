@@ -6,7 +6,7 @@
     <p>game_status: {{ game_status }}</p>
     <p>game_started: {{ game_started }}</p>
     <p>game_over: {{ game_over }}</p>
-    <p>cards count: {{ cards.length }}</p>
+    <p>cards left in deck: {{ deck.length }}</p>
     <p>current_player: {{ current_player.player_name }}</p>
     <p>
       <button @click="shuffle">Shuffle</button>
@@ -27,7 +27,7 @@
 
     <p>Deck:</p>
     <card
-      v-for="card in cards"
+      v-for="card in deck"
       :card="card"
     ></card>
   </div>
