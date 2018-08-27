@@ -169,10 +169,8 @@ Vue.component('box', {
     player_score: function(player, score){
       var player_score = score[0];
       var dealer_score = app ? app.dealer.score[0] : [0,0];
-
       // bust if you ever go above 21
       if (player_score > 21){
-        player.busted = true;
         player.game_status = 'BUSTED! 😭';
         this.player_game_over(player);
 
@@ -437,6 +435,9 @@ var app = new Vue({
 
       // if ace puts score higher than 21 then set score to lower, alt score
       if (current_player.score[0] > 21) current_player.score[0] = current_player.score[1];
+
+      // bust player here (race condition on component so make sure dealer bust is registered before they update)
+      if (current_player.score[0] > 21) current_player.busted = true;
     },
     end_game: function(){
       this.game_over = true;
