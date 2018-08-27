@@ -264,8 +264,10 @@ function default_data(){
     game_status: 'Start the game!',
     game_started: false,
     game_over: false,
-    restart_button: {
-      text: 'Restart Game'
+    button_text: {
+      start: 'Start Game',
+      reset: 'Reset Game',
+      restart: 'Play New Game'
     }
   };
 }
@@ -376,9 +378,13 @@ var app = new Vue({
       this.game_status = 'the whole game is OVER!';
       this.restart_button.text = 'Play New Game!';
     },
-    restart: function(){
+    reset: function(){
       // https://stackoverflow.com/questions/35604987/is-there-a-proper-way-of-resetting-a-components-initial-data-in-vuejs/35605629
       Object.assign(this.$data, default_data());
+    },
+    restart: function(){
+      this.reset();
+      this.deal();
     }
   }
 });
