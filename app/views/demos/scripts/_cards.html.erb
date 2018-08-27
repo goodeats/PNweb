@@ -1,5 +1,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900">
 <style>
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font: 2rem/1.175 "BlinkMacSystemFont", -apple-system, "Roboto", sans-serif;
+}
 .box-item {
   border: 1px solid black;
   margin: 20px;
@@ -261,6 +266,18 @@ var app = new Vue({
   el: '#app',
   data: default_data(),
   methods: {
+    show_game_status: function(){
+      console.log('hi');
+      if (this.game_over){
+        return {
+          color: 'red'
+        };
+      } else if (this.game_started){
+        return {
+          color: 'green'
+        };
+      }
+    },
     shuffle: function(){
       return this.deck.sort((a, b) => Math.random() > .5 ? -1 : 1);
     },

@@ -2,8 +2,7 @@
   <%= @demo.pretty_text %>
 
   <div id="app">
-    <p>{{ message }}</p>
-    <p>game_status: {{ game_status }}</p>
+    <h2 :style="show_game_status()">{{ game_status }}</h2>
     <p>game_started: {{ game_started }}</p>
     <p>game_over: {{ game_over }}</p>
     <p>cards left in deck: {{ deck.length }}</p>
@@ -17,7 +16,8 @@
         v-model="players_count"
         @change="update_players_count"
         :disabled="game_started"
-      ></p>
+      >
+    </p>
     <p>
       <button
         @click="shuffle"
