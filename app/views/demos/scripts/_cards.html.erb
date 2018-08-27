@@ -80,7 +80,7 @@ Vue.component('box', {
         :card="hand"
       ></card>
       <p><button v-if="player_can_hit(player)" @click="deal">Hit me!</button></p>
-      <p><button v-if="player_can_hit(player)" @click="stand">Stand</button></p>
+      <p><button v-if="player_can_hit(player)" @click="stand(player)">Stand</button></p>
     </li>
   `,
   methods: {
@@ -91,19 +91,21 @@ Vue.component('box', {
       return app && app.current_player === this.player && this.player.game_started && !this.player.game_ended;
     },
     player_score: function(player, score){
+
       var player_score = score[0];
       if (player_score > 21){
+        player.busted = true;
         player.game_status = 'BUSTED! 😭';
-        this.player_game_over();
+        this.player_game_over(player);
       } else if (player_score === 21){
         if (app.game_over && app.dealer.score[0] === 21){
           player.game_status = 'Dealer Blackjack! ' + (player.dealer ? '😈' : '😧');
         } else {
           player.game_status = 'BLACKJACK! ' + (player.dealer ? '😈' : '🤑');
-          this.player_game_over();
+          this.player_game_over(player);
         }
       } else if (app && app.game_over){
-        this.player_game_over();
+        this.player_game_over(player);
         if (app.dealer.busted){
           player.game_status = 'You Won 🤑';
         } else if (player_score === app.dealer.score[0]){
@@ -125,21 +127,22 @@ Vue.component('box', {
         return player_score;
       }
     },
-    player_game_over: function(){
-      this.player.game_over = true;
-      this.player.game_ended = true;
-      this.next_player();
+    player_game_over: function(player){
+      player.game_over = true;
+      player.game_ended = true;
+      // skip to next player if player gets dealt 21 only when it's their turn
+      if (!app.game_over && app.current_player === player) this.next_player(player);
     },
     deal: function(){
       return app.deal();
     },
-    stand: function(){
+    stand: function(player){
       this.player.game_ended = true;
-      this.next_player();
+      this.next_player(player);
     },
-    next_player: function(){
+    next_player: function(player){
       if (app.game_over) return;
-      return !this.player.dealer ? app.next_player() : app.end_game();
+      return !player.dealer ? app.next_player() : app.end_game();
     }
   }
 });
@@ -161,7 +164,7 @@ function cards_by_value(){
   return deck;
 }
 
-function get_cards(){
+function get_deck(){
   var deck = [];
   cards_by_value().forEach(function(card){
     suits().forEach(function(suit){
@@ -173,10 +176,10 @@ function get_cards(){
   return deck;
 }
 
-function get_player(){
+function get_player(id){
   return {
-    id: 1,
-    player_name: 'Player 1',
+    id: id,
+    player_name: 'Player ' + id,
     score: [0,0],
     has_ace: false,
     hands: [],
@@ -195,19 +198,25 @@ function get_dealer(){
   });
 }
 
-function get_players(){
-  return [
-    get_player()
-  ];
+// keep this outside the app data since resetting a game should keep the same number of players
+var players_count = 1;
+
+function get_players(count){
+  var players = [];
+  for (var i = 0; i < count; i++){
+    // i will set id to help move onto next player
+    players = [...players, get_player(i + 1)];
+  }
+  return players;
 }
 
 function default_data(){
   return {
     message: 'Hi Pat!',
-    deck: get_cards(),
-    players: get_players(),
+    deck: get_deck(),
+    players_count: players_count,
+    players: get_players(players_count),
     current_player: '',
-    current_player_index: 0,
     dealer: get_dealer(),
     game_status: 'Start the game!',
     game_started: false,
@@ -237,10 +246,13 @@ var app = new Vue({
     start_game: function(){
       // set var for this to be used inside for loop
       var appThis = this;
+
       // get card count to know number of times to loop dealing out
       var cards_to_deal = this.get_card_count_to_deal();
+
       // initialize the first player to deal the card to
-      this.current_player = this.get_first_player();
+      this.current_player = this.players[0];
+
       for (var i = 0; i < cards_to_deal; i++){
         appThis.deal_card(this.pull_card_from_deck());
         appThis.next_player();
@@ -260,10 +272,6 @@ var app = new Vue({
     },
     pull_card_from_deck: function(){
       return this.deck.shift();
-    },
-    get_first_player: function(){
-      this.current_player_index = 0;
-      return this.players[0];
     },
     get_next_player: function(){
       // switch back to first player after the dealer
