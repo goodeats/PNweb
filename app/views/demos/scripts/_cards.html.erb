@@ -1,5 +1,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900">
 <style>
+#app {
+  width: 100%;
+  padding: 20px;
+  background: green;
+  color: white;
+}
+
 .app-header {
   margin-bottom: 20px;
   text-align: center;
@@ -11,10 +18,23 @@
 }
 
 .box-item {
-  border: 1px solid black;
+  height: 196px;
   margin: 20px;
+  padding: 10px;
   list-style: none;
+  border: 10px solid white;
+  box-shadow: 0 10px 10px -10px #292929;
   font: 1rem/1.175 "BlinkMacSystemFont", -apple-system, "Roboto", sans-serif;
+  text-align: center;
+}
+
+.box-item-title {
+  font-weight: bold;
+}
+
+.card-items {
+  height: 80px;
+  margin-bottom: 10px;
 }
 
 .card-item {
@@ -22,11 +42,10 @@
   height: 80px;
   display: inline-block;
   position: relative;
-  margin: 20px;
-  margin-right: -30px;
-  background: white;
   border: 1px solid black;
   border-radius: 10px;
+  background: white;
+  color: #292929;
   text-align: center;
   font: 1rem/1.175 "BlinkMacSystemFont", -apple-system, "Roboto", sans-serif;
 }
@@ -51,14 +70,11 @@
 .card-suit {
   line-height: 80px;
 }
-
-
 </style>
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <script>
-
 Vue.component('card', {
   props: ['card'],
   template: `
@@ -79,16 +95,18 @@ Vue.component('box', {
   props: ['player', 'cards'],
   template: `
     <li class="box-item">
-      <h3 class="box-name--top">{{ pretty_card(player) }}</h3>
+      <ul class="card-items">
+        <card
+          v-for="hand in player.hands"
+          :card="hand"
+        ></card>
+      </ul>
+      <h3 class="box-item-title">{{ player_name(player) }}</h3>
       <p class="box-score" v-html="player_score(player, player.score)"></p>
-      <p>game_status: {{ player.game_status }}</p>
-      <p>game_started: {{ player.game_started }}</p>
-      <p>game_over: {{ player.game_over }}</p>
+      <p v-if="player.game_status">{{ player.game_status }}</p>
+      <p v-if="player.game_over">game_over: {{ player.game_over }}</p>
 
-      <card
-        v-for="hand in player.hands"
-        :card="hand"
-      ></card>
+
       <div v-if="player_can_hit(player)">
         <p><button @click="hit">Hit me!</button></p>
         <p><button @click="stand(player)">Stand</button></p>
@@ -96,7 +114,7 @@ Vue.component('box', {
     </li>
   `,
   methods: {
-    pretty_card: function(player){
+    player_name: function(player){
       return player.player_name.toString().toUpperCase();
     },
     player_can_hit: function(player){
@@ -145,7 +163,7 @@ Vue.component('box', {
       }
 
       // update the player's score after each card played
-      return player.player_name + ' score: ' + this.score_with_ace(player, score);
+      return this.score_with_ace(player, score);
     },
 
     // show score options if player has an ace
@@ -161,11 +179,11 @@ Vue.component('box', {
       // in which case show the higher score
       // app.update_score will do the work of setting the value to 1 if the score is over with 11
       } else if (player_score !== player_score_alt){
-        return player.game_ended ? player_score : player_score + " (or " + player_score_alt + ")";
+        return player.game_ended ? 'Score: ' + player_score : 'Score: ' + player_score + " (or " + player_score_alt + ")";
 
       // player did not draw an ace, just show score
       } else {
-        return player_score;
+        return player_score > 0 ? 'Score: ' + player_score : 'Waiting to Play';
       }
     },
     player_game_over: function(player){
@@ -226,7 +244,7 @@ function get_player(id){
     score: [0,0],
     has_ace: false,
     hands: [],
-    game_status: 'Start the game!',
+    game_status: '',
     game_started: false,
     game_ended: false,
     game_over: false
@@ -283,7 +301,7 @@ var app = new Vue({
         };
       } else if (this.game_started){
         return {
-          color: 'green'
+          color: 'lightgreen'
         };
       }
     },

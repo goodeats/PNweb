@@ -31,18 +31,24 @@
       @click="reset"
     >{{ button_text.reset }}</button>
 
-    <box
-      v-for="player in players"
-      :player="player"
-    ></box>
+    <ul class="box-list">
+      <box
+        v-for="player in players"
+        :player="player"
+      ></box>
+    </ul>
+    <ul>
+      <box :player="dealer"></box>
+    </ul>
 
-    <box :player="dealer"></box>
 
     <p>Deck:</p>
-    <card
-      v-for="card in deck"
-      :card="card"
-    ></card>
+    <ul>
+      <card
+        v-for="card in deck"
+        :card="card"
+      ></card>
+    </ul>
     <p>cards left in deck: {{ deck.length }}</p>
   </div>
 
