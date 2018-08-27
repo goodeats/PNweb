@@ -19,12 +19,17 @@
       class="form-button form-submit"
       v-if="!game_started"
       @click="deal"
-    >Start Game</button>
+    >{{ button_text.start }}</button>
+    <button
+      class="form-button form-submit"
+      v-if="game_over"
+      @click="restart"
+    >{{ button_text.restart }}</button>
     <button
       class="form-button"
       v-if="game_started"
-      @click="restart"
-    >{{ restart_button.text }}</button>
+      @click="reset"
+    >{{ button_text.reset }}</button>
 
     <box
       v-for="player in players"
