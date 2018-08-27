@@ -1,5 +1,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900">
 <style>
+.box-item {
+  border: 1px solid black;
+  margin: 20px;
+  list-style: none;
+  font: 1rem/1.175 "BlinkMacSystemFont", -apple-system, "Roboto", sans-serif;
+}
+
 .card-item {
   width: 50px;
   height: 80px;
@@ -58,6 +65,29 @@ Vue.component('card', {
   }
 });
 
+Vue.component('box', {
+  props: ['player', 'cards'],
+  template: `
+    <li class="box-item">
+      <h3 class="box-name--top">{{ pretty_card(player) }}</h3>
+      <p class="box-score">{{ player.score }}</p>
+      <card
+        v-for="hand in player.hands"
+        :card="hand"
+      ></card>
+      <button v-if="player_can_hit(player)" @click="deal">Hit me!</button>
+    </li>
+  `,
+  methods: {
+    pretty_card: function(player){
+      return player.name.toString().toUpperCase();
+    },
+    player_can_hit: function(player){
+      return player.game_started && !player.game_ended;
+    }
+  }
+});
+
 function suits(){
   return ['❤️','♠️','♦️','♣️'];
 };
@@ -92,6 +122,25 @@ function get_cards(){
   return get_suits(cards_by_type());
 }
 
+function get_player(){
+  return {
+    name: 'Player 1',
+    score: [0,0],
+    has_ace: false,
+    hands: [],
+    game_status: 'Start the game!',
+    game_started: false,
+    game_ended: true,
+    game_over: false,
+  };
+}
+
+function get_players(){
+  return [
+    get_player()
+  ];
+}
+
 function score_with_ace(score){
   var player_score = score[0];
   var player_score_alt = score[1];
@@ -106,6 +155,9 @@ function default_data(){
   return {
     message: 'Hi Pat!',
     cards: get_cards(),
+    players: get_players(),
+    current_player: '',
+    current_player_index: 0,
     hands: [], // one player
     score: [0,0],
     game_status: 'Start the game!',
@@ -129,32 +181,49 @@ var app = new Vue({
     deal: function(){
       if (this.game_over) return;
       if (this.game_started){
-        this.deal_card();
+        this.deal_card(this.pull_card_from_deck());
       } else {
         this.start_game();
       }
     },
+    get_card_count_to_deal: function(){
+      // start count at 2 for dealer
+      return 2 + (this.players.length * 2);
+    },
     start_game: function(){
+      var appThis = this;
+      var cards_to_deal = this.get_card_count_to_deal();
+      this.current_player = this.get_first_player();
+      for (var i = 0; i < cards_to_deal; i++){
+        appThis.deal_card(this.pull_card_from_deck());
+        appThis.next_player();
+      }
       this.game_started = true;
       this.game_status = 'Playing the game';
-      var yo = this;
-      [1,2,3,4].forEach(function(i){
-        yo.deal_card();
-        yo.next_player();
-      });
     },
     next_player: function(){
-      this.deal_to_player = !this.deal_to_player;
+      var current_player = this.current_player;
+      var next_player = this.get_next_player();
+      if (next_player){
+        this.current_player = next_player;
+        this.deal_to_player = true;
+      } else {
+        this.current_player = null;
+        this.deal_to_player = this.game_started || false;
+      }
     },
-    deal_card: function(){
-      var card = this.cards.shift();
-      if (this.deal_to_player){
-        this.hands = [...this.hands, card];
-        this.updateScore(card);
+    deal_card: function(card){
+      var current_player = this.current_player;
+      if (current_player){
+        current_player.hands = [...current_player.hands, card];
+        this.update_score(current_player, card);
       } else {
         this.dealer_hands = [...this.dealer_hands, card];
-        this.updateDealerScore(card);
+        this.update_dealer_score(card);
       }
+    },
+    pull_card_from_deck: function(){
+      return this.cards.shift();
     },
     player_score: function(score){
       var player_score = score[0];
@@ -167,7 +236,13 @@ var app = new Vue({
       }
       return score_with_ace(score);
     },
-    updateScore: function(card){
+    get_first_player: function(){
+      return this.players[0];
+    },
+    get_next_player: function(){
+      return this.current_player ? this.players[this.current_player_index + 1] : this.get_first_player();
+    },
+    update_score: function(current_player, card){
       // this is doing the heavy work calculating the score
       var card_value = card.value;
       var card_value_alt = card.value_alt;
@@ -176,19 +251,19 @@ var app = new Vue({
       // don't have two aces at 11 since that would be over 21
       // if this card is an ace and the round already has an ace then add to score by alt value: 1
       // otherwise add by the score
-      this.score[0] += card_is_ace && this.has_ace ? card_value_alt : card_value;
-      this.score[1] += card_value_alt || card_value;
+      current_player.score[0] += card_is_ace && current_player.has_ace ? card_value_alt : card_value;
+      current_player.score[1] += card_value_alt || card_value;
 
       // set the state that the ace has been accounted for
-      if (card_is_ace && !this.has_ace) this.has_ace = true;
+      if (card_is_ace && !current_player.has_ace) current_player.has_ace = true;
 
       // if ace puts score higher than 21 then set score to lower, alt score
-      if (this.score[0] > 21) this.score[0] = this.score[1];
+      if (current_player.score[0] > 21) current_player.score[0] = current_player.score[1];
     },
     show_dealer_score: function(score){
       return score;
     },
-    updateDealerScore: function(card){
+    update_dealer_score: function(card){
       // this is doing the heavy work calculating the score
       var card_value = card.value;
       var card_value_alt = card.value_alt;

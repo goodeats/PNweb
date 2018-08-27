@@ -7,6 +7,7 @@
     <p>game_started: {{ game_started }}</p>
     <p>game_over: {{ game_over }}</p>
     <p>cards count: {{ cards.length }}</p>
+    <p>current_player: {{ current_player.name }}</p>
     <p>
       <button @click="shuffle">Shuffle</button>
     </p>
@@ -16,6 +17,13 @@
     <p>
       <button @click="restart">Restart</button>
     </p>
+
+    <box
+      v-for="player in players"
+      :player="player"
+    ></box>
+
+
     <p>Player hand:</p>
     <div v-html="player_score(score)"></div>
     <p>
