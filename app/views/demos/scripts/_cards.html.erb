@@ -70,7 +70,7 @@ Vue.component('box', {
   template: `
     <li class="box-item">
       <h3 class="box-name--top">{{ pretty_card(player) }}</h3>
-      <p class="box-score" v-html="player_score(player.score)"></p>
+      <p class="box-score" v-html="player_score(player, player.score)"></p>
       <p>game_status: {{ player.game_status }}</p>
       <p>game_started: {{ player.game_started }}</p>
       <p>game_over: {{ player.game_over }}</p>
@@ -80,6 +80,7 @@ Vue.component('box', {
         :card="hand"
       ></card>
       <p><button v-if="player_can_hit(player)" @click="deal">Hit me!</button></p>
+      <p><button v-if="player_can_hit(player)" @click="stand">Stand</button></p>
     </li>
   `,
   methods: {
@@ -89,21 +90,36 @@ Vue.component('box', {
     player_can_hit: function(player){
       return app && app.current_player === this.player && this.player.game_started && !this.player.game_ended;
     },
-    player_score: function(score){
+    player_score: function(player, score){
       var player_score = score[0];
       if (player_score > 21){
-        this.player.game_status = 'You Lost 😵';
+        player.game_status = 'BUSTED! 😭';
         this.player_game_over();
       } else if (player_score === 21){
-        this.player.game_status = 'You Won 🤑';
+        if (app.game_over && app.dealer.score[0] === 21){
+          player.game_status = 'Dealer Blackjack! ' + (player.dealer ? '😈' : '😧');
+        } else {
+          player.game_status = 'BLACKJACK! ' + (player.dealer ? '😈' : '🤑');
+          this.player_game_over();
+        }
+      } else if (app && app.game_over){
         this.player_game_over();
+        if (app.dealer.busted){
+          player.game_status = 'You Won 🤑';
+        } else if (player_score === app.dealer.score[0]){
+          player.game_status = 'You Tied 😐';
+        } else {
+          player.game_status = 'You Lost 😵';
+        }
       }
-      return this.player.player_name + ' score: ' + this.score_with_ace(score);
+      return player.player_name + ' score: ' + this.score_with_ace(score);
     },
     score_with_ace: function(score){
       var player_score = score[0];
       var player_score_alt = score[1];
-      if (player_score !== player_score_alt){
+      if (player_score === 21){
+        return player_score + '!';
+      } else if (player_score !== player_score_alt){
         return player_score + " (or " + player_score_alt + ")";
       } else {
         return player_score;
@@ -112,15 +128,18 @@ Vue.component('box', {
     player_game_over: function(){
       this.player.game_over = true;
       this.player.game_ended = true;
-      if (!this.player.dealer){
-        app.next_player();
-      } else {
-        app.game_over = true;
-        app.game_status = 'the whole game is OVER!';
-      }
+      this.next_player();
     },
     deal: function(){
       return app.deal();
+    },
+    stand: function(){
+      this.player.game_ended = true;
+      this.next_player();
+    },
+    next_player: function(){
+      if (app.game_over) return;
+      return !this.player.dealer ? app.next_player() : app.end_game();
     }
   }
 });
@@ -164,8 +183,7 @@ function get_player(){
     game_status: 'Start the game!',
     game_started: false,
     game_ended: false,
-    game_over: false,
-    my_turn: false
+    game_over: false
   };
 }
 
@@ -271,6 +289,10 @@ var app = new Vue({
 
       // if ace puts score higher than 21 then set score to lower, alt score
       if (current_player.score[0] > 21) current_player.score[0] = current_player.score[1];
+    },
+    end_game: function(){
+      app.game_over = true;
+      app.game_status = 'the whole game is OVER!';
     },
     restart: function(){
       // https://stackoverflow.com/questions/35604987/is-there-a-proper-way-of-resetting-a-components-initial-data-in-vuejs/35605629
