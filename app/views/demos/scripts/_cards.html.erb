@@ -28,6 +28,11 @@
   text-align: center;
 }
 
+.box-item-current { border-color: yellow; }
+.box-item-failure { border-color: red; }
+.box-item-success { border-color: lightgreen; }
+.box-item-tie { border-color: teal; }
+
 .box-item-title {
   font-weight: bold;
 }
@@ -48,6 +53,21 @@
   color: #292929;
   text-align: center;
   font: 1rem/1.175 "BlinkMacSystemFont", -apple-system, "Roboto", sans-serif;
+  overflow: hidden;
+}
+
+.card-back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0;
+}
+
+.card-items-dealer .card-item:first-child .card-back {
+  opacity: 1;
 }
 
 .card-name--top,
@@ -79,6 +99,7 @@ Vue.component('card', {
   props: ['card'],
   template: `
     <li class="card-item">
+      <div class="card-back"></div>
       <span class="card-name--top">{{ pretty_card(card) }}</span>
       <span class="card-suit">{{ card.suit }}</span>
       <span class="card-name--bottom">{{ pretty_card(card) }} </span>
@@ -94,8 +115,8 @@ Vue.component('card', {
 Vue.component('box', {
   props: ['player', 'cards'],
   template: `
-    <li class="box-item">
-      <ul class="card-items">
+    <li class="box-item" v-bind:class="[player_game_status(player), is_current_player(player)]">
+      <ul class="card-items" v-bind:class="is_dealer(player)">
         <card
           v-for="hand in player.hands"
           :card="hand"
@@ -104,9 +125,6 @@ Vue.component('box', {
       <h3 class="box-item-title">{{ player_name(player) }}</h3>
       <p class="box-score" v-html="player_score(player, player.score)"></p>
       <p v-if="player.game_status">{{ player.game_status }}</p>
-      <p v-if="player.game_over">game_over: {{ player.game_over }}</p>
-
-
       <div v-if="player_can_hit(player)">
         <p><button @click="hit">Hit me!</button></p>
         <p><button @click="stand(player)">Stand</button></p>
@@ -114,8 +132,36 @@ Vue.component('box', {
     </li>
   `,
   methods: {
+    // temp hack to hide top card
+    is_dealer: function(player){
+      return app && !app.game_over && player.dealer ? 'card-items-dealer' : '';
+    },
+
     player_name: function(player){
       return player.player_name.toString().toUpperCase();
+    },
+
+    // ui to better display game results
+    player_game_status: function(player){
+      // don't care about dealer's results, might revisit
+      if (player.dealer) return;
+
+      switch (player.game_status){
+        case 'BUSTED! 😭':
+        case 'You Lost 😵':
+          return 'box-item-failure';
+        case 'BLACKJACK! 🤑':
+        case 'You Won 🤑':
+          return 'box-item-success';
+        case 'Dealer Blackjack! 😧':
+        case 'Stand 😬':
+          return 'box-item-tie';
+        default:
+          return;
+      }
+    },
+    is_current_player: function(player){
+      return app && app.current_player === player ? 'box-item-current' : '';
     },
     player_can_hit: function(player){
       return app && app.current_player === this.player && this.player.game_started && !this.player.game_ended;
@@ -198,6 +244,7 @@ Vue.component('box', {
       return app.deal();
     },
     stand: function(player){
+      player.game_status = 'Stand 😬';
       player.game_ended = true;
       this.next_player(player);
     },
