@@ -138,14 +138,13 @@ app_div.innerHTML = `
   <ul class="box-list">
     <box
       v-for="player in players"
+      key="player.id"
       :player="player"
     ></box>
   </ul>
   <ul>
     <box :player="dealer"></box>
   </ul>
-
-
   <p class="article-p">Deck: {{ deck.length }} cards</p>
   <ul class="card-items card-items-dealer card-items-deck">
     <card
@@ -180,8 +179,8 @@ Vue.component('box', {
     <li class="box-item" v-bind:class="[player_game_status(player), is_current_player(player)]">
       <ul class="card-items" v-bind:class="is_dealer(player)">
         <card
-          v-for="hand in player.hands"
-          :card="hand"
+          v-for="card in player.cards"
+          :card="card"
         ></card>
       </ul>
       <h3 class="box-item-title">{{ player_name(player) }}</h3>
@@ -353,7 +352,7 @@ function get_player(id){
     player_name: 'Player ' + id,
     score: [0,0],
     has_ace: false,
-    hands: [],
+    cards: [],
     game_status: '',
     game_started: false,
     game_ended: false,
@@ -468,7 +467,7 @@ var app = new Vue({
     deal_card: function(card){
       var current_player = this.current_player;
       current_player.game_started = true;
-      current_player.hands = [...current_player.hands, card];
+      current_player.cards = [...current_player.cards, card];
       this.update_score(current_player, card);
     },
     pull_card_from_deck: function(){
