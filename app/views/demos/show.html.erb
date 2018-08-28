@@ -1,6 +1,6 @@
-<% content_for :javascript_includes do %>
-  <%= render "demos/scripts/#{@demo.title.gsub(/ /, '_')}" %>
-<% end %>
 <article class="article">
   <%= @demo.pretty_text %>
 </article>
+<% content_for :javascript_includes do %>
+  <%= render "demos/scripts/#{@demo.title.gsub(/ /, '_')}" %>
+<% end %>

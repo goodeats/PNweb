@@ -1,0 +1,519 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900">
+<style>
+#app {
+  width: 100%;
+  padding: 20px;
+  background: green;
+  color: white;
+}
+
+.app-header {
+  margin-bottom: 20px;
+  text-align: center;
+  font: 2rem/1.175 "BlinkMacSystemFont", -apple-system, "Roboto", sans-serif;
+}
+
+.form-button {
+  font: 1rem/1.175 "BlinkMacSystemFont", -apple-system, "Roboto", sans-serif;
+}
+
+.box-item {
+  height: 196px;
+  margin: 20px;
+  padding: 10px;
+  list-style: none;
+  border: 10px solid white;
+  box-shadow: 0 10px 10px -10px #292929;
+  font: 1rem/1.175 "BlinkMacSystemFont", -apple-system, "Roboto", sans-serif;
+  text-align: center;
+}
+
+.box-item-current { border-color: yellow; }
+.box-item-failure { border-color: red; }
+.box-item-success { border-color: lightgreen; }
+.box-item-tie { border-color: teal; }
+
+.box-item-title {
+  font-weight: bold;
+}
+
+.card-items {
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.card-item {
+  width: 50px;
+  height: 80px;
+  display: inline-block;
+  position: relative;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: white;
+  color: #292929;
+  text-align: center;
+  font: 1rem/1.175 "BlinkMacSystemFont", -apple-system, "Roboto", sans-serif;
+  overflow: hidden;
+}
+
+.card-back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0;
+}
+
+.card-items-dealer .card-item:first-child {
+  z-index: 1;
+}
+.card-items-dealer .card-item:first-child .card-back {
+  opacity: 1;
+}
+
+.card-items-deck .card-item {
+  position: absolute;
+}
+
+.card-name--top,
+.card-name--bottom {
+  position: absolute;
+  padding: 5px;
+}
+
+.card-name--top {
+  top: 0;
+  left: 0;
+}
+
+.card-name--bottom {
+  bottom: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.card-suit {
+  line-height: 80px;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+// start by adding app div to page
+// TODO: break this out into small components
+var app_div = document.createElement('div');
+app_div.setAttribute('id', 'app');
+app_div.innerHTML = `
+  <h2 class="app-header" :style="show_game_status()">{{ game_status }}</h2>
+  <p class="article-p">
+    Choose how many players (1-6):
+    <input
+      class="form-input-text form-input-text-inline"
+      type="number"
+      min="1"
+      max="6"
+      v-model="players_count"
+      @change="update_players_count"
+      :disabled="game_started"
+    >
+  </p>
+  <button
+    class="form-button form-submit"
+    v-if="!game_started"
+    @click="deal"
+  >{{ button_text.start }}</button>
+  <button
+    class="form-button form-submit"
+    v-if="game_over"
+    @click="restart"
+  >{{ button_text.restart }}</button>
+  <button
+    class="form-button"
+    v-if="game_started"
+    @click="reset"
+  >{{ button_text.reset }}</button>
+  <ul class="box-list">
+    <box
+      v-for="player in players"
+      :player="player"
+    ></box>
+  </ul>
+  <ul>
+    <box :player="dealer"></box>
+  </ul>
+
+
+  <p class="article-p">Deck: {{ deck.length }} cards</p>
+  <ul class="card-items card-items-dealer card-items-deck">
+    <card
+      v-for="card in deck"
+      :card="card"
+    ></card>
+  </ul>
+`;
+var page_article = document.getElementsByClassName('article')[0];
+page_article.appendChild(app_div);
+
+Vue.component('card', {
+  props: ['card'],
+  template: `
+    <li class="card-item">
+      <div class="card-back"></div>
+      <span class="card-name--top">{{ pretty_card(card) }}</span>
+      <span class="card-suit">{{ card.suit }}</span>
+      <span class="card-name--bottom">{{ pretty_card(card) }} </span>
+    </li>
+  `,
+  methods: {
+    pretty_card: function(card){
+      return card.name.toString().toUpperCase();
+    }
+  }
+});
+
+Vue.component('box', {
+  props: ['player', 'cards'],
+  template: `
+    <li class="box-item" v-bind:class="[player_game_status(player), is_current_player(player)]">
+      <ul class="card-items" v-bind:class="is_dealer(player)">
+        <card
+          v-for="hand in player.hands"
+          :card="hand"
+        ></card>
+      </ul>
+      <h3 class="box-item-title">{{ player_name(player) }}</h3>
+      <p class="box-score" v-html="player_score(player, player.score)"></p>
+      <p v-if="player.game_status">{{ player.game_status }}</p>
+      <div v-if="player_can_hit(player)">
+        <p><button @click="hit">Hit me!</button></p>
+        <p><button @click="stand(player)">Stand</button></p>
+      </div>
+    </li>
+  `,
+  methods: {
+    // temp hack to hide top card
+    is_dealer: function(player){
+      return app && !app.game_over && player.dealer ? 'card-items-dealer' : '';
+    },
+
+    player_name: function(player){
+      return player.player_name.toString().toUpperCase();
+    },
+
+    // ui to better display game results
+    player_game_status: function(player){
+      // don't care about dealer's results, might revisit
+      if (player.dealer) return;
+
+      switch (player.game_status){
+        case 'BUSTED! 😭':
+        case 'You Lost 😵':
+          return 'box-item-failure';
+        case 'BLACKJACK! 🤑':
+        case 'You Won 🤑':
+          return 'box-item-success';
+        case 'Dealer Blackjack! 😧':
+        case 'Stand 😬':
+          return 'box-item-tie';
+        default:
+          return;
+      }
+    },
+    is_current_player: function(player){
+      return app && app.current_player === player ? 'box-item-current' : '';
+    },
+    player_can_hit: function(player){
+      return app && app.current_player === this.player && this.player.game_started && !this.player.game_ended;
+    },
+    player_score: function(player, score){
+      var player_score = score[0];
+      var dealer_score = app ? app.dealer.score[0] : [0,0];
+      // bust if you ever go above 21
+      if (player_score > 21){
+        player.game_status = 'BUSTED! 😭';
+        this.player_game_over(player);
+
+      // win if you get exactly 21, but be careful if dealer gets blackjack too
+      } else if (player_score === 21){
+        // if dealer gets 21
+        if (app.game_over && dealer_score === 21 && !player.dealer){
+          // set new status if game over and dealer got blackjack
+          player.game_status = 'Dealer Blackjack! 😧';
+        } else {
+          // end the player's game if they got blackjack
+          player.game_status = 'BLACKJACK! ' + (!player.dealer ? '🤑' : '😈');
+          this.player_game_over(player);
+        }
+
+      // game ends with player and dealer both below 21
+      } else if (app && app.game_over){
+        this.player_game_over(player);
+        if (app.dealer.busted){
+          player.game_status = 'You Won 🤑';
+        } else if (player_score === dealer_score){
+          if (player.dealer){
+            player.game_status = 'Dealer finished';
+          } else {
+            player.game_status = 'You Tied 😐';
+          }
+        } else {
+          if (player_score > dealer_score){
+            player.game_status = 'You Won 🤑';
+          } else {
+            player.game_status = 'You Lost 😵';
+          }
+        }
+      }
+
+      // update the player's score after each card played
+      return this.score_with_ace(player, score);
+    },
+
+    // show score options if player has an ace
+    score_with_ace: function(player, score){
+      var player_score = score[0];
+      var player_score_alt = score[1];
+
+      // no score options necessary if player got 21
+      if (player_score === 21){
+        return player_score + '!';
+
+      // if player got an ace show score options unless their game is over
+      // in which case show the higher score
+      // app.update_score will do the work of setting the value to 1 if the score is over with 11
+      } else if (player_score !== player_score_alt){
+        return player.game_ended ? 'Score: ' + player_score : 'Score: ' + player_score + " (or " + player_score_alt + ")";
+
+      // player did not draw an ace, just show score
+      } else {
+        return player_score > 0 ? 'Score: ' + player_score : 'Waiting to Play';
+      }
+    },
+    player_game_over: function(player){
+      // end the player's game once it's their turn
+      if (app.current_player !== player) return;
+
+      player.game_over = true;
+      player.game_ended = true;
+      // skip to next player if player busts or gets blackjack,
+      // but only when it's their turn and not after the game is over
+      if (app.current_player === player) this.next_player(player);
+    },
+    hit: function(){
+
+      return app.deal();
+    },
+    stand: function(player){
+      player.game_status = 'Stand 😬';
+      player.game_ended = true;
+      this.next_player(player);
+    },
+    next_player: function(player){
+      if (app.game_over) return;
+      return !player.dealer ? app.next_player() : app.end_game();
+    }
+  }
+});
+
+function suits(){
+  return ['❤️','♠️','♦️','♣️'];
+}
+
+function cards_by_value(){
+  var deck = [
+    {name: 'a', value: 11, value_alt: 1},
+    {name: 'k', value: 10},
+    {name: 'q', value: 10},
+    {name: 'j', value: 10}
+  ];
+  for (var i = 10; i > 1; i--){
+    deck.push({name: i, value: i});
+  }
+  return deck;
+}
+
+function get_deck(){
+  var deck = [];
+  cards_by_value().forEach(function(card){
+    suits().forEach(function(suit){
+      var card_copy = JSON.parse(JSON.stringify(card));
+      card_copy.suit = suit;
+      deck = [...deck, card_copy];
+    });
+  });
+  return deck;
+}
+
+function get_player(id){
+  return {
+    id: id,
+    player_name: 'Player ' + id,
+    score: [0,0],
+    has_ace: false,
+    hands: [],
+    game_status: '',
+    game_started: false,
+    game_ended: false,
+    game_over: false
+  };
+}
+
+function get_dealer(){
+  return Object.assign(get_player(), {
+    dealer:       true,
+    id:           0,
+    player_name:  'Dealer'
+  });
+}
+
+// keep this outside the app data since resetting a game should keep the same number of players
+var players_count = 1;
+function get_players(count){
+  var players = [];
+  for (var i = 0; i < count; i++){
+    // i will set id to help move onto next player
+    players = [...players, get_player(i + 1)];
+  }
+  return players;
+}
+
+function default_data(){
+  return {
+    message: 'Hi Pat!',
+    deck: get_deck(),
+    players_count: players_count,
+    players: get_players(players_count),
+    current_player: '',
+    dealer: get_dealer(),
+    game_status: 'Start the game!',
+    game_started: false,
+    game_over: false,
+    button_text: {
+      start: 'Start Game',
+      reset: 'Reset Game',
+      restart: 'Play New Game'
+    }
+  };
+}
+
+var app = new Vue({
+  el: '#app',
+  data: default_data(),
+  methods: {
+    show_game_status: function(){
+      if (this.game_over){
+        return {
+          color: 'red'
+        };
+      } else if (this.game_started){
+        return {
+          color: 'lightgreen'
+        };
+      }
+    },
+    shuffle: function(){
+      return this.deck.sort((a, b) => Math.random() > .5 ? -1 : 1);
+    },
+    deal: function(){
+      if (this.game_over) return;
+      if (this.game_started){
+        this.deal_card(this.pull_card_from_deck());
+      } else {
+        this.start_game();
+      }
+    },
+    get_card_count_to_deal: function(){
+      // start count at 2 for dealer
+      return 2 + (this.players.length * 2);
+    },
+    start_game: function(){
+      // shuffle deck so aces aren't first
+      this.shuffle();
+
+      // set var for this to be used inside for loop
+      var appThis = this;
+
+      // get card count to know number of times to loop dealing out
+      var cards_to_deal = this.get_card_count_to_deal();
+
+      // initialize the first player to deal the card to
+      this.current_player = this.players[0];
+
+      for (var i = 0; i < cards_to_deal; i++){
+        appThis.deal_card(this.pull_card_from_deck());
+        appThis.next_player();
+      }
+      this.game_started = true;
+      this.game_status = 'Playing the game';
+    },
+    update_players_count: function(e){
+      var new_players_count = e.target.value;
+      // update global variable so a restarted game has the same number of players
+      players_count = new_players_count;
+      app.players_count = new_players_count;
+      app.players = get_players(new_players_count);
+    },
+    next_player: function(){
+      this.current_player = this.get_next_player() || this.dealer;
+      if (app.game_started && this.current_player === this.dealer) this.auto_play_dealer(this.dealer);
+    },
+    auto_play_dealer: function(dealer){
+      // dealer must hit if less than 17, must stand if above
+      while (dealer.score[0] < 17) this.deal_card(this.pull_card_from_deck());
+      this.end_game();
+    },
+    deal_card: function(card){
+      var current_player = this.current_player;
+      current_player.game_started = true;
+      current_player.hands = [...current_player.hands, card];
+      this.update_score(current_player, card);
+    },
+    pull_card_from_deck: function(){
+      return this.deck.shift();
+    },
+    get_next_player: function(){
+      // switch back to first player after the dealer
+      // then get the player at the next index until you reach the end
+      // dealer id is 0
+      // first player id is 1
+      return this.players[this.current_player.id];
+    },
+    update_score: function(current_player, card){
+      // this is doing the heavy work calculating the score
+      var card_value = card.value;
+      var card_value_alt = card.value_alt;
+      var card_is_ace = card_value == 11;
+
+      // don't have two aces at 11 since that would be over 21
+      // if this card is an ace and the round already has an ace then add to score by alt value: 1
+      // otherwise add by the score
+      current_player.score[0] += card_is_ace && current_player.has_ace ? card_value_alt : card_value;
+      current_player.score[1] += card_value_alt || card_value;
+
+      // set the state that the ace has been accounted for
+      if (card_is_ace && !current_player.has_ace) current_player.has_ace = true;
+
+      // if ace puts score higher than 21 then set score to lower, alt score
+      if (current_player.score[0] > 21) current_player.score[0] = current_player.score[1];
+
+      // bust player here (race condition on component so make sure dealer bust is registered before they update)
+      if (current_player.score[0] > 21) current_player.busted = true;
+    },
+    end_game: function(){
+      this.game_over = true;
+      this.game_status = 'The game is over!';
+    },
+    reset: function(){
+      // https://stackoverflow.com/questions/35604987/is-there-a-proper-way-of-resetting-a-components-initial-data-in-vuejs/35605629
+      Object.assign(this.$data, default_data());
+    },
+    restart: function(){
+      this.reset();
+      this.deal();
+    }
+  }
+});
+</script>

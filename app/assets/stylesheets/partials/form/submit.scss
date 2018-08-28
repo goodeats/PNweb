@@ -1,15 +1,19 @@
 @import '../modules';
 
+.form-button,
 .form-submit {
   display: block;
   width: $full;
   margin-top: $spacing-main;
   padding: $spacing-input;
-  background: $background-submit;
-  border: $border-submit;
   border-radius: $border-radius-input;
   font-size: $font-size-input;
   font-family: $font-main;
-  color: $white;
   cursor: pointer;
+}
+
+.form-submit {
+  background: $background-submit;
+  border: $border-submit;
+  color: $white;
 }
