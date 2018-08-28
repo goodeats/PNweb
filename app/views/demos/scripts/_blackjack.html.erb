@@ -99,8 +99,11 @@
 }
 </style>
 
-
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<% if Rails.env == 'production' %>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+<% else %>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<% end %>
 <script>
 // start by adding app div to page
 // TODO: break this out into small components
