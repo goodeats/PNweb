@@ -283,6 +283,7 @@ Vue.component('box', {
 
     // show score options if player has an ace
     score_with_ace: function(player, score){
+      if (player.dealer && app && !app.game_over) return '???';
       var player_score = score[0];
       var player_score_alt = score[1];
 
