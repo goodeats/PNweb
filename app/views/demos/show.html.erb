@@ -1,57 +1,5 @@
 <article class="article">
   <%= @demo.pretty_text %>
-
-  <div id="app">
-    <h2 class="app-header" :style="show_game_status()">{{ game_status }}</h2>
-    <p class="article-p">
-      Choose how many players (1-6):
-      <input
-        class="form-input-text form-input-text-inline"
-        type="number"
-        min="1"
-        max="6"
-        v-model="players_count"
-        @change="update_players_count"
-        :disabled="game_started"
-      >
-    </p>
-    <button
-      class="form-button form-submit"
-      v-if="!game_started"
-      @click="deal"
-    >{{ button_text.start }}</button>
-    <button
-      class="form-button form-submit"
-      v-if="game_over"
-      @click="restart"
-    >{{ button_text.restart }}</button>
-    <button
-      class="form-button"
-      v-if="game_started"
-      @click="reset"
-    >{{ button_text.reset }}</button>
-
-    <ul class="box-list">
-      <box
-        v-for="player in players"
-        :player="player"
-      ></box>
-    </ul>
-    <ul>
-      <box :player="dealer"></box>
-    </ul>
-
-
-    <p class="article-p">Deck: {{ deck.length }} cards</p>
-    <ul class="card-items card-items-dealer card-items-deck">
-      <card
-        v-for="card in deck"
-        :card="card"
-      ></card>
-    </ul>
-  </div>
-
-
 </article>
 <% content_for :javascript_includes do %>
   <%= render "demos/scripts/#{@demo.title.gsub(/ /, '_')}" %>

@@ -102,6 +102,61 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <script>
+// start by adding app div to page
+// TODO: break this out into small components
+var app_div = document.createElement('div');
+app_div.setAttribute('id', 'app');
+app_div.innerHTML = `
+  <h2 class="app-header" :style="show_game_status()">{{ game_status }}</h2>
+  <p class="article-p">
+    Choose how many players (1-6):
+    <input
+      class="form-input-text form-input-text-inline"
+      type="number"
+      min="1"
+      max="6"
+      v-model="players_count"
+      @change="update_players_count"
+      :disabled="game_started"
+    >
+  </p>
+  <button
+    class="form-button form-submit"
+    v-if="!game_started"
+    @click="deal"
+  >{{ button_text.start }}</button>
+  <button
+    class="form-button form-submit"
+    v-if="game_over"
+    @click="restart"
+  >{{ button_text.restart }}</button>
+  <button
+    class="form-button"
+    v-if="game_started"
+    @click="reset"
+  >{{ button_text.reset }}</button>
+  <ul class="box-list">
+    <box
+      v-for="player in players"
+      :player="player"
+    ></box>
+  </ul>
+  <ul>
+    <box :player="dealer"></box>
+  </ul>
+
+
+  <p class="article-p">Deck: {{ deck.length }} cards</p>
+  <ul class="card-items card-items-dealer card-items-deck">
+    <card
+      v-for="card in deck"
+      :card="card"
+    ></card>
+  </ul>
+`;
+var page_article = document.getElementsByClassName('article')[0];
+page_article.appendChild(app_div);
+
 Vue.component('card', {
   props: ['card'],
   template: `
@@ -316,7 +371,6 @@ function get_dealer(){
 
 // keep this outside the app data since resetting a game should keep the same number of players
 var players_count = 1;
-
 function get_players(count){
   var players = [];
   for (var i = 0; i < count; i++){
