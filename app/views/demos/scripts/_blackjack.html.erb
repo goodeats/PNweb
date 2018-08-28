@@ -63,6 +63,12 @@
   top: 0;
   left: 0;
   background: black;
+  /* stolen from: http://lea.verou.me/css3patterns/#chocolate-weave */
+  background: linear-gradient(45deg, #dca 12%, transparent 0, transparent 88%, #dca 0),
+              linear-gradient(135deg, transparent 37%, #a85 0, #a85 63%, transparent 0),
+              linear-gradient(45deg, transparent 37%, #dca 0, #dca 63%, transparent 0) #753;
+  background-size: 25px 25px;
+
   opacity: 0;
   z-index: 1;
 }
@@ -142,7 +148,7 @@ app_div.innerHTML = `
   <ul class="box-list">
     <box
       v-for="player in players"
-      key="player.id"
+      :key="player.id"
       :player="player"
     ></box>
   </ul>
