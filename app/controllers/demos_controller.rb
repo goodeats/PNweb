@@ -22,7 +22,7 @@ class DemosController < ApplicationController
   private
 
   def set_demo
-    @demo = Demo.find(params[:id])
+    @demo = Demo.find_by_param(params[:id]) || Demo.find(params[:id])
   end
 
   def set_meta_demos
