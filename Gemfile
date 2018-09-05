@@ -16,6 +16,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 # gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
+# turbolinks is actually good for sharing the same web views across platforms
+# https://www.youtube.com/watch?v=SWEts0rlezA
+gem 'turbolinks', '~> 5.1.0' #
 
 ## css
 gem 'sass-rails', '~> 5.0'
