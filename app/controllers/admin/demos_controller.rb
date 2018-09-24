@@ -53,7 +53,7 @@ class Admin::DemosController < Admin::AdminController
   private
 
   def set_demo
-    @demo = Demo.find(params[:id])
+    @demo = Demo.find_by_param(params[:id]) || Demo.find(params[:id])
   end
 
   def demo_params
