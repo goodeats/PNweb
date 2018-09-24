@@ -1,4 +1,5 @@
 class DemosController < ApplicationController
+  before_action :redirect_to_home
   skip_before_action :authenticate_user!
   before_action :set_meta_demos, only: [:index]
   before_action :set_demo, :set_meta_demo, only: [:show]
@@ -20,6 +21,10 @@ class DemosController < ApplicationController
   end
 
   private
+
+  def redirect_to_home
+    redirect_to root_path, warning: 'nah'
+  end
 
   def set_demo
     @demo = Demo.find_by_param(params[:id]) || Demo.find(params[:id])
