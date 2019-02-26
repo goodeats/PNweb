@@ -1,6 +1,4 @@
 class DemosController < ApplicationController
-  include Redirects
-  before_action :redirect_to_home
   skip_before_action :authenticate_user!
   before_action :set_meta_demos, only: [:index]
   before_action :set_demo, :set_meta_demo, only: [:show]
