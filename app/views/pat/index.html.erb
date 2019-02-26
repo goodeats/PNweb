@@ -1,4 +1,6 @@
-<article class="article">
-  <p class="article-p">I am a full-stack web developer trying to make cool things!</p>
-  <p class="article-p">I will have some fun stuff here soon.</p>
-</article>
+<% @abouts.map do |about| %>
+  <article class="article">
+    <h3 class="article-title"><%= about.title %></h1>
+    <%= about.pretty_text %>
+  </article>
+<% end %>

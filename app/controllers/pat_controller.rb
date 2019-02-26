@@ -6,6 +6,7 @@ class PatController < ApplicationController
 
   def index
     @page_keywords = @page_keywords << 'home'
+    @abouts = About.published.prioritized
   end
 
   def image_url

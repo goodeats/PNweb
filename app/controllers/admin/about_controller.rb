@@ -5,7 +5,7 @@ class Admin::AboutController < Admin::AdminController
   add_breadcrumb 'about', :admin_about_index_path
 
   def index
-    @abouts = About.asc
+    @abouts = About.prioritized
     add_breadcrumb 'create about', new_admin_about_path
     @page_title = 'about me'
   end

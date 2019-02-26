@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  include Redirects
   before_action :redirect_to_home
   skip_before_action :authenticate_user!
   before_action :set_meta_articles
@@ -21,10 +22,6 @@ class ArticlesController < ApplicationController
   end
 
   private
-
-  def redirect_to_home
-    redirect_to root_path, warning: 'nah'
-  end
 
   def set_article
     @article = Article.find_by_param(params[:id]) || Article.find(params[:id])

@@ -1,4 +1,6 @@
 class AboutController < ApplicationController
+  include Redirects
+  before_action :redirect_to_home
   skip_before_action :authenticate_user!
   before_action :set_meta_about
   include SetMetaTags
