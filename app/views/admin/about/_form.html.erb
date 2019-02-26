@@ -13,6 +13,11 @@
   </p>
 
   <p class="article-p">
+    <%= f.label :priority, class: 'form-label' %>
+    <%= f.number_field :priority, class: 'form-input-text' %>
+  </p>
+
+  <p class="article-p">
     <%= f.label :text, class: 'form-label' %>
     <!-- TODO: https://stackoverflow.com/questions/2831072/in-rails-how-can-i-allow-some-html-in-a-text-area/7420541 -->
     <%= f.text_area :text, class: 'form-input-text form-input-textarea' %>

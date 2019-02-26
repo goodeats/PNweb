@@ -6,6 +6,7 @@
       <li class="article-content-li"><%= link_to 'Delete', admin_about_path(about), data: {confirm: 'Are you sure, Pat?'}, method: :delete, class: 'link-page article-content-li-link' %></li>
     </ul>
     <h3 class="article-title"><%= about.title %></h3>
+    <p>Priority: <%= about.priority %></p>
     <%= about.pretty_text %>
   </article>
 <% end %>

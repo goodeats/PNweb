@@ -61,7 +61,7 @@ class Admin::AboutController < Admin::AdminController
   end
 
   def about_params
-    params.require(:about).permit(:title, :published, :text)
+    params.require(:about).permit(:title, :published, :text, :priority)
   end
 
 end

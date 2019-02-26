@@ -4,5 +4,6 @@
     <li class="article-content-li"><%= link_to 'Delete', admin_about_path(@about), data: {confirm: 'Are you sure, Pat?'}, method: :delete, class: 'link-page article-content-li-link' %></li>
   </ul>
   <p class="article-p"><%= @about.published ? '🙋🏻‍♂️ published' : '🙅🏻‍♂️ not published' %></p>
+  <p>Priority: <%= @about.priority %></p>
   <%= @about.pretty_text %>
 </article>
