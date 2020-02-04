@@ -32,5 +32,11 @@ Rails.application.routes.draw do
     resources :articles, path: 'blog'
   end
 
+  namespace :api, constraints: { format: 'json' } do
+    namespace :v1 do
+      get '/yo', to: 'yo#yo'
+    end
+  end
+
   get 'admin', to: 'admin/pat#index', as: :admin
 end
