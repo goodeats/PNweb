@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   namespace :api, constraints: { format: 'json' } do
     namespace :v1 do
-      get '/yo', to: 'yo#yo'
+      resources :yo, only: [:index, :show]
     end
   end
 
