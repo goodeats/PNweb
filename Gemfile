@@ -18,7 +18,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 # turbolinks is actually good for sharing the same web views across platforms
 # https://www.youtube.com/watch?v=SWEts0rlezA
-gem 'turbolinks', '~> 5.1.0' #
+# TODO: return to turbolinks after fixing the preload demos (re-add to app.js too)
+# gem 'turbolinks', '~> 5.1.0' #
 
 ## css
 gem 'sass-rails', '~> 5.0'
